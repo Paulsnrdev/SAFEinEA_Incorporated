@@ -30,6 +30,7 @@
 </head>
 <body class="font-sans bg-gray-50">
     <!-- Navigation -->
+     <!-- Navigation -->
     <nav class="bg-white shadow-lg sticky top-0 p-2 z-50">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
@@ -41,18 +42,81 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="nav-link text-gray-800 hover:text-blue-500">Home</a>
-                    <a href="about.html" class="nav-link active text-gray-800 hover:text-blue-500">About Us</a>
+                    <a href="about.html" class="nav-link text-gray-800 active hover:text-blue-500">About Us</a>
                     <a href="testimonials.html" class="nav-link text-gray-800 hover:text-blue-500">Testimonials</a>
                     <a href="index.html#contact" class="nav-link text-gray-800 hover:text-blue-500">Contact</a>
                     <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
                         Register for Training
                     </a>
                 </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
+
+                <!-- Mobile Menu Button -->
+               
+              <div class="flex items-center">
+  <!-- Mobile Menu (shows on small/medium screens) -->
+  <div class="lg:hidden flex items-center">
+    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+      <i class="fas fa-bars text-xl"></i>
+    </button>
+    
+    <!-- Full-screen overlay/menu container -->
+    <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+    
+    <!-- Dropdown menu -->
+    <div id="services-dropdown" class="hidden fixed top-0 right-0 h-128 w-64 bg-white shadow-lg z-50 overflow-y-auto transform -translate-x-full transition-transform duration-300">
+      <div class="p-4">
+        <button id="close-menu-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="mt-8 space-y-2">
+          <a href="index.html" class="block px-4 py-3 text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Home</a>
+          <a href="about.html" class="block px-4 py-3 text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">About Us</a>
+          <a href="testimonials.html" class="block px-4 py-3 text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Testimonials</a>
+          <a href="index.html#contact" class="block px-4 py-3 text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Contact</a>
+          <a href="https://swmb.bluedrop.io/storefront/safeinea" class="block px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded text-center transition duration-300 mt-4">
+            Register for Training
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Menu (shows on large screens) -->
+  <div class="hidden lg:flex items-center space-x-6">
+    <!-- Your desktop menu items here -->
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const menuButton = document.getElementById('mobile-menu-button');
+  const closeButton = document.getElementById('close-menu-button');
+  const dropdown = document.getElementById('services-dropdown');
+  const overlay = document.getElementById('mobile-menu-overlay');
+
+  function toggleMenu() {
+    dropdown.classList.toggle('hidden');
+    overlay.classList.toggle('hidden');
+    if (!dropdown.classList.contains('hidden')) {
+      dropdown.classList.remove('-translate-x-full');
+    } else {
+      dropdown.classList.add('-translate-x-full');
+    }
+  }
+
+  menuButton.addEventListener('click', toggleMenu);
+  closeButton.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  // Close menu when clicking a link (optional)
+  document.querySelectorAll('#services-dropdown a').forEach(link => {
+    link.addEventListener('click', toggleMenu);
+  });
+});
+</script>
+
+ 
+
             </div>
         </div>
     </nav>
@@ -66,37 +130,51 @@
     <h1 class="text-4xl font-bold mb-8 text-gray-800">About SAFEinEA Incorporated</h1>
     
     <!-- Image Slideshow Container -->
-    <div class="mb-12 relative h-96 overflow-hidden rounded-lg shadow-md">
-        <!-- Slides -->
-        <img src="Photo of me1.jpg" alt="About SAFEinEA" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-100" id="slide1">
-        <img src="Safety program.jpg" alt="SAFEinEA Team" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" id="slide2">
-        <img src="1.jpg" alt="SAFEinEA Training" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" id="slide3">
-        
-        <!-- Slide Indicators -->
-        <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-            <button class="w-3 h-3 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition" onclick="showSlide(0)"></button>
-            <button class="w-3 h-3 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition" onclick="showSlide(1)"></button>
-            <button class="w-3 h-3 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition" onclick="showSlide(2)"></button>
-        </div>
+    <div class="mb-12 relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-lg shadow-md">
+    <!-- Slides -->
+    <img src="Photo of me1.jpg" alt="About SAFEinEA" 
+         class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 opacity-100" 
+         id="slide1">
+    <img src="Safety program.jpg" alt="SAFEinEA Team" 
+         class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" 
+         id="slide2">
+    <img src="1.jpg" alt="SAFEinEA Training" 
+         class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" 
+         id="slide3">
+    
+    <!-- Slide Indicators -->
+    <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+        <button class="w-3 h-3 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition" onclick="showSlide(0)"></button>
+        <button class="w-3 h-3 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition" onclick="showSlide(1)"></button>
+        <button class="w-3 h-3 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition" onclick="showSlide(2)"></button>
     </div>
+</div>
     
     <div class="mb-8">
         <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-            SAFEinEA Incorporated is a leading Environmental Health and Safety Consulting and Training Firm dedicated to helping Canadian businesses create safer, healthier workplaces. Founded by Bamidele Oni, a seasoned safety professional with extensive qualifications and experience, we bring expertise and passion to every project.
-        </p>
+           SAFEinEA Incorporated is a leading Environmental Health and Safety Consulting and Training Firm dedicated to helping Canadian businesses create safer, healthier workplaces. Founded by Bamidele Oni, a seasoned safety and health professional with extensive combination of qualifications and experience, in the field of Environmental Health, Public Health, Occupational Health and Safety and Environmental Management. </p>
+
+<p class="text-gray-600 mb-6 text-lg leading-relaxed">Added to this, he is an educationist, and proficient in curriculum development. As a lecturer, he has facilitated several trainings and also coached student from basis to professionalism in colleges and professional institutions. We bring expertise and passion to every project.  </p>
+
+<p class="text-gray-600 mb-6 text-lg leading-relaxed">His experience as an enforcement officer, who worked as provincial safety and health officer, positioned him to understand what your workplace needs to comply with legislative requirements in various industries. </p>
+
+<p class="text-gray-600 mb-6 text-lg leading-relaxed">SAFEinEA Incorporated provides Environmental Health and Safety consulting and training services. Our offerings include SAFE Work Manitoba endorsed trainings, customized on-site programs, advisory services, and the development of safety programs. We also partner with training institutions to deliver basic academic lecture as electives or main course to equip student with safety and health orientation regardless of their field of learning. </p>
+
+<p class="text-gray-600 mb-6 text-lg leading-relaxed">SAFEinEA is accredited training provider in Manitoba and assists businesses in meeting legislative requirements and maintaining safe work environments. </p>
+       
     </div>
     
     <div class="mb-8">
         <h2 class="text-2xl font-semibold mb-4 text-gray-800">Our Mission</h2>
         <p class="text-gray-600 mb-6">
-            To empower organizations with the knowledge, tools, and strategies needed to protect their most valuable asset their people while ensuring regulatory compliance and operational excellence.
+           To empower organizations with the knowledge, tools, and strategies needed to protect their most valuable asset - their people, while ensuring regulatory compliance and smooth operation without disruptions.
         </p>
     </div>
     
     <div class="mb-8">
         <h2 class="text-2xl font-semibold mb-4 text-gray-800">Our Approach</h2>
         <p class="text-gray-600 mb-6">
-            We believe in practical, scalable solutions that integrate seamlessly with your operations. Our services are customized to your industry, size, and specific challenges, ensuring maximum effectiveness and return on investment.
+           We believe in practical, scalable solutions that integrate seamlessly with your operations. Our services and training uphold general principles of occupational health and safety but customizable to your workplace size, and specific challenges, ensuring a work environment that is both safe and healthy.
         </p>
     </div>
     
@@ -230,26 +308,25 @@
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
 
-// Slideshow functionality
+   <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    });
+
+    // Slideshow functionality
     let currentSlide = 0;
     const slides = document.querySelectorAll('[id^="slide"]');
     const totalSlides = slides.length;
     
     function showSlide(index) {
-        // Reset all slides
         slides.forEach(slide => {
             slide.classList.remove('opacity-100');
             slide.classList.add('opacity-0');
         });
         
-        // Show selected slide
         slides[index].classList.remove('opacity-0');
         slides[index].classList.add('opacity-100');
         currentSlide = index;
@@ -260,12 +337,10 @@
         showSlide(currentSlide);
     }
     
-    // Auto-rotate slides every 10 seconds
     setInterval(nextSlide, 10000);
-    
-    // Initialize first slide
     showSlide(0);
+</script>
 
-    </script>
+
 </body>
 </html>

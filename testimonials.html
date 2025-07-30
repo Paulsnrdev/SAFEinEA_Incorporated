@@ -17,7 +17,7 @@
             height: 2px;
             bottom: -2px;
             left: 0;
-            background-color: #3b82f6;
+            background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
             transition: width 0.3s ease;
         }
         .nav-link:hover::after {
@@ -44,27 +44,90 @@
                         <img src="SAFEinEA Logo.jpg" alt="SAFEinEA Logo" width="60px" height="60px" class="rounded-full">
                         <span class="font-bold text-2xl text-gray-800">SAFEinEA Incorporated</span>
                     </div>
-                </div>
+                </div> 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-gray-800 hover:text-blue-500">Home</a>
-                    <a href="about.html" class="nav-link text-gray-800 hover:text-blue-500">About Us</a>
-                    <a href="testimonials.html" class="nav-link active text-gray-800 hover:text-blue-500">Testimonials</a>
-                    <a href="index.html#contact" class="nav-link text-gray-800 hover:text-blue-500">Contact</a>
-                    <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                    <a href="index.html" class="nav-link text-gray-800 hover:text-gray-800">Home</a>
+                    <a href="about.html" class="nav-link text-gray-800 hover:text-gray-800">About Us</a>
+                    <a href="testimonials.html" class="nav-link active text-gray-800 hover:text-gray-800">Testimonials</a>
+                    <a href="index.html#contact" class="nav-link text-gray-800 hover:text-gray-800">Contact</a>
+                    <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
                         Register for Training
                     </a>
                 </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
+
+                <!-- Mobile Menu Button -->
+               
+              <div class="flex items-center">
+  <!-- Mobile Menu (shows on small/medium screens) -->
+  <div class="lg:hidden flex items-center">
+    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+      <i class="fas fa-bars text-xl"></i>
+    </button>
+    
+    <!-- Full-screen overlay/menu container -->
+    <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+    
+    <!-- Dropdown menu -->
+    <div id="services-dropdown" class="hidden fixed top-0 right-0 h-128 w-64 bg-white shadow-lg z-50 overflow-y-auto transform -translate-x-full transition-transform duration-300">
+      <div class="p-4">
+        <button id="close-menu-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="mt-8 space-y-2">
+          <a href="index.html" class="block px-4 py-3 text-gray-800 hover:text-gray-700 hover:bg-gray-50 rounded">Home</a>
+          <a href="about.html" class="block px-4 py-3 text-gray-800 hover:text-gray-700 hover:bg-gray-50 rounded">About Us</a>
+          <a href="testimonials.html" class="block px-4 py-3 text-gray-800 hover:text-gray-700 hover:bg-gray-50 rounded">Testimonials</a>
+          <a href="index.html#contact" class="block px-4 py-3 text-gray-800 hover:text-gray-700 hover:bg-gray-50 rounded">Contact</a>
+          <a href="https://swmb.bluedrop.io/storefront/safeinea" class="block px-4 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded text-center transition duration-300 mt-4">
+            Register for Training
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Menu (shows on large screens) -->
+  <div class="hidden lg:flex items-center space-x-6">
+    <!-- Your desktop menu items here -->
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const menuButton = document.getElementById('mobile-menu-button');
+  const closeButton = document.getElementById('close-menu-button');
+  const dropdown = document.getElementById('services-dropdown');
+  const overlay = document.getElementById('mobile-menu-overlay');
+
+  function toggleMenu() {
+    dropdown.classList.toggle('hidden');
+    overlay.classList.toggle('hidden');
+    if (!dropdown.classList.contains('hidden')) {
+      dropdown.classList.remove('-translate-x-full');
+    } else {
+      dropdown.classList.add('-translate-x-full');
+    }
+  }
+
+  menuButton.addEventListener('click', toggleMenu);
+  closeButton.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  // Close menu when clicking a link (optional)
+  document.querySelectorAll('#services-dropdown a').forEach(link => {
+    link.addEventListener('click', toggleMenu);
+  });
+});
+</script>
+
+ 
+
             </div>
         </div>
     </nav>
 
     <!-- Testimonials Hero -->
-    <section class="bg-blue-500 text-white py-20">
+    <section class="bg-gray-800 text-white py-20">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-6">Client Testimonials</h1>
             <p class="text-xl md:text-2xl max-w-3xl mx-auto">
@@ -84,69 +147,204 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-blue-500"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-800">John Oni</h4>
-                            <p class="text-sm text-gray-600">Construction Manager</p>
-                        </div>
-                    </div>
-                    <div class="text-yellow-400 mb-3">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-600">"SAFEinEA transformed our safety culture. Their customized training programs were exactly what our team needed to reduce incidents and improve compliance."</p>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-blue-500"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-800">Funke Oni</h4>
-                            <p class="text-sm text-gray-600">HR Director</p>
-                        </div>
-                    </div>
-                    <div class="text-yellow-400 mb-3">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-600">"The safety program developed by SAFEinEA not only kept us compliant but actually engaged our employees in safety like never before. Highly recommended!"</p>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-blue-500"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-800">Remi Abidogun</h4>
-                            <p class="text-sm text-gray-600">Operations Director</p>
-                        </div>
-                    </div>
-                    <div class="text-yellow-400 mb-3">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="text-gray-600">"Their on-site consultants identified hazards we had overlooked for years. The training was practical and immediately applicable to our work environment."</p>
-                </div>
+    <!-- Testimonial 1 -->
+    <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6 transition duration-300 hover:shadow-lg">
+        <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-user text-blue-500"></i>
             </div>
+            <div>
+                <h4 class="font-semibold text-gray-800">James Paulson</h4>
+            </div>
+        </div>
+        <div class="text-yellow-400 mb-3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <p class="text-gray-600">I enjoyed the Training. thank you.</p>
+    </div>
+    
+    <!-- Testimonial 2 -->
+    <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6 transition duration-300 hover:shadow-lg">
+        <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-user text-blue-500"></i>
+            </div>
+            <div>
+                <h4 class="font-semibold text-gray-800"> Paras</h4>
+            </div>
+        </div>
+        <div class="text-yellow-400 mb-3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <p class="text-gray-600">The instructor was good. He had a pretty good knowledge of safety and health. I will highly recommend to everybody if they want to do training for safety and health, go with this one</p>
+    </div>
+    
+    <!-- Testimonial 3 -->
+    <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6 transition duration-300 hover:shadow-lg">
+        <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-user text-blue-500"></i>
+            </div>
+            <div>
+                <h4 class="font-semibold text-gray-800"> Singh</h4>
+            </div>
+        </div>
+        <div class="text-yellow-400 mb-3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p class="text-gray-600">The instructor explained everything well. It was interesting.</p>
+    </div>
+
+    <!-- Testimonial 4 -->
+    <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6 transition duration-300 hover:shadow-lg">
+        <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-user text-blue-500"></i>
+            </div>
+            <div>
+                <h4 class="font-semibold text-gray-800">Skraikot</h4>
+            </div>
+        </div>
+        <div class="text-yellow-400 mb-3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <p class="text-gray-600">It was amazing and knowledgeable.</p>
+    </div>
+
+    <!-- Testimonial 5 -->
+    <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6 transition duration-300 hover:shadow-lg">
+        <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-user text-blue-500"></i>
+            </div>
+            <div>
+                <h4 class="font-semibold text-gray-800">Bakuska</h4>
+            </div>
+        </div>
+        <div class="text-yellow-400 mb-3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+        </div>
+        <p class="text-gray-600">Everything was good overall. Knowing that we needed to access some materials for some questions would have been helpful. But overall, very good</p>
+    </div>
+</div>
+
+
+
+        
+<!-- After your testimonial section -->
+<section class="py-12 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Our Statistics</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Chart 1 -->
+      <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+        <img src="stats1.jpg" alt="Statistical Chart 1" 
+             class="w-full h-auto object-contain max-h-80 mx-auto">
+        <p class="mt-4 text-center text-gray-600">Participant Engagement Metrics</p>
+      </div>
+      
+      <!-- Chart 2 -->
+      <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+        <img src="stats2.jpg" alt="Statistical Chart 2" 
+             class="w-full h-auto object-contain max-h-80 mx-auto">
+        <p class="mt-4 text-center text-gray-600">Knowledge Proficiency Metrics</p>
+      </div>
+      
+      <!-- Chart 3 -->
+      <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+        <img src="stats3.jpg" alt="Statistical Chart 3" 
+             class="w-full h-auto object-contain max-h-80 mx-auto">
+        <p class="mt-4 text-center text-gray-600">Participant Feedback Scores</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+       
+
+<section class="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-100 opacity-20"></div>
+  <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-blue-50 opacity-30"></div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <h2 class="text-3xl font-bold text-center mb-8 relative">
+      <span class="relative inline-block">
+        Featured Safety Videos
+        <span class="absolute bottom-0 left-0 w-full h-1 transform -translate-y-1 scale-x-75"></span>
+      </span>
+    </h2>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100">
+      <!-- Video Player - Now Larger -->
+      <div class="relative group w-50">
+        <!-- Container with responsive sizing -->
+        <div class="w-full h-64 sm:h-80 md:h-96 lg:h-[480px] xl:h-[550px] overflow-hidden rounded-xl shadow-lg transform group-hover:shadow-2xl transition-all duration-300">
+          <iframe 
+            src="https://www.youtube.com/embed/-WF_Y6kIDik" 
+            class="w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="absolute -inset-2 bg-blue-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10"></div>
+      </div>
+      
+      <!-- Channel Info -->
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-2xl font-bold text-gray-800 mb-2">Safety Advocates Channel</h3>
+          <p class="text-lg text-gray-600">
+            Access our library of professional safety training videos and expert demonstrations.
+          </p>
+        </div>
+        
+        <div class="space-y-4">
+          <a href="https://www.youtube.com/@SafetyAdvocates" 
+             class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-300 group"
+             target="_blank">
+            <i class="fab fa-youtube mr-3 text-xl group-hover:scale-110 transition-transform"></i>
+            <span class="font-medium">Subscribe to Our Channel</span>
+          </a>
+          
+          <div class="flex items-center text-gray-500">
+            <i class="fas fa-play-circle mr-2 text-blue-500"></i>
+            <span>Training videos available</span>
+          </div>
+          
+          <div class="flex items-center text-gray-500">
+            <i class="fas fa-certificate mr-2 text-blue-500"></i>
+            <span>Industry-certified content</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
             
             <div class="mt-16 text-center">
                 <h3 class="text-2xl font-semibold mb-6 text-gray-800">Ready to improve your workplace safety?</h3>
@@ -232,10 +430,13 @@
 
     <script>
         // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
+        // document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        //     const menu = document.getElementById('mobile-menu');
+        //     menu.classList.toggle('hidden');
+        // });
+
+     
+
     </script>
 </body>
 </html>

@@ -105,7 +105,7 @@
                         </button>
                         <div class="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md py-2 z-50 hidden group-hover:block">
                             <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Customized Safety Training</a>
-                            <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Health Program Development</a>
+                            <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Safety and Health Program Development</a>
                             <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">On-Site Consulting</a>
                             <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">SAFE Work Manitoba Training</a>
                             <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Inspection & Investigation</a>
@@ -135,7 +135,7 @@
                 </button>
                 <div id="services-dropdown" class="hidden pl-4 mt-2">
                     <a href="#services" class="block py-2 text-gray-800 hover:text-blue-500">Customized Safety Training</a>
-                    <a href="#services" class="block py-2 text-gray-800 hover:text-blue-500">Health Program Development</a>
+                    <a href="#services" class="block py-2 text-gray-800 hover:text-blue-500">Safety and Health Program Development</a>
                     <a href="#services" class="block py-2 text-gray-800 hover:text-blue-500">On-Site Consulting</a>
                     <a href="#services" class="block py-2 text-gray-800 hover:text-blue-500">SAFE Work Manitoba Training</a>
                     <a href="#services" class="block py-2 text-gray-800 hover:text-blue-500">Inspection & Investigation</a>
@@ -217,6 +217,44 @@
                     <h3 class="text-xl font-semibold mb-3 text-gray-800">Inspection and Investigation</h3>
                     <p class="text-gray-600">Onsite inspection and investigation services that is driven by comprehensive understanding of legislative provision and previous field enforcement experience.</p>
                 </div>
+
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-lg shadow-md p-6 transition duration-300 hover:shadow-lg">
+    <div class="text-blue-500 mb-4">
+        <i class="fas fa-search text-3xl"></i>
+    </div>
+    <h3 class="text-xl font-semibold mb-3 text-gray-800">New workers orientation</h3>
+    <p class="text-gray-600">
+        <span class="short-text">The enthusiasm that new workers bring to work sometimes put them at risk of threading terrains they are not familiar with...</span>
+        <span class="full-text hidden">Despite, having technical skill and required professional expertise, which influenced why your workplace hired them. It is important to bring them to speed on safe way of doing what they know to do. So, we can adapt our new workers safety orientation to your specific workplace need.</span>
+        <button class="read-more-btn text-blue-500 font-medium mt-2 focus:outline-none">Read More</button>
+    </p>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const readMoreBtns = document.querySelectorAll('.read-more-btn');
+        
+        readMoreBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.service-card');
+                const shortText = card.querySelector('.short-text');
+                const fullText = card.querySelector('.full-text');
+                
+                if (fullText.classList.contains('hidden')) {
+                    fullText.classList.remove('hidden');
+                    shortText.classList.add('hidden');
+                    this.textContent = 'Read Less';
+                } else {
+                    fullText.classList.add('hidden');
+                    shortText.classList.remove('hidden');
+                    this.textContent = 'Read More';
+                }
+            });
+        });
+    });
+</script>
+
             </div>
 
             <!-- UPDATED SERVICES REGISTRATION CTA -->
@@ -228,6 +266,8 @@
             </div>
         </div>
     </section>
+
+  
 
     <!-- About Us & Contact Section -->
     <section id="contact" class="py-16 bg-gray-100">
@@ -290,7 +330,7 @@
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center pb-2 border-b border-gray-100">
                         <span class="text-gray-600">Weekdays</span>
-                        <span class="font-medium">8AM - 5PM</span>
+                        <span class="font-medium">9AM - 5PM</span>
                     </li>
                     <li class="flex justify-between items-center pb-2 border-b border-gray-100">
                         <span class="text-gray-600">Saturday</span>
@@ -309,20 +349,24 @@
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
                         <i class="fas fa-certificate text-blue-500 text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800">Certifications</h3>
+                    <h3 class="text-xl font-semibold text-gray-800">Our Training Deliverables</h3>
                 </div>
                 <ul class="space-y-3">
                     <li class="flex items-start">
                         <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                        <span class="text-gray-700">SAFE Work Manitoba Endorsed</span>
+                        <span class="text-gray-700">Workplace Safety and Health Committee/Representatives</span>
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                        <span class="text-gray-700">Occupational Health & Safety Diploma</span>
+                        <span class="text-gray-700">Hazard Identification and Risk Control</span>
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                        <span class="text-gray-700">Environmental Professional</span>
+                        <span class="text-gray-700">Workplace Incident Investigations</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                        <span class="text-gray-700">Workplace Incident Investigations, and more.</span>
                     </li>
                 </ul>
             </div>
