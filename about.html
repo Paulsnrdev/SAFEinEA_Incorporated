@@ -242,51 +242,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
    
    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
+    <footer class="bg-gray-800 text-white py-8 md:py-12">
     <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <h3 class="text-xl font-bold mb-4 flex gap-2 items-center">
-                    <img src="SafeinEA Trans.logo.png" alt="SAFEinEA Logo" class="w-14 h-14 md:w-12 md:h-12 lg:w-16 lg:h-16 object-contain"> 
-                    SAFEinEA Incorporated
-                </h3>
-                <p class="text-gray-400 mb-2">Your trusted partner in workplace safety and environmental health consulting across Canada.</p>
-                
-                <!-- CSSE Logo with proper sizing and spacing -->
-                <div class="-mt-16">
-                   <a href="https://csse.org/" target="_blank" rel="noopener noreferrer">
-                         <img src="CSSE Transparent.png" 
-                             alt="CSSE Certification" 
-                                 class="max-w-[240px] h-64 object-contain">
-                    </a>  
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <!-- Company Info -->
+            <div class="sm:col-span-2 lg:col-span-1 order-1">
+                <div class="flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <img src="SafeinEA Trans.logo.png" alt="SAFEinEA Logo" class="w-12 h-12 md:w-14 md:h-14 object-contain"> 
+                        <h3 class="text-xl font-bold ml-2">SAFEinEA Incorporated</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">Your trusted partner in workplace safety and environmental health consulting across Canada.</p>
+                    
+                    <!-- CSSE Logo -->
+                    <div class="-mt-16">
+                        <a href="https://csse.org/" target="_blank" rel="noopener noreferrer">
+                            <img src="CSSE Transparent.png" 
+                                alt="CSSE Certification" 
+                                class="max-w-[180px] md:max-w-[240px] h-auto object-contain">
+                        </a>  
+                    </div>
                 </div>
-                
             </div>
             
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <!-- Quick Links -->
+            <div class="order-2">
+                <h4 class="text-lg font-semibold mb-3 md:mb-4">Quick Links</h4>
                 <ul class="space-y-2">
-                    <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
-                    <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
-                    <li><a href="testimonials.html" class="text-gray-400 hover:text-white transition">Testimonials</a></li>
-                    <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    <li><a href="index.html" class="text-gray-400 hover:text-white transition block py-1">Home</a></li>
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition block py-1">About Us</a></li>
+                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Services</a></li>
+                    <li><a href="testimonials.html" class="text-gray-400 hover:text-white transition block py-1">Testimonials</a></li>
+                    <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition block py-1">Contact</a></li>
                 </ul>
             </div>
             
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Services</h4>
+            <!-- Services -->
+            <div class="order-3">
+                <h4 class="text-lg font-semibold mb-3 md:mb-4">Services</h4>
                 <ul class="space-y-2">
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition">Customized Training</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition">Program Development</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition">On-Site Consulting</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition">SAFE Work Training</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition">Inspections</a></li>
+                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Customized Training</a></li>
+                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Program Development</a></li>
+                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">On-Site Consulting</a></li>
+                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">SAFE Work Training</a></li>
+                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Inspections</a></li>
                 </ul>
             </div>
             
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+            <!-- Contact Info -->
+            <div class="order-4">
+                <h4 class="text-lg font-semibold mb-3 md:mb-4">Contact Info</h4>
                 <ul class="space-y-2 text-gray-400">
                     <li class="flex items-start">
                         <i class="fas fa-phone-alt mt-1 mr-3 text-blue-400"></i>
@@ -294,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-envelope mt-1 mr-3 text-blue-400"></i>
-                        <span>safetyadvocatesinea@gmail.com</span>
+                        <span class="break-all">safetyadvocatesinea@gmail.com</span>
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
@@ -302,20 +307,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     </li>
                 </ul>
                 <div class="mt-4 flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition">
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
             </div>
         </div>
         
-        <div class="border-t border-gray-700 -mt-16 pt-8 text-center text-gray-400">
+        <!-- Copyright -->
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 order-last">
             <p>&copy; 2025 SAFEinEA Incorporated. All rights reserved.</p>
         </div>
     </div>
