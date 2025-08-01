@@ -99,11 +99,12 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="nav-link active text-gray-800 hover:text-blue-500">Home</a>
                     <a href="about.html" target="_blank" class="nav-link text-gray-800 hover:text-blue-500">About Us</a>
-                    <div class="relative group">
-                        <button class="nav-link text-gray-800 hover:text-blue-500 flex items-center">
-                            Services <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                        </button>
-                        <div class="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md py-2 z-50 hidden group-hover:block">
+                    <div class="relative" id="services-desktop-wrapper">
+    <button id="services-desktop-button" class="nav-link text-gray-800 hover:text-blue-500 flex items-center">
+        Services <i class="fas fa-chevron-down ml-1 text-xs"></i>
+    </button>
+    <div id="services-desktop-dropdown" class="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md py-2 z-50 hidden">
+
                             <a href="#service-1" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Customized Safety Training</a>
                             <a href="#service-2" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Safety and Health Program Development</a>
                             <a href="#service-3" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">On-Site Consulting</a>
@@ -558,6 +559,24 @@
             const dropdown = document.getElementById('services-dropdown');
             dropdown.classList.toggle('hidden');
         });
+
+        // Dropdown delay logic for desktop
+const desktopTrigger = document.getElementById('services-desktop-wrapper');
+const desktopDropdown = document.getElementById('services-desktop-dropdown');
+
+let dropdownTimer;
+
+desktopTrigger.addEventListener('mouseenter', () => {
+    clearTimeout(dropdownTimer);
+    desktopDropdown.classList.remove('hidden');
+});
+
+desktopTrigger.addEventListener('mouseleave', () => {
+    dropdownTimer = setTimeout(() => {
+        desktopDropdown.classList.add('hidden');
+    }, 1000); // 1000ms = 1 second delay
+});
+
 
         // Enhanced smooth scrolling that won't break external links
         document.querySelectorAll('a').forEach(anchor => {
