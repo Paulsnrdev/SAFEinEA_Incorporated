@@ -324,12 +324,12 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="order-4">
                 <h4 class="text-lg font-semibold mb-3 md:mb-4">Contact Info</h4>
                 <ul class="space-y-2 text-gray-400">
-                    <li class="flex items-start">
+                    <!-- <li class="flex items-start">
                         <i class="fas fa-phone-alt mt-1 mr-3 text-blue-400"></i>
                         <span>(431) 556-1900</span>
-                    </li>
+                    </li> -->
                     <li class="flex items-start">
-                        <i class="fas fa-envelope mt-1 mr-3 text-blue-400"></i>
+                        <i class="fas fa-envelope mt-1 mr-3 text-blue-400 text-sm"></i>
                         <span class="break-all">safetyadvocatesinea@gmail.com</span>
                     </li>
                     <li class="flex items-start">
@@ -389,7 +389,77 @@ document.addEventListener('DOMContentLoaded', function() {
     
     setInterval(nextSlide, 10000);
     showSlide(0);
+
+
+
+// Function to generate random usernames
+function generateUsername(index) {
+  const prefix = "user";
+  const randomNum = Math.floor(1000 + Math.random() * 9000); // Random 4-digit number
+  return `${prefix}${index}_${randomNum}`;
+}
+
+// Function to generate random passwords
+function generatePassword(length = 10) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk89!@#$%^&*()";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    password += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return password;
+}
+
+// Generate multiple user logins
+function generateUserAccounts(count) {
+  const users = [];
+  for (let i = 1; i <= count; i++) {
+    const username = generateUsername(i);
+    const password = generatePassword();
+    users.push({ username, password });
+  }
+  return users;
+}
+
+// Example: Generate 5 users
+const userAccounts = generateUserAccounts(5);
+
+// Display the result
+console.log("Generated User Accounts:");
+userAccounts.forEach((user, index) => {
+  console.log(`${index + 1}. Username: ${user.username} | Password: ${user.password}`);
+});
+
+
+
+const storedUsername = "user123";
+    const storedPassword = "Secret@456";
+
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (username === storedUsername && password === storedPassword) {
+        alert("Login successful!");
+      } else {
+        alert("Invalid credentials.");
+      }
+    }
+
+    function showUsernameHint() {
+      document.getElementById("hint").textContent = "Hint: Your username starts with 'user' and ends with 3 digits.";
+    }
+
+    function showPasswordHint() {
+      document.getElementById("hint").textContent = "Hint: Your password contains a capital letter, a symbol (@), and ends with numbers.";
+    }
+
 </script>
+
+
+
+
+
+
 
 
 </body>
