@@ -173,7 +173,7 @@
                     
                     <a href="testimonials.html" class="nav-link text-gray-800 hover:text-blue-500">Testimonials</a>
                     <a href="index.html#contact" class="nav-link text-gray-800 hover:text-blue-500">Contact</a>
-                    <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                    <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
                         Register Training
                     </a>
                 </div>
@@ -185,7 +185,6 @@
                 </div>
             </div>
         </div>
-
 
         <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity"></div>
         <div id="services-dropdown" class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 overflow-y-auto transform translate-x-full transition-transform duration-300 ease-in-out">
@@ -218,9 +217,9 @@
                             <div class="space-y-2 pl-2">
                                 <a href="EnvironmentalPublicHealth.html#water-quality" class="block text-sm text-gray-600 hover:text-blue-500">Water Quality Testing</a>
                                 <a href="EnvironmentalPublicHealth.html#air-quality" class="block text-sm text-gray-600 hover:text-blue-500">Air Quality Sampling</a>
-                                <a href="EnvironmentalPublicHealth.html#community-wellness" class="block text-sm text-gray-600 hover:text-blue-500">Community Wellness</a>
-                                <a href="EnvironmentalPublicHealth.html#facility-hygiene" class="block text-sm text-gray-600 hover:text-blue-500">Facility Hygiene</a>
-                                <a href="EnvironmentalPublicHealth.html#food-safety" class="block text-sm text-gray-600 hover:text-blue-500">Food Safety</a>
+                                <a href="EnvironmentalPublicHealth.html#community-wellness" class="block text-sm text-gray-600 hover:text-blue-500">Community Mobilization</a>
+                                <a href="EnvironmentalPublicHealth.html#facility-hygiene" class="block text-sm text-gray-600 hover:text-blue-500">Housekeeping & Hygiene</a>
+                                <a href="EnvironmentalPublicHealth.html#food-safety" class="block text-sm text-gray-600 hover:text-blue-500">Food Safety Training</a>
                             </div>
                         </div>
                     </div>
@@ -238,7 +237,6 @@
     </nav> 
 
     <section id="home" class="relative h-screen min-h-[600px] overflow-hidden bg-gray-900">
-        
         <div class="hero-slide active absolute inset-0 w-full h-full z-10">
             <div class="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
             <img src="Safety Homepage.jpg" alt="Safety Consulting" class="absolute inset-0 w-full h-full object-cover z-0">
@@ -614,24 +612,22 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // ADDED: Force browser to top on page refresh / Disable scroll memory
+        // 1. Force browser to top on page refresh / Disable scroll memory
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
 
         window.addEventListener('load', function() {
-            // Detect if the user hit the refresh button
             const isRefresh = (window.performance && window.performance.navigation.type === 1) || 
                               (window.performance && performance.getEntriesByType("navigation")[0]?.type === "reload");
 
             if (isRefresh) {
-                // Clear the hash URL and go to absolute top
                 history.replaceState(null, null, window.location.pathname);
                 window.scrollTo(0, 0);
             }
         });
 
-        // Initialize AOS animations
+        // 2. Initialize AOS animations
         AOS.init({
             duration: 800,
             offset: 50,
@@ -639,7 +635,7 @@
             easing: 'ease-in-out',
         });
 
-        // Mobile Menu Logic
+        // 3. Mobile Menu Logic
         document.addEventListener('DOMContentLoaded', function() {
             const menuButton = document.getElementById('mobile-menu-button');
             const closeButton = document.getElementById('close-menu-button');
@@ -678,7 +674,7 @@
             }
         });
 
-        // Hero Slider Logic
+        // 4. Hero Slider Logic
         document.addEventListener('DOMContentLoaded', function() {
             const slides = document.querySelectorAll('.hero-slide');
             const dots = document.querySelectorAll('.slide-dot');
@@ -716,6 +712,25 @@
 
             if (slides.length > 0) {
                 startSlider();
+            }
+        });
+
+        // 5. Desktop Dropdown Auto-Close Fix
+        document.addEventListener('DOMContentLoaded', function() {
+            const desktopDropdown = document.getElementById('services-desktop-dropdown');
+            if (desktopDropdown) {
+                const desktopLinks = desktopDropdown.querySelectorAll('a');
+                desktopLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        // Instantly hide the dropdown
+                        desktopDropdown.style.display = 'none';
+                        
+                        // Remove the inline style after 500ms so hover works again next time
+                        setTimeout(() => {
+                            desktopDropdown.style.display = '';
+                        }, 500);
+                    });
+                });
             }
         });
     </script>

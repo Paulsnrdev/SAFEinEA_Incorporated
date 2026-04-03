@@ -184,7 +184,7 @@
                                     <a href="EnvironmentalPublicHealth.html" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Water Quality Testing</a>
                                     <a href="EnvironmentalPublicHealth.html#air-quality" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Air Quality Sampling</a>
                                     <a href="EnvironmentalPublicHealth.html#community-wellness" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Community Mobilization</a>
-                                    EnvironmentalPublicHealth.html#facility-hygiene" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Housekeeping & Hygiene</a>
+                                    <a hrefEnvironmentalPublicHealth.html#facility-hygiene" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Housekeeping & Hygiene</a>
                                     <a href="EnvironmentalPublicHealth.html#food-safety" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Food Safety Training</a>
                                 </div>
                             </div>
@@ -235,11 +235,11 @@
 
                             <div class="bg-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider mt-4">Environmental & Public Health</div>
                             <div class="space-y-2 pl-2">
-                                <aEnvironmentalPublicHealth.html#water-quality" class="block text-sm text-gray-600 hover:text-blue-500">Water Quality Testing</a>
-                                <aEnvironmentalPublicHealth.html#air-quality" class="block text-sm text-gray-600 hover:text-blue-500">Air Quality Sampling</a>
-                                <aEnvironmentalPublicHealth.html#community-wellness" class="block text-sm text-gray-600 hover:text-blue-500">Community Mobilization</a>
-                                <aEnvironmentalPublicHealth.html#facility-hygiene" class="block text-sm text-gray-600 hover:text-blue-500">Housekeeping & Hygiene</a>
-                                <aEnvironmentalPublicHealth.html#food-safety" class="block text-sm text-gray-600 hover:text-blue-500">Food Safety Training</a>
+                                <a href="EnvironmentalPublicHealth.html#water-quality" class="block text-sm text-gray-600 hover:text-blue-500">Water Quality Testing</a>
+                                <a href="EnvironmentalPublicHealth.html#air-quality" class="block text-sm text-gray-600 hover:text-blue-500">Air Quality Sampling</a>
+                                <a href="EnvironmentalPublicHealth.html#community-wellness" class="block text-sm text-gray-600 hover:text-blue-500">Community Mobilization</a>
+                                <a href="EnvironmentalPublicHealth.html#facility-hygiene" class="block text-sm text-gray-600 hover:text-blue-500">Housekeeping & Hygiene</a>
+                                <a href="EnvironmentalPublicHealth.html#food-safety" class="block text-sm text-gray-600 hover:text-blue-500">Food Safety Training</a>
                             </div>
                         </div>
                     </div>
@@ -472,11 +472,11 @@
                         <div>
                             <h5 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Environmental & Public Health</h5>
                             <ul class="space-y-1 border-l-2 border-green-500 pl-3">
-                                <li><a href="EnvironmentalPublicHealth#water-quality" class="text-gray-400 hover:text-white transition text-sm block py-1">Water Quality Testing</a></li>
-                                <li><a href="EnvironmentalPublicHealth#air-quality" class="text-gray-400 hover:text-white transition text-sm block py-1">Air Quality Sampling</a></li>
-                                <li><a href="EnvironmentalPublicHealth#community-wellness" class="text-gray-400 hover:text-white transition text-sm block py-1">Community Wellness</a></li>
-                                <li><a href="EnvironmentalPublicHealth#facility-hygiene" class="text-gray-400 hover:text-white transition text-sm block py-1">Facility Hygiene</a></li>
-                                <li><a href="EnvironmentalPublicHealth#food-safety" class="text-gray-400 hover:text-white transition text-sm block py-1">Food Safety</a></li>
+                                <li><a href="Environmental Public Health.html#water-quality" class="text-gray-400 hover:text-white transition text-sm block py-1">Water Quality Testing</a></li>
+                                <li><a href="Environmental Public Health.html#air-quality" class="text-gray-400 hover:text-white transition text-sm block py-1">Air Quality Sampling</a></li>
+                                <li><a href="Environmental Public Health.html#community-wellness" class="text-gray-400 hover:text-white transition text-sm block py-1">Community Wellness</a></li>
+                                <li><a href="Environmental Public Health.html#facility-hygiene" class="text-gray-400 hover:text-white transition text-sm block py-1">Facility Hygiene</a></li>
+                                <li><a href="Environmental Public Health.html#food-safety" class="text-gray-400 hover:text-white transition text-sm block py-1">Food Safety</a></li>
                             </ul>
                         </div>
                     </div>
@@ -518,12 +518,22 @@
     </footer>
 
     <script>
-        // Tell the browser NOT to remember scroll position on reload
+        // 1. Force browser to top on page refresh / Disable scroll memory
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
 
-        // JS Logic for Image Slideshows
+        window.addEventListener('load', function() {
+            const isRefresh = (window.performance && window.performance.navigation.type === 1) || 
+                              (window.performance && performance.getEntriesByType("navigation")[0]?.type === "reload");
+
+            if (isRefresh) {
+                history.replaceState(null, null, window.location.pathname);
+                window.scrollTo(0, 0);
+            }
+        });
+
+        // 2. JS Logic for Image Slideshows
         document.addEventListener("DOMContentLoaded", function() {
             // Air Quality Images
             const aqImages = [
@@ -602,7 +612,7 @@
             }, 5000); 
         });
 
-        // 1. Mobile Sidebar Menu Open/Close Logic
+        // 3. Mobile Sidebar Menu Open/Close Logic
         const menuButton = document.getElementById('mobile-menu-button');
         const closeButton = document.getElementById('close-menu-button');
         const sidebarMenu = document.getElementById('services-dropdown'); 
@@ -622,7 +632,7 @@
         if (closeButton) closeButton.addEventListener('click', closeMobileMenu);
         if (menuOverlay) menuOverlay.addEventListener('click', closeMobileMenu);
 
-        // 2. Mobile Services Accordion Logic 
+        // Mobile Services Accordion Logic 
         const mobileServicesBtn = document.getElementById('mobile-services-btn');
         const mobileServicesMenu = document.getElementById('mobile-services-menu');
         const mobileServicesIcon = document.getElementById('mobile-services-icon');
@@ -635,7 +645,7 @@
             });
         }
 
-        // 3. SCROLL ANIMATION LOGIC (For .scroll-hidden elements)
+        // 4. SCROLL ANIMATION LOGIC (For .scroll-hidden elements)
         const scrollElements = document.querySelectorAll('.scroll-hidden, .scroll-hidden-left, .scroll-hidden-right');
 
         const elementInView = (el, offset = 100) => {
@@ -667,7 +677,7 @@
             setTimeout(handleScrollAnimation, 500);
         });
 
-        // 4. STICKY NAVBAR OFFSET FIX (For clicks on the same page)
+        // 5. STICKY NAVBAR OFFSET FIX (For clicks on the same page)
         const headerOffset = 110; 
 
         document.querySelectorAll('a[href*="#"]').forEach(anchor => {
@@ -692,30 +702,27 @@
             });
         });
 
-        // 5. PAGE LOAD & REFRESH LOGIC
-        window.addEventListener('load', function() {
-            // Detect if this is a page refresh
-            const isRefresh = (window.performance && window.performance.navigation.type === 1) || 
-                              (window.performance && performance.getEntriesByType("navigation")[0]?.type === "reload");
-
-            if (isRefresh) {
-                // If refreshed: Clear the hash from URL and force scroll to absolute top
-                history.replaceState(null, null, window.location.pathname);
-                setTimeout(() => window.scrollTo({ top: 0, behavior: 'instant' }), 10);
-            } else if (window.location.hash) {
-                // If arriving from another page (like Home page): scroll to the service
-                const target = document.querySelector(window.location.hash);
-                if (target) {
-                    setTimeout(() => {
-                        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-                        window.scrollTo({
-                            top: elementPosition - headerOffset,
-                            behavior: 'smooth'
-                        });
-                    }, 50);
-                }
+        // 6. DESKTOP DROPDOWN AUTO-CLOSE FIX
+        document.addEventListener('DOMContentLoaded', function() {
+            const desktopDropdown = document.getElementById('services-desktop-dropdown');
+            if (desktopDropdown) {
+                // Find all the clickable links inside the desktop dropdown
+                const desktopLinks = desktopDropdown.querySelectorAll('a');
+                
+                desktopLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        // Instantly hide the dropdown menu when a link is clicked
+                        desktopDropdown.style.display = 'none';
+                        
+                        // Wait half a second, then remove the inline style so it can open again next time you hover
+                        setTimeout(() => {
+                            desktopDropdown.style.display = '';
+                        }, 500);
+                    });
+                });
             }
         });
     </script>
+
 </body>
 </html>
