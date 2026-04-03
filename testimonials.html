@@ -6,6 +6,8 @@
     <title>Testimonials | SAFEinEA Incorporated</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <meta property="og:title" content="SAFEinEA Incorporated" />
     <meta property="og:description" content="Environmental Health and Safety Consulting and Training services." />
@@ -14,6 +16,22 @@
     <meta property="og:type" content="website" />
     <link rel="icon" href="/Safeinea Black Logo.png" type="image/jpeg" />
     <style>
+
+        nav {
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         .nav-link {
             position: relative;
         }
@@ -38,11 +56,12 @@
         }
         .testimonial-card:hover {
             transform: scale(1.03);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50">
-    <!-- Navigation -->
+<body class="font-sans bg-gray-50 overflow-x-hidden">
+    
     <nav class="bg-white shadow-lg sticky top-0 p-2 z-50">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
@@ -62,93 +81,48 @@
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
-               
-                
-
-              <div class="flex items-center">
-  <!-- Mobile Menu (shows on small/medium screens) -->
-  <div class="lg:hidden flex items-center">
-    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
-      <i class="fas fa-bars text-xl"></i>
-    </button>
-    
-    <!-- Full-screen overlay/menu container -->
-    <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
-    
-    <!-- Dropdown menu -->
-    <div id="services-dropdown" class="hidden fixed top-0 right-0 h-128 w-64 bg-white shadow-lg z-50 overflow-y-auto transform -translate-x-full transition-transform duration-300">
-      <div class="p-4">
-        <button id="close-menu-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-          <i class="fas fa-times"></i>
-        </button>
-        <div class="mt-8 space-y-2">
-          <a href="index.html" class="block px-4 py-3 text-gray-800 hover:text-gray-700 hover:bg-gray-50 rounded">Home</a>
-          <a href="about.html" class="block px-4 py-3 text-gray-800 hover:text-gray-700 hover:bg-gray-50 rounded">About Us</a>
-          <a href="testimonials.html" class="block px-4 py-3 text-gray-800 hover:text-gray-700 hover:bg-gray-50 rounded">Testimonials</a>
-          <a href="index.html#contact" class="block px-4 py-3 text-gray-800 hover:text-gray-700 hover:bg-gray-50 rounded">Contact</a>
-          <a href="https://swmb.bluedrop.io/storefront/safeinea" class="block px-4 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded text-center transition duration-300 mt-4">
-            Register for Training
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Desktop Menu (shows on large screens) -->
-  <div class="hidden lg:flex items-center space-x-6">
-    <!-- Your desktop menu items here -->
-  </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const menuButton = document.getElementById('mobile-menu-button');
-  const closeButton = document.getElementById('close-menu-button');
-  const dropdown = document.getElementById('services-dropdown');
-  const overlay = document.getElementById('mobile-menu-overlay');
-
-  function toggleMenu() {
-    dropdown.classList.toggle('hidden');
-    overlay.classList.toggle('hidden');
-    if (!dropdown.classList.contains('hidden')) {
-      dropdown.classList.remove('-translate-x-full');
-    } else {
-      dropdown.classList.add('-translate-x-full');
-    }
-  }
-
-  menuButton.addEventListener('click', toggleMenu);
-  closeButton.addEventListener('click', toggleMenu);
-  overlay.addEventListener('click', toggleMenu);
-
-  // Close menu when clicking a link (optional)
-  document.querySelectorAll('#services-dropdown a').forEach(link => {
-    link.addEventListener('click', toggleMenu);
-  });
-});
-</script>
-
- 
-
+                <div class="flex items-center">
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                        
+                        <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+                        
+                        <div id="services-dropdown" class="hidden fixed top-0 right-0 h-128 w-64 bg-white shadow-lg z-50 overflow-y-auto transform -translate-x-full transition-transform duration-300">
+                            <div class="p-4">
+                                <button id="close-menu-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="mt-8 space-y-2">
+                                    <a href="index.html" class="block px-4 py-3 text-gray-800 hover:text-gray-700 hover:bg-gray-50 rounded">Home</a>
+                                    <a href="about.html" class="block px-4 py-3 text-gray-800 hover:text-gray-700 hover:bg-gray-50 rounded">About Us</a>
+                                    <a href="testimonials.html" class="block px-4 py-3 text-gray-800 hover:text-gray-700 hover:bg-gray-50 rounded">Testimonials</a>
+                                    <a href="index.html#contact" class="block px-4 py-3 text-gray-800 hover:text-gray-700 hover:bg-gray-50 rounded">Contact</a>
+                                    <a href="https://swmb.bluedrop.io/storefront/safeinea" class="block px-4 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded text-center transition duration-300 mt-4">
+                                        Register for Training
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Testimonials Hero -->
-    <section class="bg-gray-800 text-white py-20">
+    <section class="bg-gray-800 text-white py-20 overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">Client Testimonials</h1>
-            <p class="text-xl md:text-2xl max-w-3xl mx-auto">
+            <h1 data-aos="fade-down" class="text-4xl md:text-5xl font-bold mb-6">Client Testimonials</h1>
+            <p data-aos="fade-up" data-aos-delay="200" class="text-xl md:text-2xl max-w-3xl mx-auto">
                 Hear what our clients say about our environmental health and safety services
             </p>
         </div>
     </section>
 
-    <!-- Testimonials Content -->
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-white overflow-hidden">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
+            <div data-aos="fade-up" class="text-center mb-12">
                 <h2 class="text-3xl font-bold mb-4 text-gray-800">Trusted by Canadian Businesses</h2>
                 <p class="text-gray-600 max-w-3xl mx-auto">
                     We've helped organizations across Canada improve their workplace safety and compliance.
@@ -156,202 +130,163 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <!-- Testimonial 1 -->
-    <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6 transition duration-300 hover:shadow-lg">
-        <div class="flex items-center mb-4">
-             <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">  
-            <i class="fas fa-user text-gray-700"></i> 
-        </div>
-            <div>
-                <h4 class="font-semibold text-gray-800">James Paulson</h4>
+                <div data-aos="fade-up" data-aos-delay="0" class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">  
+                            <i class="fas fa-user text-gray-700"></i> 
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">James Paulson</h4>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600">I enjoyed the Training. thank you.</p>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="100" class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">  
+                            <i class="fas fa-user text-gray-700"></i> 
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Paras</h4>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600">The instructor was good. He had a pretty good knowledge of safety and health. I will highly recommend to everybody if they want to do training for safety and health, go with this one</p>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="200" class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">  
+                            <i class="fas fa-user text-gray-700"></i> 
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Singh</h4>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-gray-600">The instructor explained everything well. It was interesting.</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300" class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">  
+                            <i class="fas fa-user text-gray-700"></i> 
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Skraikot</h4>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600">It was amazing and knowledgeable.</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="400" class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">  
+                            <i class="fas fa-user text-gray-700"></i> 
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Bakuska</h4>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    </div>
+                    <p class="text-gray-600">Everything was good overall. Knowing that we needed to access some materials for some questions would have been helpful. But overall, very good</p>
+                </div>
             </div>
         </div>
-        <div class="text-yellow-400 mb-3">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-        </div>
-        <p class="text-gray-600">I enjoyed the Training. thank you.</p>
-    </div>
-    
-    <!-- Testimonial 2 -->
-    <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6 transition duration-300 hover:shadow-lg">
-        <div class="flex items-center mb-4">
-             <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">  
-            <i class="fas fa-user text-gray-700"></i> 
-        </div>
-            <div>
-                <h4 class="font-semibold text-gray-800"> Paras</h4>
-            </div>
-        </div>
-        <div class="text-yellow-400 mb-3">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-        </div>
-        <p class="text-gray-600">The instructor was good. He had a pretty good knowledge of safety and health. I will highly recommend to everybody if they want to do training for safety and health, go with this one</p>
-    </div>
-    
-    <!-- Testimonial 3 -->
-    <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6 transition duration-300 hover:shadow-lg">
-        <div class="flex items-center mb-4">
-             <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">  
-            <i class="fas fa-user text-gray-700"></i> 
-        </div>
-            <div>
-                <h4 class="font-semibold text-gray-800"> Singh</h4>
-            </div>
-        </div>
-        <div class="text-yellow-400 mb-3">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-        </div>
-        <p class="text-gray-600">The instructor explained everything well. It was interesting.</p>
-    </div>
+    </section>
 
-    <!-- Testimonial 4 -->
-   <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6 transition duration-300 hover:shadow-lg">
-    <div class="flex items-center mb-4">
-        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">  
-            <i class="fas fa-user text-gray-700"></i> 
-        </div>
-        <div>
-            <h4 class="font-semibold text-gray-800">Skraikot</h4>
-        </div>
-    </div>
-    <div class="text-yellow-400 mb-3">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-    </div>
-    <p class="text-gray-600">It was amazing and knowledgeable.</p>
-</div>
-
-    <!-- Testimonial 5 -->
-    <div class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6 transition duration-300 hover:shadow-lg">
-        <div class="flex items-center mb-4">
-             <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">  
-            <i class="fas fa-user text-gray-700"></i> 
-        </div>
-            <div>
-                <h4 class="font-semibold text-gray-800">Bakuska</h4>
-            </div>
-        </div>
-        <div class="text-yellow-400 mb-3">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-        </div>
-        <p class="text-gray-600">Everything was good overall. Knowing that we needed to access some materials for some questions would have been helpful. But overall, very good</p>
-    </div>
-</div>
-
-
-
-        
-<!-- After your testimonial section -->
-<section class="py-12 bg-gray-50">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-8">Our Statistics</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Chart 1 -->
-      <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-        <img src="stats1.jpg" alt="Statistical Chart 1" 
-             class="w-full h-auto object-contain max-h-80 mx-auto">
-        <p class="mt-4 text-center text-gray-600">Participant Engagement Metrics</p>
-      </div>
-      
-      <!-- Chart 2 -->
-      <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-        <img src="stats2.jpg" alt="Statistical Chart 2" 
-             class="w-full h-auto object-contain max-h-80 mx-auto">
-        <p class="mt-4 text-center text-gray-600">Knowledge Proficiency Metrics</p>
-      </div>
-      
-      <!-- Chart 3 -->
-      <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-        <img src="stats3.jpg" alt="Statistical Chart 3" 
-             class="w-full h-auto object-contain max-h-80 mx-auto">
-        <p class="mt-4 text-center text-gray-600">Participant Feedback Scores</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-       
-
-<section class="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-  <!-- Decorative elements -->
-  <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-100 opacity-20"></div>
-  <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-blue-50 opacity-30"></div>
-  
-  <div class="container mx-auto px-4 relative z-10">
-    <h2 class="text-3xl font-bold text-center mb-8 relative">
-      <span class="relative inline-block">
-        Featured Safety Videos
-        <span class="absolute bottom-0 left-0 w-full h-1 transform -translate-y-1 scale-x-75"></span>
-      </span>
-    </h2>
-    
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100">
-      <!-- Video Player - Now Larger -->
-      <div class="relative group w-50">
-        <!-- Container with responsive sizing -->
-        <div class="w-full h-64 sm:h-80 md:h-96 lg:h-[480px] xl:h-[550px] overflow-hidden rounded-xl shadow-lg transform group-hover:shadow-2xl transition-all duration-300">
-          <iframe 
-            src="https://www.youtube.com/embed/-WF_Y6kIDik" 
-            class="w-full h-full"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="absolute -inset-2 bg-blue-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10"></div>
-      </div>
-      
-      <!-- Channel Info -->
-      <div class="space-y-6">
-        <div>
-          <h3 class="text-2xl font-bold text-gray-800 mb-2">Safety Advocates Channel</h3>
-          <p class="text-lg text-gray-600">
-           Access our library of professional safety news and public presentations.
-          </p>
-        </div>
-        
-        <div class="space-y-4">
-          <a href="https://www.youtube.com/@SafetyAdvocates" 
-             class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-300 group"
-             target="_blank">
-            <i class="fab fa-youtube mr-3 text-xl group-hover:scale-110 transition-transform"></i>
-            <span class="font-medium">Subscribe to Our Channel</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
+    <section class="py-12 bg-gray-50 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <h2 data-aos="fade-up" class="text-3xl font-bold text-center mb-8">Our Statistics</h2>
             
-            <div class="mt-0 text-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div data-aos="zoom-in" data-aos-delay="0" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <img src="stats1.jpg" alt="Statistical Chart 1" class="w-full h-auto object-contain max-h-80 mx-auto">
+                    <p class="mt-4 text-center text-gray-600 font-medium">Participant Engagement Metrics</p>
+                </div>
+                
+                <div data-aos="zoom-in" data-aos-delay="150" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <img src="stats2.jpg" alt="Statistical Chart 2" class="w-full h-auto object-contain max-h-80 mx-auto">
+                    <p class="mt-4 text-center text-gray-600 font-medium">Knowledge Proficiency Metrics</p>
+                </div>
+                
+                <div data-aos="zoom-in" data-aos-delay="300" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <img src="stats3.jpg" alt="Statistical Chart 3" class="w-full h-auto object-contain max-h-80 mx-auto">
+                    <p class="mt-4 text-center text-gray-600 font-medium">Participant Feedback Scores</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-100 opacity-20"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-blue-50 opacity-30"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 data-aos="fade-right" class="text-3xl font-bold text-center mb-8 relative">
+                <span class="relative inline-block">
+                    Featured Safety Videos
+                    <span class="absolute bottom-0 left-0 w-full h-1 transform -translate-y-1 scale-x-75"></span>
+                </span>
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100">
+                <div data-aos="fade-up" class="relative group w-50">
+                    <div class="w-full h-64 sm:h-80 md:h-96 lg:h-[480px] xl:h-[550px] overflow-hidden rounded-xl shadow-lg transform group-hover:shadow-2xl transition-all duration-300">
+                        <iframe 
+                            src="https://www.youtube.com/embed/-WF_Y6kIDik" 
+                            class="w-full h-full"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="absolute -inset-2 bg-blue-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10"></div>
+                </div>
+                
+                <div data-aos="fade-left" data-aos-delay="200" class="space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Safety Advocates Channel</h3>
+                        <p class="text-lg text-gray-600">
+                            Access our library of professional safety news and public presentations.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <a href="https://www.youtube.com/@SafetyAdvocates" 
+                            class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-300 group"
+                            target="_blank">
+                            <i class="fab fa-youtube mr-3 text-xl group-hover:scale-110 transition-transform"></i>
+                            <span class="font-medium">Subscribe to Our Channel</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white pt-12 pb-24 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4">
+            <div data-aos="zoom-in" class="mt-0 text-center">
                 <h3 class="text-2xl font-semibold mb-6 text-gray-800">Ready to improve your workplace safety?</h3>
-                <div class="flex flex-col sm:flex-row justify-center mb-32 gap-4">
-                    <a href="index.html#contact" class="bg-blue-600 hover:bg-blue-700 text-white  font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="index.html#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
                         Contact Us Today
                     </a>
-                    <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white  font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
+                    <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
                         Register for Training
                     </a>
                 </div>
@@ -359,103 +294,130 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
 
-   
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 md:py-12">
-    <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <!-- Company Info -->
-            <div class="sm:col-span-2 lg:col-span-1 order-1">
-                <div class="flex flex-col">
+    <footer class="bg-gray-800 text-white pt-8 md:pt-12 pb-6">
+        <div class="max-w-7xl mx-auto px-4 xl:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 xl:gap-8">
+                
+                <div class="sm:col-span-2 lg:col-span-1 order-1 flex flex-col h-full">
                     <div class="flex items-center mb-4">
                         <img src="Safeinea white Logo.png" alt="SAFEinEA Logo" class="w-12 h-12 md:w-14 md:h-14 object-contain rounded-full"> 
                         <h3 class="text-xl font-bold ml-2">SAFEinEA Incorporated</h3>
                     </div>
-                    <p class="text-gray-400 mb-4">Your trusted partner in workplace safety and environmental health consulting across Canada.</p>
+                    <p class="text-gray-400 mb-6 text-sm lg:text-base">Your trusted partner in workplace safety and environmental health consulting across Canada.</p>
                     
-                    <!-- CSSE Logo -->
-                    <div class="-mt-16">
-                        <a href="https://csse.org/" target="_blank" rel="noopener noreferrer">
-                            <img src="CSSE Transparent.png" 
-                                alt="CSSE Certification" 
-                                class="max-w-[180px] md:max-w-[240px] h-auto object-contain">
+                    <div class="flex items-center gap-6 flex-wrap -mt-12 pt-4 border-t border-gray-700 lg:border-none lg:pt-0">
+                        <a href="https://csse.org/" target="_blank" rel="noopener noreferrer" class="block w-32 sm:w-40 lg:w-48">
+                            <img src="CSSE Transparent.png" alt="CSSE Certification" class="w-full h-auto object-contain">
                         </a>  
+                    </div>
+                </div>
+                
+                <div class="order-2 lg:col-span-1 lg:ml-4 xl:ml-8">
+                    <h4 class="text-lg font-semibold mb-3 md:mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition block py-1">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition block py-1">About Us</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Services</a></li>
+                        <li><a href="testimonials.html" class="text-gray-400 hover:text-white transition block py-1">Testimonials</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition block py-1">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="order-3 sm:col-span-2 lg:col-span-2">
+                    <h4 class="text-lg font-semibold mb-3 md:mb-4">Services</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <h5 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Occupational Health & Safety</h5>
+                            <ul class="space-y-1 border-l-2 border-blue-500 pl-3">
+                                <li><a href="index.html#service-1" class="text-gray-400 hover:text-white transition text-sm block py-1">Customized Training</a></li>
+                                <li><a href="index.html#service-2" class="text-gray-400 hover:text-white transition text-sm block py-1">Program Development</a></li>
+                                <li><a href="index.html#service-3" class="text-gray-400 hover:text-white transition text-sm block py-1">On-Site Consulting</a></li>
+                                <li><a href="index.html#service-4" class="text-gray-400 hover:text-white transition text-sm block py-1">SAFE Work Training</a></li>
+                                <li><a href="index.html#service-5" class="text-gray-400 hover:text-white transition text-sm block py-1">Inspections</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Environmental & Public Health</h5>
+                            <ul class="space-y-1 border-l-2 border-green-500 pl-3">
+                                <li><a href="environmental-health.html#water-quality" class="text-gray-400 hover:text-white transition text-sm block py-1">Water Quality Testing</a></li>
+                                <li><a href="environmental-health.html#air-quality" class="text-gray-400 hover:text-white transition text-sm block py-1">Air Quality Sampling</a></li>
+                                <li><a href="environmental-health.html#community-wellness" class="text-gray-400 hover:text-white transition text-sm block py-1">Community Wellness</a></li>
+                                <li><a href="environmental-health.html#facility-hygiene" class="text-gray-400 hover:text-white transition text-sm block py-1">Facility Hygiene</a></li>
+                                <li><a href="environmental-health.html#food-safety" class="text-gray-400 hover:text-white transition text-sm block py-1">Food Safety</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-4 lg:col-span-1">
+                    <h4 class="text-lg font-semibold mb-3 md:mb-4">Contact Info</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-blue-400 text-sm"></i>
+                            <span class="break-all text-sm xl:text-base">safetyadvocatesinea@gmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                            <span class="text-sm xl:text-base">Serving clients across Canada</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6 flex space-x-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 hover:bg-blue-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 hover:bg-blue-700 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
                     </div>
                 </div>
             </div>
             
-            <!-- Quick Links -->
-            <div class="order-2">
-                <h4 class="text-lg font-semibold mb-3 md:mb-4">Quick Links</h4>
-                <ul class="space-y-2">
-                    <li><a href="index.html" class="text-gray-400 hover:text-white transition block py-1">Home</a></li>
-                    <li><a href="about.html" class="text-gray-400 hover:text-white transition block py-1">About Us</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Services</a></li>
-                    <li><a href="testimonials.html" class="text-gray-400 hover:text-white transition block py-1">Testimonials</a></li>
-                    <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition block py-1">Contact</a></li>
-                </ul>
-            </div>
-            
-            <!-- Services -->
-            <div class="order-3">
-                <h4 class="text-lg font-semibold mb-3 md:mb-4">Services</h4>
-                <ul class="space-y-2">
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Customized Training</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Program Development</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">On-Site Consulting</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">SAFE Work Training</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Inspections</a></li>
-                </ul>
-            </div>
-            
-            <!-- Contact Info -->
-            <div class="order-4">
-                <h4 class="text-lg font-semibold mb-3 md:mb-4">Contact Info</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <!-- <li class="flex items-start">
-                        <i class="fas fa-phone-alt mt-1 mr-3 text-blue-400"></i>
-                        <span>(431) 556-1900</span>
-                    </li> -->
-                    <li class="flex items-start">
-                        <i class="fas fa-envelope mt-1 mr-3 text-blue-400 text-sm"></i>
-                        <span class="break-all">safetyadvocatesinea@gmail.com</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
-                        <span>Serving clients across Canada</span>
-                    </li>
-                </ul>
-                <div class="mt-4 flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div>
+            <div class="border-t border-gray-700 mt-6 pt-4 text-center text-gray-400 text-sm order-last">
+                <p>&copy; 2025 SAFEinEA Incorporated. All rights reserved.</p>
             </div>
         </div>
-        
-        <!-- Copyright -->
-        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 order-last">
-            <p>&copy; 2025 SAFEinEA Incorporated. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // Mobile menu toggle
-        // document.getElementById('mobile-menu-button').addEventListener('click', function() {
-        //     const menu = document.getElementById('mobile-menu');
-        //     menu.classList.toggle('hidden');
-        // });
+        // 3. INITIALIZE AOS
+        AOS.init({
+            duration: 800, // Animation duration (in ms)
+            offset: 100, // Offset (in px) from the original trigger point
+            once: true, // Whether animation should happen only once while scrolling down
+            easing: 'ease-in-out', // Default easing for AOS animations
+        });
 
-     
+        // Mobile menu functionality 
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const closeButton = document.getElementById('close-menu-button');
+            const dropdown = document.getElementById('services-dropdown');
+            const overlay = document.getElementById('mobile-menu-overlay');
 
+            function toggleMenu() {
+                if(!dropdown) return;
+                dropdown.classList.toggle('hidden');
+                if(overlay) overlay.classList.toggle('hidden');
+                if (!dropdown.classList.contains('hidden')) {
+                    dropdown.classList.remove('-translate-x-full');
+                } else {
+                    dropdown.classList.add('-translate-x-full');
+                }
+            }
+
+            if(menuButton) menuButton.addEventListener('click', toggleMenu);
+            if(closeButton) closeButton.addEventListener('click', toggleMenu);
+            if(overlay) overlay.addEventListener('click', toggleMenu);
+
+            document.querySelectorAll('#services-dropdown a').forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+        });
     </script>
 </body>
 </html>

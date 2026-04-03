@@ -6,6 +6,8 @@
     <title>About Us | SAFEinEA Incorporated</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <meta property="og:title" content="SAFEinEA Incorporated" />
     <meta property="og:description" content="Environmental Health and Safety Consulting and Training services." />
@@ -14,6 +16,22 @@
     <meta property="og:type" content="website" />
     <link rel="icon" href="/Safeinea Black Logo.png" type="image/jpeg" />
     <style>
+
+        nav {
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         .nav-link {
             position: relative;
         }
@@ -35,9 +53,8 @@
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50">
-    <!-- Navigation -->
-     <!-- Navigation -->
+<body class="font-sans bg-gray-50 overflow-x-hidden">
+    
     <nav class="bg-white shadow-lg sticky top-0 p-2 z-50">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
@@ -57,165 +74,106 @@
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
-               
-              <div class="flex items-center">
-  <!-- Mobile Menu (shows on small/medium screens) -->
-  <div class="lg:hidden flex items-center">
-    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
-      <i class="fas fa-bars text-xl"></i>
-    </button>
-    
-    <!-- Full-screen overlay/menu container -->
-    <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
-    
-    <!-- Dropdown menu -->
-    <div id="services-dropdown" class="hidden fixed top-0 right-0 h-128 w-64 bg-white shadow-lg z-50 overflow-y-auto transform -translate-x-full transition-transform duration-300">
-      <div class="p-4">
-        <button id="close-menu-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-          <i class="fas fa-times"></i>
-        </button>
-        <div class="mt-8 space-y-2">
-          <a href="index.html" class="block px-4 py-3 text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Home</a>
-          <a href="about.html" class="block px-4 py-3 text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">About Us</a>
-          <a href="testimonials.html" class="block px-4 py-3 text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Testimonials</a>
-          <a href="index.html#contact" class="block px-4 py-3 text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Contact</a>
-          <a href="https://swmb.bluedrop.io/storefront/safeinea" class="block px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded text-center transition duration-300 mt-4">
-            Register for Training
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Desktop Menu (shows on large screens) -->
-  <div class="hidden lg:flex items-center space-x-6">
-    <!-- Your desktop menu items here -->
-  </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const menuButton = document.getElementById('mobile-menu-button');
-  const closeButton = document.getElementById('close-menu-button');
-  const dropdown = document.getElementById('services-dropdown');
-  const overlay = document.getElementById('mobile-menu-overlay');
-
-  function toggleMenu() {
-    dropdown.classList.toggle('hidden');
-    overlay.classList.toggle('hidden');
-    if (!dropdown.classList.contains('hidden')) {
-      dropdown.classList.remove('-translate-x-full');
-    } else {
-      dropdown.classList.add('-translate-x-full');
-    }
-  }
-
-  menuButton.addEventListener('click', toggleMenu);
-  closeButton.addEventListener('click', toggleMenu);
-  overlay.addEventListener('click', toggleMenu);
-
-  // Close menu when clicking a link (optional)
-  document.querySelectorAll('#services-dropdown a').forEach(link => {
-    link.addEventListener('click', toggleMenu);
-  });
-});
-</script>
-
- 
-
+                <div class="flex items-center">
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                        
+                        <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+                        
+                        <div id="services-dropdown" class="hidden fixed top-0 right-0 h-128 w-64 bg-white shadow-lg z-50 overflow-y-auto transform -translate-x-full transition-transform duration-300">
+                            <div class="p-4">
+                                <button id="close-menu-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="mt-8 space-y-2">
+                                    <a href="index.html" class="block px-4 py-3 text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Home</a>
+                                    <a href="about.html" class="block px-4 py-3 text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">About Us</a>
+                                    <a href="testimonials.html" class="block px-4 py-3 text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Testimonials</a>
+                                    <a href="index.html#contact" class="block px-4 py-3 text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Contact</a>
+                                    <a href="https://swmb.bluedrop.io/storefront/safeinea" class="block px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded text-center transition duration-300 mt-4">
+                                        Register for Training
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex items-center space-x-6"></div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- About Us Content -->
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-white overflow-hidden">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex flex-col lg:flex-row gap-12">
-               
-               
-                <!-- About Us Main Content -->
-               <div class="lg:w-2/3">
-    <h1 class="text-4xl font-bold mb-8 text-gray-800">About SAFEinEA Incorporated</h1>
-    
-    <!-- Image Slideshow Container -->
-    <div class="mb-12 relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-lg shadow-md">
-    <!-- Slides -->
-    <img src="Photo of me1.jpg" alt="About SAFEinEA" 
-         class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 opacity-100" 
-         id="slide1">
-    <img src="Safety program.jpg" alt="SAFEinEA Team" 
-         class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" 
-         id="slide2">
-    <img src="1.jpg" alt="SAFEinEA Training" 
-         class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" 
-         id="slide3">
-    <img src="SAFEinEA Incorporated thumbnail resize.jpg" alt="SAFEinEA Training" 
-         class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" 
-         id="slide4">
-    
-    <!-- Slide Indicators -->
-    <!-- <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-        <button class="w-3 h-3 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition" onclick="showSlide(0)"></button>
-        <button class="w-3 h-3 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition" onclick="showSlide(1)"></button>
-        <button class="w-3 h-3 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition" onclick="showSlide(2)"></button>
-        <button class="w-3 h-3 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition" onclick="showSlide(3)"></button>
-    </div> -->
-</div>
-    
-    <div class="mb-8">
-        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-           SAFEinEA Incorporated is a leading Environmental Health and Safety Consulting and Training Firm dedicated to helping Canadian businesses create safer and healthier workplaces. Founded by Bamidele Oni, a seasoned safety and health professional with extensive combination of qualifications and experience, in the field of Environmental Health, Public Health, Occupational Health and Safety and Environmental Management. </p>
-
-<p class="text-gray-600 mb-6 text-lg leading-relaxed">Added to this, he is an educationist, and proficient in curriculum development. As a lecturer, he has facilitated several trainings and also coached students from basis to professionalism in colleges and professional institutions. We bring expertise and passion to every project.  </p>
-
-<p class="text-gray-600 mb-6 text-lg leading-relaxed">His experience as an enforcement officer, who worked as a provincial safety and health officer, positioned him to understand what your workplace needs to comply with legislative requirements in various industries. </p>
-
-<p class="text-gray-600 mb-6 text-lg leading-relaxed">SAFEinEA Incorporated provides Environmental Health and Safety consulting and training services. Our offerings/services include SAFE Work Manitoba endorsed trainings, customized on-site programs, advisory services, and the development of safety programs. We also partner with training institutions to deliver basic academic lectures as electives or main course to equip students with safety and health orientation regardless of their field of learning. </p>
-
-<p class="text-gray-600 mb-6 text-lg leading-relaxed">SAFEinEA is an accredited training provider in Manitoba and assists businesses in meeting legislative requirements and maintaining safe work environments. </p>
-       
-    </div>
-    
-    <div class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Our Mission</h2>
-        <p class="text-gray-600 mb-6">
-           To empower organizations with the knowledge, tools, and strategies needed to protect their most valuable asset - their people, while ensuring regulatory compliance and smooth operation without disruptions.
-        </p>
-    </div>
-    
-    <div class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Our Approach</h2>
-        <p class="text-gray-600 mb-6">
-           We believe in practical, scalable solutions that integrate seamlessly with your operations. Our services and training uphold general principles of occupational health and safety but customizable to your workplace size, and specific challenges, ensuring a work environment that is both safe and healthy.
-        </p>
-    </div>
-    
-   <div class="bg-gray-50 p-8 rounded-lg shadow-sm">
-    <h2 class="text-2xl font-semibold mb-6 text-gray-800">Our Founder</h2>
-    <div class="flex flex-col md:flex-row gap-8 items-start">
-        <div class="md:w-1/4">
-            <div class="w-40 h-40 rounded-full overflow-hidden mx-auto border-4 border-blue-100">
-                <img src="founder.jpg" alt="Bamidele Oni, Founder of SAFEinEA" class="w-full h-full object-cover">
-            </div>
-        </div>
-        <div class="md:w-3/4">
-            <h3 class="text-xl font-semibold mb-3 text-gray-800">Bamidele Oni, MSc, Dip.OHS, Dip.THSc, EPt</h3>
-            <p class="text-gray-600 mb-4">
-                As the founder and CEO of SAFEinEA Incorporated, Bamidele brings a wealth of knowledge and hands-on experience in occupational health and safety across multiple industries.
-            </p>
-            <p class="text-gray-600">
-                With advanced degrees and certifications, including a Master of Science degree and multiple diplomas in occupational health and safety, Bamidele is committed to advancing workplace safety standards across Canada.
-            </p>
-        </div>
-    </div>
-</div>
-
-</div>
                 
-                <!-- Sidebar -->
+                <div class="lg:w-2/3">
+                    <h1 data-aos="fade-down" class="text-4xl font-bold mb-8 text-gray-800">About SAFEinEA Incorporated</h1>
+                    
+                    <div data-aos="zoom-in" data-aos-delay="100" class="mb-12 relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-lg shadow-md">
+                        <img src="Photo of me1.jpg" alt="About SAFEinEA" class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 opacity-100" id="slide1">
+                        <img src="Safety program.jpg" alt="SAFEinEA Team" class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" id="slide2">
+                        <img src="1.jpg" alt="SAFEinEA Training" class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" id="slide3">
+                        <img src="SAFEinEA Incorporated thumbnail resize.jpg" alt="SAFEinEA Training" class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" id="slide4">
+                    </div>
+                    
+                    <div data-aos="fade-up" data-aos-delay="200" class="mb-8">
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                            SAFEinEA Incorporated is a leading Environmental Health and Safety Consulting and Training Firm dedicated to helping Canadian businesses create safer and healthier workplaces. Founded by Bamidele Oni, a seasoned safety and health professional with extensive combination of qualifications and experience, in the field of Environmental Health, Public Health, Occupational Health and Safety and Environmental Management. 
+                        </p>
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                            Added to this, he is an educationist, and proficient in curriculum development. As a lecturer, he has facilitated several trainings and also coached students from basis to professionalism in colleges and professional institutions. We bring expertise and passion to every project.  
+                        </p>
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                            His experience as an enforcement officer, who worked as a provincial safety and health officer, positioned him to understand what your workplace needs to comply with legislative requirements in various industries. 
+                        </p>
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                            SAFEinEA Incorporated provides Environmental Health and Safety consulting and training services. Our offerings/services include SAFE Work Manitoba endorsed trainings, customized on-site programs, advisory services, and the development of safety programs. We also partner with training institutions to deliver basic academic lectures as electives or main course to equip students with safety and health orientation regardless of their field of learning. 
+                        </p>
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                            SAFEinEA is an accredited training provider in Manitoba and assists businesses in meeting legislative requirements and maintaining safe work environments. 
+                        </p>
+                    </div>
+                    
+                    <div data-aos="fade-right" class="mb-8">
+                        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Our Mission</h2>
+                        <p class="text-gray-600 mb-6">
+                            To empower organizations with the knowledge, tools, and strategies needed to protect their most valuable asset - their people, while ensuring regulatory compliance and smooth operation without disruptions.
+                        </p>
+                    </div>
+                    
+                    <div data-aos="fade-right" data-aos-delay="100" class="mb-8">
+                        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Our Approach</h2>
+                        <p class="text-gray-600 mb-6">
+                            We believe in practical, scalable solutions that integrate seamlessly with your operations. Our services and training uphold general principles of occupational health and safety but customizable to your workplace size, and specific challenges, ensuring a work environment that is both safe and healthy.
+                        </p>
+                    </div>
+                    
+                    <div data-aos="fade-up" class="bg-gray-50 p-8 rounded-lg shadow-sm">
+                        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Our Founder</h2>
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <div data-aos="zoom-in" data-aos-delay="200" class="md:w-1/4">
+                                <div class="w-40 h-40 rounded-full overflow-hidden mx-auto border-4 border-blue-100">
+                                    <img src="founder.jpg" alt="Bamidele Oni, Founder of SAFEinEA" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <div class="md:w-3/4">
+                                <h3 class="text-xl font-semibold mb-3 text-gray-800">Bamidele Oni, MSc, Dip.OHS, Dip.THSc, EPt</h3>
+                                <p class="text-gray-600 mb-4">
+                                    As the founder and CEO of SAFEinEA Incorporated, Bamidele brings a wealth of knowledge and hands-on experience in occupational health and safety across multiple industries.
+                                </p>
+                                <p class="text-gray-600">
+                                    With advanced degrees and certifications, including a Master of Science degree and multiple diplomas in occupational health and safety, Bamidele is committed to advancing workplace safety standards across Canada.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="lg:w-1/3">
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md sticky top-24">
+                    <div data-aos="fade-left" data-aos-delay="200" class="bg-gray-50 p-6 rounded-lg shadow-md sticky top-24">
                         <h2 class="text-xl font-semibold mb-4 text-gray-800">Our Training Deliverables</h2>
                         <ul class="space-y-3">
                             <li class="flex items-start">
@@ -237,230 +195,190 @@ document.addEventListener('DOMContentLoaded', function() {
                         </ul>
                         
                         <div class="mt-8">
-    <h2 class="text-xl font-semibold mb-4 text-gray-800">Quick Links</h2>
-    
-    <div class="space-y-4">
-        <!-- Primary Action -->
-        <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full block text-center flex items-center justify-center">
-            <i class="fas fa-user-graduate mr-2"></i> Register for Training
-        </a>
-        
-        <!-- Secondary Actions -->
-        <!-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-3"> -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]"></div>
-    <a href="index.html#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 w-full block text-center flex items-center justify-center ">
-        <i class="fas fa-envelope mr-1.5 "></i> Contact Us
-    </a>
-    <a href="https://www.youtube.com/@SafetyAdvocates" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 w-full block text-center flex items-center justify-center ">
-        <i class="fab fa-youtube mr-1.5 "></i> Safety Advocate Channel
-    </a>
-</div>
-    </div>
-</div>
-
+                            <h2 class="text-xl font-semibold mb-4 text-gray-800">Quick Links</h2>
+                            <div class="space-y-4">
+                                <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full block text-center flex items-center justify-center">
+                                    <i class="fas fa-user-graduate mr-2"></i> Register for Training
+                                </a>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]"></div>
+                                <a href="index.html#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 w-full block text-center flex items-center justify-center ">
+                                    <i class="fas fa-envelope mr-1.5 "></i> Contact Us
+                                </a>
+                                <a href="https://www.youtube.com/@SafetyAdvocates" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 w-full block text-center flex items-center justify-center ">
+                                    <i class="fab fa-youtube mr-1.5 "></i> Safety Advocate Channel
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-             <div class="bg-amber-50 p-6 rounded-lg border-l-4 border-amber-600 mt-8">
-                        <h3 class="text-xl font-semibold mb-4 text-gray-800">Upcoming Training Sessions</h3>
-                        <p class="text-gray-600 mb-4">Join our next Safety and Health Training cohort:</p>
-                        <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-6 rounded-lg inline-block transition duration-300">
-                            <i class="fas fa-clipboard-list mr-2"></i>View Schedule & Register
-                        </a>
-                    </div>
+            
+            <div data-aos="flip-up" class="bg-amber-50 p-6 rounded-lg border-l-4 border-amber-600 mt-8 shadow-sm">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Upcoming Training Sessions</h3>
+                <p class="text-gray-600 mb-4">Join our next Safety and Health Training cohort:</p>
+                <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-6 rounded-lg inline-block transition duration-300">
+                    <i class="fas fa-clipboard-list mr-2"></i>View Schedule & Register
+                </a>
+            </div>
         </div>
     </section>
 
-   
-   <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 md:py-12">
-    <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <!-- Company Info -->
-            <div class="sm:col-span-2 lg:col-span-1 order-1">
-                <div class="flex flex-col">
+    <footer class="bg-gray-800 text-white pt-8 md:pt-12 pb-6">
+        <div class="max-w-7xl mx-auto px-4 xl:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 xl:gap-8">
+                
+                <div class="sm:col-span-2 lg:col-span-1 order-1 flex flex-col h-full">
                     <div class="flex items-center mb-4">
                         <img src="Safeinea white Logo.png" alt="SAFEinEA Logo" class="w-12 h-12 md:w-14 md:h-14 object-contain rounded-full"> 
                         <h3 class="text-xl font-bold ml-2">SAFEinEA Incorporated</h3>
                     </div>
-                    <p class="text-gray-400 mb-4">Your trusted partner in workplace safety and environmental health consulting across Canada.</p>
+                    <p class="text-gray-400 mb-6 text-sm lg:text-base">Your trusted partner in workplace safety and environmental health consulting across Canada.</p>
                     
-                    <!-- CSSE Logo -->
-                    <div class="-mt-16">
-                        <a href="https://csse.org/" target="_blank" rel="noopener noreferrer">
-                            <img src="CSSE Transparent.png" 
-                                alt="CSSE Certification" 
-                                class="max-w-[180px] md:max-w-[240px] h-auto object-contain">
+                    <div class="flex items-center gap-6 flex-wrap -mt-12 pt-4 border-t border-gray-700 lg:border-none lg:pt-0">
+                        <a href="https://csse.org/" target="_blank" rel="noopener noreferrer" class="block w-32 sm:w-40 lg:w-48">
+                            <img src="CSSE Transparent.png" alt="CSSE Certification" class="w-full h-auto object-contain">
                         </a>  
+                    </div>
+                </div>
+                
+                <div class="order-2 lg:col-span-1 lg:ml-4 xl:ml-8">
+                    <h4 class="text-lg font-semibold mb-3 md:mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition block py-1">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition block py-1">About Us</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Services</a></li>
+                        <li><a href="testimonials.html" class="text-gray-400 hover:text-white transition block py-1">Testimonials</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition block py-1">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="order-3 sm:col-span-2 lg:col-span-2">
+                    <h4 class="text-lg font-semibold mb-3 md:mb-4">Services</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <h5 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Occupational Health & Safety</h5>
+                            <ul class="space-y-1 border-l-2 border-blue-500 pl-3">
+                                <li><a href="index.html#service-1" class="text-gray-400 hover:text-white transition text-sm block py-1">Customized Training</a></li>
+                                <li><a href="index.html#service-2" class="text-gray-400 hover:text-white transition text-sm block py-1">Program Development</a></li>
+                                <li><a href="index.html#service-3" class="text-gray-400 hover:text-white transition text-sm block py-1">On-Site Consulting</a></li>
+                                <li><a href="index.html#service-4" class="text-gray-400 hover:text-white transition text-sm block py-1">SAFE Work Training</a></li>
+                                <li><a href="index.html#service-5" class="text-gray-400 hover:text-white transition text-sm block py-1">Inspections</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Environmental & Public Health</h5>
+                            <ul class="space-y-1 border-l-2 border-green-500 pl-3">
+                                <li><a href="environmental-health.html#water-quality" class="text-gray-400 hover:text-white transition text-sm block py-1">Water Quality Testing</a></li>
+                                <li><a href="environmental-health.html#air-quality" class="text-gray-400 hover:text-white transition text-sm block py-1">Air Quality Sampling</a></li>
+                                <li><a href="environmental-health.html#community-wellness" class="text-gray-400 hover:text-white transition text-sm block py-1">Community Wellness</a></li>
+                                <li><a href="environmental-health.html#facility-hygiene" class="text-gray-400 hover:text-white transition text-sm block py-1">Facility Hygiene</a></li>
+                                <li><a href="environmental-health.html#food-safety" class="text-gray-400 hover:text-white transition text-sm block py-1">Food Safety</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-4 lg:col-span-1">
+                    <h4 class="text-lg font-semibold mb-3 md:mb-4">Contact Info</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-blue-400 text-sm"></i>
+                            <span class="break-all text-sm xl:text-base">safetyadvocatesinea@gmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                            <span class="text-sm xl:text-base">Serving clients across Canada</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6 flex space-x-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 hover:bg-blue-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 hover:bg-blue-700 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
                     </div>
                 </div>
             </div>
             
-            <!-- Quick Links -->
-            <div class="order-2">
-                <h4 class="text-lg font-semibold mb-3 md:mb-4">Quick Links</h4>
-                <ul class="space-y-2">
-                    <li><a href="index.html" class="text-gray-400 hover:text-white transition block py-1">Home</a></li>
-                    <li><a href="about.html" class="text-gray-400 hover:text-white transition block py-1">About Us</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Services</a></li>
-                    <li><a href="testimonials.html" class="text-gray-400 hover:text-white transition block py-1">Testimonials</a></li>
-                    <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition block py-1">Contact</a></li>
-                </ul>
-            </div>
-            
-            <!-- Services -->
-            <div class="order-3">
-                <h4 class="text-lg font-semibold mb-3 md:mb-4">Services</h4>
-                <ul class="space-y-2">
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Customized Training</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Program Development</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">On-Site Consulting</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">SAFE Work Training</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Inspections</a></li>
-                </ul>
-            </div>
-            
-            <!-- Contact Info -->
-            <div class="order-4">
-                <h4 class="text-lg font-semibold mb-3 md:mb-4">Contact Info</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <!-- <li class="flex items-start">
-                        <i class="fas fa-phone-alt mt-1 mr-3 text-blue-400"></i>
-                        <span>(431) 556-1900</span>
-                    </li> -->
-                    <li class="flex items-start">
-                        <i class="fas fa-envelope mt-1 mr-3 text-blue-400 text-sm"></i>
-                        <span class="break-all">safetyadvocatesinea@gmail.com</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
-                        <span>Serving clients across Canada</span>
-                    </li>
-                </ul>
-                <div class="mt-4 flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div>
+            <div class="border-t border-gray-700 mt-6 pt-4 text-center text-gray-400 text-sm order-last">
+                <p>&copy; 2025 SAFEinEA Incorporated. All rights reserved.</p>
             </div>
         </div>
-        
-        <!-- Copyright -->
-        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 order-last">
-            <p>&copy; 2025 SAFEinEA Incorporated. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-   <script>
-    // Mobile menu toggle
-    document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-    });
-
-    // Slideshow functionality
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('[id^="slide"]');
-    const totalSlides = slides.length;
-    
-    function showSlide(index) {
-        slides.forEach(slide => {
-            slide.classList.remove('opacity-100');
-            slide.classList.add('opacity-0');
+    <script>
+        // 3. INITIALIZE AOS
+        AOS.init({
+            duration: 800, // Animation duration (in ms)
+            offset: 100, // Offset (in px) from the original trigger point
+            once: true, // Whether animation should happen only once while scrolling down
+            easing: 'ease-in-out', // Default easing for AOS animations
         });
+
+        // Mobile menu toggle script you already had
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const closeButton = document.getElementById('close-menu-button');
+            const dropdown = document.getElementById('services-dropdown');
+            const overlay = document.getElementById('mobile-menu-overlay');
+
+            function toggleMenu() {
+                if(!dropdown) return;
+                dropdown.classList.toggle('hidden');
+                if(overlay) overlay.classList.toggle('hidden');
+                if (!dropdown.classList.contains('hidden')) {
+                    dropdown.classList.remove('-translate-x-full');
+                } else {
+                    dropdown.classList.add('-translate-x-full');
+                }
+            }
+
+            if(menuButton) menuButton.addEventListener('click', toggleMenu);
+            if(closeButton) closeButton.addEventListener('click', toggleMenu);
+            if(overlay) overlay.addEventListener('click', toggleMenu);
+
+            document.querySelectorAll('#services-dropdown a').forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+        });
+
+        // Slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('[id^="slide"]');
+        const totalSlides = slides.length;
         
-        slides[index].classList.remove('opacity-0');
-        slides[index].classList.add('opacity-100');
-        currentSlide = index;
-    }
-    
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        showSlide(currentSlide);
-    }
-    
-    setInterval(nextSlide, 10000);
-    showSlide(0);
+        function showSlide(index) {
+            slides.forEach(slide => {
+                slide.classList.remove('opacity-100');
+                slide.classList.add('opacity-0');
+            });
+            
+            if(slides[index]) {
+                slides[index].classList.remove('opacity-0');
+                slides[index].classList.add('opacity-100');
+            }
+            currentSlide = index;
+        }
+        
+        function nextSlide() {
+            if(totalSlides > 0) {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+        }
+        
+        if(totalSlides > 0) {
+            setInterval(nextSlide, 10000);
+            showSlide(0);
+        }
 
-
-
-// Function to generate random usernames
-function generateUsername(index) {
-  const prefix = "user";
-  const randomNum = Math.floor(1000 + Math.random() * 9000); // Random 4-digit number
-  return `${prefix}${index}_${randomNum}`;
-}
-
-// Function to generate random passwords
-function generatePassword(length = 10) {
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk89!@#$%^&*()";
-  let password = "";
-  for (let i = 0; i < length; i++) {
-    password += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return password;
-}
-
-// Generate multiple user logins
-function generateUserAccounts(count) {
-  const users = [];
-  for (let i = 1; i <= count; i++) {
-    const username = generateUsername(i);
-    const password = generatePassword();
-    users.push({ username, password });
-  }
-  return users;
-}
-
-// Example: Generate 5 users
-const userAccounts = generateUserAccounts(5);
-
-// Display the result
-console.log("Generated User Accounts:");
-userAccounts.forEach((user, index) => {
-  console.log(`${index + 1}. Username: ${user.username} | Password: ${user.password}`);
-});
-
-
-
-const storedUsername = "user123";
-    const storedPassword = "Secret@456";
-
-    function login() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-
-      if (username === storedUsername && password === storedPassword) {
-        alert("Login successful!");
-      } else {
-        alert("Invalid credentials.");
-      }
-    }
-
-    function showUsernameHint() {
-      document.getElementById("hint").textContent = "Hint: Your username starts with 'user' and ends with 3 digits.";
-    }
-
-    function showPasswordHint() {
-      document.getElementById("hint").textContent = "Hint: Your password contains a capital letter, a symbol (@), and ends with numbers.";
-    }
-
-</script>
-
-
-
-
-
-
-
-
+       
+    </script>
 </body>
 </html>

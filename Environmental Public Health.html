@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Health & Public Health | SAFEinEA Incorporated</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="/Safeinea Black Logo.png" type="image/jpeg" />
+
+    <style>
+        body {
+            animation: fadeInPage 0.5s ease-in;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        a.bg-blue-600 {
+            position: relative;
+            overflow: hidden;
+        }
+
+        a.bg-blue-600::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+
+        a.bg-blue-600:hover::before {
+            left: 100%;
+        }
+
+        .hero-env {
+            background-image: linear-gradient(rgba(0, 50, 100, 0.7), rgba(0, 0, 0, 0.6)), url('environmental hero1.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 120px 0 80px 0;
+            animation: zoomBg 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes zoomBg {
+            0% { background-size: 100%; }
+            100% { background-size: 110%; }
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .active::after { width: 100%; }
+
+        /* ===== SCROLL ANIMATION STYLES ===== */
+        .scroll-hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scroll-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Different animation types */
+        .scroll-hidden-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scroll-hidden-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scroll-visible-left, .scroll-visible-right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Stagger delays for child elements */
+        .stagger-child > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .stagger-child.scroll-visible > *:nth-child(1) { transition-delay: 0s; }
+        .stagger-child.scroll-visible > *:nth-child(2) { transition-delay: 0.1s; }
+        .stagger-child.scroll-visible > *:nth-child(3) { transition-delay: 0.2s; }
+        .stagger-child.scroll-visible > *:nth-child(4) { transition-delay: 0.3s; }
+        .stagger-child.scroll-visible > *:nth-child(5) { transition-delay: 0.4s; }
+        .stagger-child.scroll-visible > *:nth-child(6) { transition-delay: 0.5s; }
+
+        .stagger-child.scroll-visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-50">
+
+    <nav class="bg-white shadow-lg sticky top-0 p-2 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="Safeinea Black Logo.png" alt="SAFEinEA Logo" width="50px" height="50px" class="rounded-full md:w-[60px] md:h-[60px]">
+                        <span class="font-bold text-xl sm:text-2xl text-gray-800">SAFEinEA Incorporated</span>
+                    </a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-800 hover:text-blue-500">Home</a>
+                    <a href="about.html" class="nav-link text-gray-800 hover:text-blue-500">About Us</a>
+                    
+                    <div class="relative group" id="services-desktop-wrapper">
+                        <button id="services-desktop-button" class="nav-link active text-gray-800 hover:text-blue-500 flex items-center pb-4 -mb-4">
+                            Services 
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+                        </button>
+                        
+                        <div id="services-desktop-dropdown" class="absolute left-0 top-full mt-4 w-72 bg-white shadow-xl rounded-md py-2 z-50 
+                            opacity-0 invisible translate-y-4 
+                            group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 
+                            transition-all duration-300 ease-out border border-gray-100">
+                            
+                            <div class="relative group/sub">
+                                <div class="px-4 py-3 font-bold text-gray-900 hover:bg-blue-50 hover:text-blue-600 text-sm uppercase tracking-wider flex justify-between items-center cursor-pointer transition-colors">
+                                    <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                    Occupational Health & Safety
+                                </div>
+                                
+                                <div class="absolute right-full top-0 w-72 bg-white shadow-xl rounded-md py-2 z-50 
+                                    opacity-0 invisible -translate-x-4 
+                                    group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 
+                                    transition-all duration-300 ease-out border border-gray-100">
+                                    
+                                    <a href="index.html#service-1" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Customized Safety Training</a>
+                                    <a href="index.html#service-2" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Program Development</a>
+                                    <a href="index.html#service-3" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">On-Site Consulting</a>
+                                    <a href="index.html#service-4" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">SAFE Work Manitoba</a>
+                                    <a href="index.html#service-5" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Inspection & Investigation</a>
+                                    <a href="index.html#service-6" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">New Workers Orientation</a>
+                                </div>
+                            </div>
+                            
+                            <div class="relative group/sub border-t border-gray-50">
+                                <div class="px-4 py-3 font-bold text-gray-900 hover:bg-blue-50 hover:text-blue-600 text-sm uppercase tracking-wider flex justify-between items-center cursor-pointer transition-colors">
+                                    <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                    Environmental & Public Health
+                                </div>
+                                
+                                <div class="absolute right-full top-0 w-72 bg-white shadow-xl rounded-md py-2 z-50 
+                                    opacity-0 invisible -translate-x-4 
+                                    group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 
+                                    transition-all duration-300 ease-out border border-gray-100">
+                                    
+                                    <a href="environmental-health.html#water-quality" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Water Quality Testing</a>
+                                    <a href="environmental-health.html#air-quality" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Air Quality Sampling</a>
+                                    <a href="environmental-health.html#community-wellness" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Community Mobilization</a>
+                                    <a href="environmental-health.html#facility-hygiene" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Housekeeping & Hygiene</a>
+                                    <a href="environmental-health.html#food-safety" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Food Safety Training</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="testimonials.html" class="nav-link text-gray-800 hover:text-blue-500">Testimonials</a>
+                    <a href="index.html#contact" class="nav-link text-gray-800 hover:text-blue-500">Contact</a>
+                    <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Register Training
+                    </a>
+                </div>
+                
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity"></div>
+        <div id="services-dropdown" class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 overflow-y-auto transform translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="p-6">
+                <button id="close-menu-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 focus:outline-none">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+                <div class="mt-10 space-y-4">
+                    <a href="index.html" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Home</a>
+                    <a href="about.html" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">About Us</a>
+                    
+                    <div>
+                        <button id="mobile-services-btn" class="w-full flex justify-between items-center px-4 py-2  text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded focus:outline-none">
+                            Services
+                            <i id="mobile-services-icon" class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+                        </button>
+                        
+                        <div id="mobile-services-menu" class="hidden pl-6 mt-2 space-y-3 border-l-2 border-gray-100 ml-4 pb-2">
+                            <div class="bg-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider mt-2">Occupational Health & Safety</div>
+                            <div class="space-y-2 pl-2">
+                                <a href="index.html#service-1" class="block text-sm text-gray-600 hover:text-blue-500">Customized Training</a>
+                                <a href="index.html#service-2" class="block text-sm text-gray-600 hover:text-blue-500">Program Development</a>
+                                <a href="index.html#service-3" class="block text-sm text-gray-600 hover:text-blue-500">On-Site Consulting</a>
+                                <a href="index.html#service-4" class="block text-sm text-gray-600 hover:text-blue-500">SAFE Work Manitoba</a>
+                                <a href="index.html#service-5" class="block text-sm text-gray-600 hover:text-blue-500">Inspection & Investigation</a>
+                                <a href="index.html#service-6" class="block text-sm text-gray-600 hover:text-blue-500">New Workers Orientation</a>
+                            </div>
+
+                            <div class="bg-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider mt-4">Environmental & Public Health</div>
+                            <div class="space-y-2 pl-2">
+                                <a href="environmental-health.html#water-quality" class="block text-sm text-gray-600 hover:text-blue-500">Water Quality Testing</a>
+                                <a href="environmental-health.html#air-quality" class="block text-sm text-gray-600 hover:text-blue-500">Air Quality Sampling</a>
+                                <a href="environmental-health.html#community-wellness" class="block text-sm text-gray-600 hover:text-blue-500">Community Wellness</a>
+                                <a href="environmental-health.html#facility-hygiene" class="block text-sm text-gray-600 hover:text-blue-500">Facility Hygiene</a>
+                                <a href="environmental-health.html#food-safety" class="block text-sm text-gray-600 hover:text-blue-500">Food Safety</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="testimonials.html" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Testimonials</a>
+                    <a href="index.html#contact" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Contact</a>
+                    <div class="pt-4 mt-4 border-t border-gray-200">
+                        <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="block w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-center transition duration-300">
+                            Register Training
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav> 
+
+   <script>
+        // 1. Mobile Sidebar Menu Open/Close Logic
+        const menuButton = document.getElementById('mobile-menu-button');
+        const closeButton = document.getElementById('close-menu-button');
+        const sidebarMenu = document.getElementById('services-dropdown'); // Your sidebar ID
+        const menuOverlay = document.getElementById('mobile-menu-overlay');
+
+        // Function to open the menu
+        function openMobileMenu() {
+            if (menuOverlay) menuOverlay.classList.remove('hidden');
+            if (sidebarMenu) sidebarMenu.classList.remove('translate-x-full');
+        }
+
+        // Function to close the menu
+        function closeMobileMenu() {
+            if (menuOverlay) menuOverlay.classList.add('hidden');
+            if (sidebarMenu) sidebarMenu.classList.add('translate-x-full');
+        }
+
+        // Attach click events
+        if (menuButton) menuButton.addEventListener('click', openMobileMenu);
+        if (closeButton) closeButton.addEventListener('click', closeMobileMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMobileMenu);
+
+        // 2. Mobile Services Accordion Logic (For the Dropdown inside the Sidebar)
+        const mobileServicesBtn = document.getElementById('mobile-services-btn');
+        const mobileServicesMenu = document.getElementById('mobile-services-menu');
+        const mobileServicesIcon = document.getElementById('mobile-services-icon');
+
+        if (mobileServicesBtn && mobileServicesMenu) {
+            mobileServicesBtn.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent page jump
+                mobileServicesMenu.classList.toggle('hidden');
+                if (mobileServicesIcon) mobileServicesIcon.classList.toggle('rotate-180');
+            });
+        }
+    </script>
+
+    <!-- Hero Section - already animated with zoomBg -->
+    <section class="hero-env text-white text-center px-4">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 scroll-hidden">Protecting People, Places and Policy  Canadawide Environmental Health</h1>
+            <p class="text-xl md:text-2xl mb-4 font-light italic scroll-hidden" style="transition-delay: 0.2s;">"Science-led testing. Community-led solutions. Clear Data. Safer Communities."</p>
+            <p class="text-lg font-semibold text-blue-300 mb-8 uppercase tracking-widest scroll-hidden" style="transition-delay: 0.4s;">Local Knowledge. National Standards. Healthier Outcomes.</p>
+        </div>
+    </section>
+
+    <!-- Why Work With Us Section -->
+    <section class="py-12 bg-gray-200 scroll-hidden">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Why work with us</h2>
+            <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                We combine accredited laboratory testing, field sampling expertise and community health practice to deliver environmental health and risk assessment services across Canada.
+            </p>
+
+        <div id="services">
+            <p class="text-lg text-gray-600 leading-relaxed">
+                Our teams design monitoring programs and preventive controls that align with federal and provincial frameworks including the Guidelines for Canadian Drinking Water Quality, Canadian Environmental Quality Guidelines, Canadian Ambient Air Quality Standards, the Safe Food for Canadians Regulations, and provincial public health standards, so clients meet both scientific best practice and regulatory expectations.
+            </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-gray-100">
+        <div  class="max-w-6xl mx-auto px-4">
+            
+            <!-- Water Quality -->
+            <div id="water-quality" class="mb-12 scroll-hidden-left">
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="md:flex md:flex-row">
+                        <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                            <div class="text-blue-500 mb-4"><i class="fas fa-tint text-4xl"></i></div>
+                            <h3 class="text-2xl font-semibold mb-3 text-gray-800">Water Quality Testing</h3>
+                            <p class="text-gray-600 mb-4">Sampling, microbiological and chemical analysis, source-to-tap risk assessment.</p>
+                            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                <h4 class="font-semibold text-gray-800 mb-2">Deliverables:</h4>
+                                <p class="text-gray-600 text-sm">Lab reports, compliance summaries, corrective action plans.</p>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="Water testing.jpg" alt="Water Quality Testing Team" class="w-full h-64 md:h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Air Quality -->
+           <div id="air-quality" class="mb-12 scroll-hidden-right">
+    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+        <div class="md:flex md:flex-row-reverse">
+            <div class="p-8 md:w-1/2 flex flex-col justify-center z-10 bg-white">
+                <div class="text-blue-500 mb-4"><i class="fas fa-wind text-4xl"></i></div>
+                <h3 class="text-2xl font-semibold mb-3 text-gray-800">Air Quality Sampling</h3>
+                <p class="text-gray-600 italic mb-3">"Real-time and integrated air monitoring for healthier indoor and outdoor environments."</p>
+                <ul class="text-gray-600 mb-4 list-disc list-inside">
+                    <li>Ambient and indoor sampling</li>
+                    <li>PM2.5/PM10, VOCs, NOx, SO2, CO monitoring</li>
+                </ul>
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                    <h4 class="font-semibold text-gray-800 mb-2">Deliverables:</h4>
+                    <p class="text-gray-600 text-sm">Time-series data, exceedance reports, mitigation roadmaps.</p>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 relative bg-gray-200">
+                <img id="aq-img-1" src="Air quality.jpg" alt="Air Quality Sampling Device 1" 
+                     class="w-full h-64 md:h-full object-cover transition-opacity duration-1000 opacity-100 relative z-0">
+                
+                <img id="aq-img-2" src="airsample1.jpg" alt="Air Quality Sampling Device 2" 
+                     class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0">
+                     
+                <img id="aq-img-3" src="airsample2.jpg" alt="Air Quality Sampling Device 3" 
+                     class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Grab the three Air Quality images
+        const aqImages = [
+            document.getElementById("aq-img-1"),
+            document.getElementById("aq-img-2"),
+            document.getElementById("aq-img-3")
+        ];
+        
+        let currentAqIndex = 0;
+
+        // Run this every 5 seconds (5000ms)
+        setInterval(() => {
+            // 1. Fade out the current image
+            if (aqImages[currentAqIndex]) {
+                aqImages[currentAqIndex].classList.replace("opacity-100", "opacity-0");
+            }
+            
+            // 2. Calculate the next image index (loops back to 0 after 2)
+            currentAqIndex = (currentAqIndex + 1) % aqImages.length;
+            
+            // 3. Fade in the new image
+            if (aqImages[currentAqIndex]) {
+                aqImages[currentAqIndex].classList.replace("opacity-0", "opacity-100");
+            }
+        }, 5000);
+    });
+</script>
+
+            <!-- Community Wellness -->
+           <div id="community-wellness" class="mb-12 scroll-hidden-left">
+    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+        <div class="md:flex md:flex-row">
+            <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                <div class="text-blue-500 mb-4"><i class="fas fa-users text-4xl"></i></div>
+                <h3 class="text-2xl font-semibold mb-3 text-gray-800">Community Mobilization and Wellness</h3>
+                <p class="text-gray-600 italic mb-3">"Engaging communities to turn data into action."</p>
+                <p class="text-gray-600 mb-4">Stakeholder engagement, workshops, Indigenous and municipal consultation, behaviour-change campaigns.</p>
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                    <h4 class="font-semibold text-gray-800 mb-2">Deliverables:</h4>
+                    <p class="text-gray-600 text-sm">Workshop materials, community action plans, evaluation reports, e-learning.</p>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 relative bg-gray-200">
+                <img id="cw-img-1" src="community1.jpg" alt="Community Engagement Workshop 1" 
+                     class="w-full h-64 md:h-full object-cover transition-opacity duration-1000 opacity-100">
+                
+                <img id="cw-img-2" src="community2.jpg" alt="Community Engagement Workshop 2" 
+                     class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Grab the two images by their IDs
+        const img1 = document.getElementById("cw-img-1");
+        const img2 = document.getElementById("cw-img-2");
+        
+        // Track which image is currently showing
+        let showingFirstImage = true;
+
+        // Run this function every 5 seconds (5000ms)
+        setInterval(() => {
+            if (showingFirstImage) {
+                // Fade out image 1, fade in image 2
+                img1.classList.replace("opacity-100", "opacity-0");
+                img2.classList.replace("opacity-0", "opacity-100");
+            } else {
+                // Fade in image 1, fade out image 2
+                img1.classList.replace("opacity-0", "opacity-100");
+                img2.classList.replace("opacity-100", "opacity-0");
+            }
+            // Toggle the state
+            showingFirstImage = !showingFirstImage;
+        }, 5000); 
+    });
+</script>
+
+
+
+
+
+
+            
+            <!-- Facility Hygiene -->
+            <div id="facility-hygiene" class="mb-12 scroll-hidden-right">
+    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+        <div class="md:flex md:flex-row-reverse">
+            <div class="p-8 md:w-1/2 flex flex-col justify-center z-10 bg-white">
+                <div class="text-blue-500 mb-4"><i class="fas fa-broom text-4xl"></i></div>
+                <h3 class="text-2xl font-semibold mb-3 text-gray-800">Housekeeping and Facility Hygiene</h3>
+                <p class="text-gray-600 italic mb-3">"Operational hygiene that protects staff and visitors."</p>
+                <p class="text-gray-600 mb-4">Cleaning audits, SOP development, PPE guidance, infection prevention protocols for facilities.</p>
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                    <h4 class="font-semibold text-gray-800 mb-2">Deliverables:</h4>
+                    <p class="text-gray-600 text-sm">Audit checklists, training modules, cleaning schedules.</p>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 relative bg-gray-200">
+                <img id="fh-img-1" src="facility.jpg" alt="Professional Facility Cleaning 1" 
+                     class="w-full h-64 md:h-full object-cover transition-opacity duration-1000 opacity-100 relative z-0">
+                
+                <img id="fh-img-2" src="Cleaning 2.jpg" alt="Professional Facility Cleaning 2" 
+                     class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0">
+                     
+                <img id="fh-img-3" src="Cleaning 3.jpg" alt="Professional Facility Cleaning 3" 
+                     class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Grab the three Facility Hygiene images
+        const fhImages = [
+            document.getElementById("fh-img-1"),
+            document.getElementById("fh-img-2"),
+            document.getElementById("fh-img-3")
+        ];
+        
+        let currentFhIndex = 0;
+
+        // Run this every 5 seconds (5000ms)
+        setInterval(() => {
+            // 1. Fade out the current image
+            if (fhImages[currentFhIndex]) {
+                fhImages[currentFhIndex].classList.replace("opacity-100", "opacity-0");
+            }
+            
+            // 2. Calculate the next image index (loops back to 0 after 2)
+            currentFhIndex = (currentFhIndex + 1) % fhImages.length;
+            
+            // 3. Fade in the new image
+            if (fhImages[currentFhIndex]) {
+                fhImages[currentFhIndex].classList.replace("opacity-0", "opacity-100");
+            }
+        }, 5000);
+    });
+        </script>
+
+
+            <!-- Food Safety -->
+           <div id="food-safety" class="mb-12 scroll-hidden-left">
+    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+        <div class="md:flex md:flex-row">
+            <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                <div class="text-blue-500 mb-4"><i class="fas fa-utensils text-4xl"></i></div>
+                <h3 class="text-2xl font-semibold mb-3 text-gray-800">Food Safety Training</h3>
+                <p class="text-gray-600 italic mb-3">"Practical training that keeps kitchens compliant and customers safe."</p>
+                <p class="text-gray-600 mb-4">HACCP/PCP support, food handler courses, allergen management.</p>
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                    <h4 class="font-semibold text-gray-800 mb-2">Deliverables:</h4>
+                    <p class="text-gray-600 text-sm">Certificates, training records, preventive control plans.</p>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 relative bg-gray-200">
+                <img id="fs-img-1" src="foodsafety1.jpg" alt="Food Safety Kitchen Training 1" 
+                     class="w-full h-64 md:h-full object-cover transition-opacity duration-1000 opacity-100">
+                
+                <img id="fs-img-2" src="foodsafety2.jpg" alt="Food Safety Kitchen Training 2" 
+                     class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Community Wellness Images
+        const cwImg1 = document.getElementById("cw-img-1");
+        const cwImg2 = document.getElementById("cw-img-2");
+        
+        // Food Safety Images
+        const fsImg1 = document.getElementById("fs-img-1");
+        const fsImg2 = document.getElementById("fs-img-2");
+        
+        // Track which images are currently showing
+        let showingFirstImage = true;
+
+        // Run this function every 5 seconds (5000ms)
+        setInterval(() => {
+            if (showingFirstImage) {
+                // Community Wellness: Fade out 1, Fade in 2
+                if (cwImg1 && cwImg2) {
+                    cwImg1.classList.replace("opacity-100", "opacity-0");
+                    cwImg2.classList.replace("opacity-0", "opacity-100");
+                }
+                
+                // Food Safety: Fade out 1, Fade in 2
+                if (fsImg1 && fsImg2) {
+                    fsImg1.classList.replace("opacity-100", "opacity-0");
+                    fsImg2.classList.replace("opacity-0", "opacity-100");
+                }
+            } else {
+                // Community Wellness: Fade in 1, Fade out 2
+                if (cwImg1 && cwImg2) {
+                    cwImg1.classList.replace("opacity-0", "opacity-100");
+                    cwImg2.classList.replace("opacity-100", "opacity-0");
+                }
+                
+                // Food Safety: Fade in 1, Fade out 2
+                if (fsImg1 && fsImg2) {
+                    fsImg1.classList.replace("opacity-0", "opacity-100");
+                    fsImg2.classList.replace("opacity-100", "opacity-0");
+                }
+            }
+            // Toggle the state
+            showingFirstImage = !showingFirstImage;
+        }, 5000); 
+    });
+</script>
+
+
+            <!-- CTA Box -->
+<div class="bg-blue-50 p-12 rounded-lg text-center mt-12 shadow-sm border border-blue-100 scroll-hidden">
+    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Secure Your Environment Today</h3>
+    <p class="text-gray-600 mb-6 max-w-2xl mx-auto">Ensure your facilities meet scientific best practices and public health standards. Reach out to our consulting team for specialized assessments.</p>
+    
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="index.html#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center">
+            <i class="fas fa-envelope mr-2"></i>Contact Our Experts
+        </a>
+        <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center">
+            Register for Training
+        </a>
+    </div>
+</div>
+
+        </div>
+    </section>
+
+    <script>
+        
+        
+        // Smooth scroll for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ===== SCROLL ANIMATION WITH INTERSECTION OBSERVER =====
+        const scrollElements = document.querySelectorAll('.scroll-hidden, .scroll-hidden-left, .scroll-hidden-right');
+
+        const elementInView = (el, offset = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (elementTop <= (window.innerHeight - offset));
+        };
+
+        const displayScrollElement = (element) => {
+            if (element.classList.contains('scroll-hidden')) {
+                element.classList.add('scroll-visible');
+            } else if (element.classList.contains('scroll-hidden-left')) {
+                element.classList.add('scroll-visible-left');
+            } else if (element.classList.contains('scroll-hidden-right')) {
+                element.classList.add('scroll-visible-right');
+            }
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 120)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+
+        // Trigger on scroll
+        window.addEventListener('scroll', handleScrollAnimation);
+        
+        // Trigger on load
+        window.addEventListener('load', () => {
+            handleScrollAnimation();
+            // Also handle any images that might load late
+            setTimeout(handleScrollAnimation, 500);
+        });
+    </script>
+
+        <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-8 md:pt-12 pb-6">
+    <div class="max-w-7xl mx-auto px-4 xl:px-8">
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 xl:gap-8">
+            
+            <div class="sm:col-span-2 lg:col-span-1 order-1 flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <img src="Safeinea white Logo.png" alt="SAFEinEA Logo" class="w-12 h-12 md:w-14 md:h-14 object-contain rounded-full"> 
+                    <h3 class="text-xl font-bold ml-2">SAFEinEA Incorporated</h3>
+                </div>
+                <p class="text-gray-400 mb-6 text-sm lg:text-base">Your trusted partner in workplace safety and environmental health consulting across Canada.</p>
+                
+                <div class="flex items-center gap-6 flex-wrap -mt-12 pt-4 border-t border-gray-700 lg:border-none lg:pt-0">
+                    <a href="https://csse.org/" target="_blank" rel="noopener noreferrer" class="block w-32 sm:w-40 lg:w-48">
+                        <img src="CSSE Transparent.png" alt="CSSE Certification" class="w-full h-auto object-contain">
+                    </a>  
+                    
+                </div>
+            </div>
+            
+            <div class="order-2 lg:col-span-1 lg:ml-4 xl:ml-8">
+                <h4 class="text-lg font-semibold mb-3 md:mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="text-gray-400 hover:text-white transition block py-1">Home</a></li>
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition block py-1">About Us</a></li>
+                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Services</a></li>
+                    <li><a href="testimonials.html" class="text-gray-400 hover:text-white transition block py-1">Testimonials</a></li>
+                    <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition block py-1">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="order-3 sm:col-span-2 lg:col-span-2">
+                <h4 class="text-lg font-semibold mb-3 md:mb-4">Services</h4>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <h5 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Occupational Health & Safety</h5>
+                        <ul class="space-y-1 border-l-2 border-blue-500 pl-3">
+                            <li><a href="index.html#service-1" class="text-gray-400 hover:text-white transition text-sm block py-1">Customized Training</a></li>
+                            <li><a href="index.html#service-2" class="text-gray-400 hover:text-white transition text-sm block py-1">Program Development</a></li>
+                            <li><a href="index.html#service-3" class="text-gray-400 hover:text-white transition text-sm block py-1">On-Site Consulting</a></li>
+                            <li><a href="index.html#service-4" class="text-gray-400 hover:text-white transition text-sm block py-1">SAFE Work Training</a></li>
+                            <li><a href="index.html#service-5" class="text-gray-400 hover:text-white transition text-sm block py-1">Inspections</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h5 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Environmental & Public Health</h5>
+                        <ul class="space-y-1 border-l-2 border-green-500 pl-3">
+                            <li><a href="environmental-health.html#water-quality" class="text-gray-400 hover:text-white transition text-sm block py-1">Water Quality Testing</a></li>
+                            <li><a href="environmental-health.html#air-quality" class="text-gray-400 hover:text-white transition text-sm block py-1">Air Quality Sampling</a></li>
+                            <li><a href="environmental-health.html#community-wellness" class="text-gray-400 hover:text-white transition text-sm block py-1">Community Wellness</a></li>
+                            <li><a href="environmental-health.html#facility-hygiene" class="text-gray-400 hover:text-white transition text-sm block py-1">Facility Hygiene</a></li>
+                            <li><a href="environmental-health.html#food-safety" class="text-gray-400 hover:text-white transition text-sm block py-1">Food Safety</a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="order-4 lg:col-span-1">
+                <h4 class="text-lg font-semibold mb-3 md:mb-4">Contact Info</h4>
+                <ul class="space-y-3 text-gray-400">
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mt-1 mr-3 text-blue-400 text-sm"></i>
+                        <span class="break-all text-sm xl:text-base">safetyadvocatesinea@gmail.com</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                        <span class="text-sm xl:text-base">Serving clients across Canada</span>
+                    </li>
+                </ul>
+                
+                <div class="mt-6 flex space-x-4">
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition duration-300">
+                        <i class="fab fa-facebook-f text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 hover:bg-blue-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 hover:bg-blue-700 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin-in text-sm"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="border-t border-gray-700 mt-6 pt-4 text-center text-gray-400 text-sm order-last">
+            <p>&copy; 2025 SAFEinEA Incorporated. All rights reserved.</p>
+        </div>
+        
+    </div>
+</footer>
+
+
+</body>
+</html>

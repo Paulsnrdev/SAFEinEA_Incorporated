@@ -6,6 +6,8 @@
     <title>SAFEinEA Incorporated | Environmental Health & Safety Consulting</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <meta property="og:title" content="SAFEinEA Incorporated" />
     <meta property="og:description" content="Environmental Health and Safety Consulting and Training services." />
@@ -15,60 +17,62 @@
     <link rel="icon" href="/Safeinea Black Logo.png" type="image/jpeg" />
 
     <style>
-       .hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Safety Homepage.jpg');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-            height: 100vh;
-        }
-
-        /* Animation for large/xl screens (up-down) */
-        @media (min-width: 1024px) {
-            .hero {
-                animation: moveUpDown 20s infinite alternate ease-in-out;
-            }
-            
-            @keyframes moveUpDown {
-                0% { background-position: center top; }
-                100% { background-position: center bottom; }
-            }
-        }
-
-        /* Animation for medium/small screens (side-to-side) */
-        @media (max-width: 1023px) {
-            .hero {
-                animation: moveSideToSide 20s infinite alternate ease-in-out;
-            }
-            
-            @keyframes moveSideToSide {
-                0% { background-position: left center; }
-                100% { background-position: right center; }
-            }
-        }
-
-        /* Content styling remains the same */
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
+        /* ===== HERO SLIDER STYLES ===== */
+        .hero-slide {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out, visibility 1s;
         }
         
+        .hero-slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Subtle zoom effect on the background image */
+        .hero-slide img {
+            transform: scale(1.05);
+            transition: transform 6s ease-out;
+        }
+        
+        .hero-slide.active img {
+            transform: scale(1);
+        }
+
+        /* Slide-up effect for the text content */
+        .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s;
+        }
+
+        .hero-slide.active .hero-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== GENERAL STYLES ===== */
         .service-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
         
-        .testimonial-card {
-            transition: all 0.3s ease;
+
+        nav {
+            animation: slideDown 0.8s ease;
         }
-        
-        .testimonial-card:hover {
-            transform: scale(1.03);
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
-        
+
         .nav-link {
             position: relative;
         }
@@ -84,698 +88,642 @@
             transition: width 0.3s ease;
         }
         
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .active::after {
-            width: 100%;
-        }
-        
-        /* LinkedIn responsive fix */
+        .nav-link:hover::after { width: 100%; }
+        .active::after { width: 100%; }
+
+        /* ===== MOBILE OVERLAP FIX ===== */
         @media (max-width: 640px) {
-            .linkedin-iframe {
-                width: 100% !important;
-                max-width: 504px;
-                height: 600px !important;
+            .block.sm\:hidden.w-full.h-12 {
+                display: block !important;
+                height: 30px !important;
+            }
+            #home + .block + section {
+                border-top: 1px solid #e5e7eb;
             }
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50">
-    <!-- Navigation -->
+<body class="font-sans bg-gray-50 overflow-x-hidden">
+
     <nav class="bg-white shadow-lg sticky top-0 p-2 z-50">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-4">
-                    <div class="flex items-center gap-2">
-                        <img src="Safeinea Black Logo.png" alt="SAFEinEA Logo" width="60px" height="60px" class="rounded-full">
-                        <span class="font-bold text-2xl text-gray-800">SAFEinEA Incorporated</span>
-                    </div>
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="Safeinea Black Logo.png" alt="SAFEinEA Logo" width="50px" height="50px" class="rounded-full md:w-[60px] md:h-[60px]">
+                        <span class="font-bold text-xl sm:text-2xl text-gray-800">SAFEinEA Incorporated</span>
+                    </a>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link active text-gray-800 hover:text-blue-500">Home</a>
-                    <a href="about.html" target="_blank" class="nav-link text-gray-800 hover:text-blue-500">About Us</a>
-                    <div class="relative" id="services-desktop-wrapper">
-    <button id="services-desktop-button" class="nav-link text-gray-800 hover:text-blue-500 flex items-center">
-        Services <i class="fas fa-chevron-down ml-1 text-xs"></i>
-    </button>
-    <div id="services-desktop-dropdown" class="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md py-2 z-50 hidden">
-
-                            <a href="#service-1" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Customized Safety Training</a>
-                            <a href="#service-2" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Safety and Health Program Development</a>
-                            <a href="#service-3" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">On-Site Consulting</a>
-                            <a href="#service-4" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">SAFE Work Manitoba Training</a>
-                            <a href="#service-5" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Inspection & Investigation</a>
-                            <a href="#service-6" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">New Workers Orientation</a>
+                
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-800 hover:text-blue-500">Home</a>
+                    <a href="about.html" class="nav-link text-gray-800 hover:text-blue-500">About Us</a>
+                    
+                    <div class="relative group" id="services-desktop-wrapper">
+                        <button id="services-desktop-button" class="nav-link active text-gray-800 hover:text-blue-500 flex items-center pb-4 -mb-4">
+                            Services 
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+                        </button>
+                        
+                        <div id="services-desktop-dropdown" class="absolute left-0 top-full mt-4 w-72 bg-white shadow-xl rounded-md py-2 z-50 
+                            opacity-0 invisible translate-y-4 
+                            group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 
+                            transition-all duration-300 ease-out border border-gray-100">
+                            
+                            <div class="relative group/sub">
+                                <div class="px-4 py-3 font-bold text-gray-900 hover:bg-blue-50 hover:text-blue-600 text-sm uppercase tracking-wider flex justify-between items-center cursor-pointer transition-colors">
+                                    <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                    Occupational Health & Safety
+                                </div>
+                                
+                                <div class="absolute right-full top-0 w-72 bg-white shadow-xl rounded-md py-2 z-50 
+                                    opacity-0 invisible -translate-x-4 
+                                    group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 
+                                    transition-all duration-300 ease-out border border-gray-100">
+                                    
+                                    <a href="index.html#service-1" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Customized Safety Training</a>
+                                    <a href="index.html#service-2" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Program Development</a>
+                                    <a href="index.html#service-3" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">On-Site Consulting</a>
+                                    <a href="index.html#service-4" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">SAFE Work Manitoba</a>
+                                    <a href="index.html#service-5" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Inspection & Investigation</a>
+                                    <a href="index.html#service-6" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">New Workers Orientation</a>
+                                </div>
+                            </div>
+                            
+                            <div class="relative group/sub border-t border-gray-50">
+                                <div class="px-4 py-3 font-bold text-gray-900 hover:bg-blue-50 hover:text-blue-600 text-sm uppercase tracking-wider flex justify-between items-center cursor-pointer transition-colors">
+                                    <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                    Environmental & Public Health
+                                </div>
+                                
+                                <div class="absolute right-full top-0 w-72 bg-white shadow-xl rounded-md py-2 z-50 
+                                    opacity-0 invisible -translate-x-4 
+                                    group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 
+                                    transition-all duration-300 ease-out border border-gray-100">
+                                    
+                                    <a href="environmental-health.html#water-quality" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Water Quality Testing</a>
+                                    <a href="environmental-health.html#air-quality" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Air Quality Sampling</a>
+                                    <a href="environmental-health.html#community-wellness" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Community Mobilization</a>
+                                    <a href="environmental-health.html#facility-hygiene" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Housekeeping & Hygiene</a>
+                                    <a href="environmental-health.html#food-safety" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Food Safety Training</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <a href="testimonials.html" target="_blank" class="nav-link text-gray-800 hover:text-blue-500">Testimonials</a>
-                    <a href="#contact" class="nav-link text-gray-800 hover:text-blue-500">Contact</a>
-                    <!-- UPDATED NAV REGISTRATION BUTTON -->
+                    
+                    <a href="testimonials.html" class="nav-link text-gray-800 hover:text-blue-500">Testimonials</a>
+                    <a href="index.html#contact" class="nav-link text-gray-800 hover:text-blue-500">Contact</a>
                     <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
                         Register Training
                     </a>
                 </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
+                
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4 px-4">
-            <a href="#home" class="block py-2 text-gray-800 hover:text-blue-500">Home</a>
-            <a href="about.html" class="block py-2 text-gray-800 hover:text-blue-500">About Us</a>
-            <div class="py-2">
-                <button id="services-dropdown-button" class="flex items-center justify-between w-full text-gray-800 hover:text-blue-500">
-                    Services <i class="fas fa-chevron-down ml-1 text-xs"></i>
+
+        <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity"></div>
+        <div id="services-dropdown" class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 overflow-y-auto transform translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="p-6">
+                <button id="close-menu-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 focus:outline-none">
+                    <i class="fas fa-times text-2xl"></i>
                 </button>
-                <div id="services-dropdown" class="hidden pl-4 mt-2">
-                    <a href="#service-1" class="block py-2 text-gray-800 hover:text-blue-500">Customized Safety Training</a>
-                    <a href="#service-2" class="block py-2 text-gray-800 hover:text-blue-500">Safety and Health Program Development</a>
-                    <a href="#service-3" class="block py-2 text-gray-800 hover:text-blue-500">On-Site Consulting</a>
-                    <a href="#service-4" class="block py-2 text-gray-800 hover:text-blue-500">SAFE Work Manitoba Training</a>
-                    <a href="#service-5" class="block py-2 text-gray-800 hover:text-blue-500">Inspection & Investigation</a>
-                    <a href="#service-6" class="block py-2 text-gray-800 hover:text-blue-500">New Workers Orientation</a>
-                </div>
-            </div>
-            <a href="testimonials.html" class="block py-2 text-gray-800 hover:text-blue-500">Testimonials</a>
-            <a href="#contact" class="block py-2 text-gray-800 hover:text-blue-500">Contact</a>
-            <!-- UPDATED MOBILE REGISTRATION BUTTON -->
-            <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="block py-2 px-4 bg-amber-600 text-white rounded-lg mt-2 text-center">
-                Register Training
-            </a>
-        </div>
-    </nav>
+                <div class="mt-10 space-y-4">
+                    <a href="index.html" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Home</a>
+                    <a href="about.html" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">About Us</a>
+                    
+                    <div>
+                        <button id="mobile-services-btn" class="w-full flex justify-between items-center px-4 py-2  text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded focus:outline-none">
+                            Services
+                            <i id="mobile-services-icon" class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+                        </button>
+                        
+                        <div id="mobile-services-menu" class="hidden pl-6 mt-2 space-y-3 border-l-2 border-gray-100 ml-4 pb-2">
+                            <div class="bg-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider mt-2">Occupational Health & Safety</div>
+                            <div class="space-y-2 pl-2">
+                                <a href="index.html#service-1" class="block text-sm text-gray-600 hover:text-blue-500">Customized Training</a>
+                                <a href="index.html#service-2" class="block text-sm text-gray-600 hover:text-blue-500">Program Development</a>
+                                <a href="index.html#service-3" class="block text-sm text-gray-600 hover:text-blue-500">On-Site Consulting</a>
+                                <a href="index.html#service-4" class="block text-sm text-gray-600 hover:text-blue-500">SAFE Work Manitoba</a>
+                                <a href="index.html#service-5" class="block text-sm text-gray-600 hover:text-blue-500">Inspection & Investigation</a>
+                                <a href="index.html#service-6" class="block text-sm text-gray-600 hover:text-blue-500">New Workers Orientation</a>
+                            </div>
 
-        <!-- Hero Section -->
-    <section id="home" class="hero min-h-screen flex items-center justify-center text-white sm:relative">
-        <div class="text-center px-4 max-w-4xl sm:relative">
-            <h1 class="text-4xl md:text-4xl font-bold mb-12 md:mb-16">Your Trusted Partner in Workplace <br>Safety and Health</h1>
-            <p class="text-xl md:text-2xl mb-20 md:mb-32">Providing comprehensive Environmental Health and Safety consulting and training services across Canada</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-2">
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">Get in Touch</a>
-                <a href="#services" class="bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 border-2 border-white rounded-lg transition duration-300">Our Services</a>
-                <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
-                    <i class="fas fa-calendar-check mr-2"></i>Register Now
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- MOBILE SPACER - Fixes background container overlap -->
-    <div class="block sm:hidden w-full h-12"></div>
-
-    <!-- LinkedIn Post Embed -->
-    <section class="py-6 bg-gradient-to-r from-blue-50 to-gray-50 sm:relative sm:z-10">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
-                <!-- Text and CTA on left -->
-                <div class="w-full lg:w-2/5 text-center lg:text-left order-2 lg:order-1">
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-4">
-                        <div class="flex items-center gap-3 mb-3 sm:mb-0">
-                            <i class="fab fa-linkedin text-2xl sm:text-3xl text-blue-600"></i>
-                            <h3 class="text-xl sm:text-2xl font-bold text-gray-800">Join Our Safety Community</h3>
+                            <div class="bg-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider mt-4">Environmental & Public Health</div>
+                            <div class="space-y-2 pl-2">
+                                <a href="environmental-health.html#water-quality" class="block text-sm text-gray-600 hover:text-blue-500">Water Quality Testing</a>
+                                <a href="environmental-health.html#air-quality" class="block text-sm text-gray-600 hover:text-blue-500">Air Quality Sampling</a>
+                                <a href="environmental-health.html#community-wellness" class="block text-sm text-gray-600 hover:text-blue-500">Community Wellness</a>
+                                <a href="environmental-health.html#facility-hygiene" class="block text-sm text-gray-600 hover:text-blue-500">Facility Hygiene</a>
+                                <a href="environmental-health.html#food-safety" class="block text-sm text-gray-600 hover:text-blue-500">Food Safety</a>
+                            </div>
                         </div>
                     </div>
                     
-                    <p class="text-gray-600 mb-6 text-sm sm:text-base">
+                    <a href="testimonials.html" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Testimonials</a>
+                    <a href="index.html#contact" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Contact</a>
+                    <div class="pt-4 mt-4 border-t border-gray-200">
+                        <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="block w-full py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-lg text-center transition duration-300">
+                            Register Training
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav> 
+
+    <section id="home" class="relative h-screen min-h-[600px] overflow-hidden bg-gray-900">
+        
+        <div class="hero-slide active absolute inset-0 w-full h-full z-10">
+            <div class="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
+            <img src="Safety Homepage.jpg" alt="Safety Consulting" class="absolute inset-0 w-full h-full object-cover z-0">
+            
+            <div class="relative z-20 h-full flex items-center justify-center text-center px-6 pt-16">
+                <div class="max-w-5xl hero-content w-full">
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 md:mb-10 leading-tight text-white">Your Trusted Partner in Workplace <br class="hidden sm:block">Safety and Health</h1>
+                    <p class="text-lg sm:text-xl md:text-2xl mb-12 md:mb-16 text-gray-200 max-w-3xl mx-auto">Providing comprehensive Environmental Health and Safety consulting and training services across Canada</p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 w-full px-4 sm:px-0">
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full sm:w-auto text-center">Get in Touch</a>
+                        <a href="#services" class="bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 border-2 border-white rounded-lg transition duration-300 w-full sm:w-auto text-center">Our Services</a>
+                        <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full sm:w-auto text-center flex items-center justify-center">
+                            <i class="fas fa-calendar-check mr-2"></i>Register Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slide absolute inset-0 w-full h-full z-10">
+            <div class="absolute inset-0 bg-[rgba(0,50,100,0.7)] z-10"></div>
+            <img src="environmental hero1.jpg" alt="Environmental Health" class="absolute inset-0 w-full h-full object-cover z-0">
+            
+            <div class="relative z-20 h-full flex items-center justify-center text-center px-6 pt-16">
+                <div class="max-w-4xl hero-content w-full">
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-white">Protecting People, Places and Policy <br class="hidden md:block">Canadawide Environmental Health</h1>
+                    <p class="text-lg sm:text-xl md:text-2xl mb-4 font-light italic text-gray-200">"Science-led testing. Community-led solutions. Clear Data. Safer Communities."</p>
+                    <p class="text-base sm:text-lg font-semibold text-blue-300 mb-12 uppercase tracking-widest">Local Knowledge. National Standards. Healthier Outcomes.</p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 w-full px-4 sm:px-0">
+                        <a href="Environmental Public Health.html" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 w-full sm:w-auto text-center">Explore Environmental Health</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-0 right-0 z-30 flex justify-center gap-3">
+            <button class="slide-dot w-3 h-3 rounded-full bg-white opacity-100 transition-opacity cursor-pointer" data-index="0" aria-label="Slide 1"></button>
+            <button class="slide-dot w-3 h-3 rounded-full bg-white opacity-40 hover:opacity-100 transition-opacity cursor-pointer" data-index="1" aria-label="Slide 2"></button>
+        </div>
+    </section>
+
+    <div class="block sm:hidden w-full h-12"></div>
+
+    <section class="py-12 md:py-16 bg-gradient-to-r from-blue-50 to-gray-50 relative z-10 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
+                <div data-aos="fade-right" class="w-full lg:w-2/5 text-center lg:text-left order-2 lg:order-1">
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-6">
+                        <i class="fab fa-linkedin text-3xl md:text-4xl text-blue-600"></i>
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-800">Join Our Community</h3>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-8 text-base md:text-lg leading-relaxed">
                         Stay ahead with exclusive safety tips, industry updates, and training opportunities. 
                         Follow us for insights that protect your workplace.
                     </p>
                     
-                    <div class="flex flex-col sm:flex-row gap-3 mb-4">
-                        <a href="https://linkedin.com/company/safeinea" target="_blank" 
-                           class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 sm:px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg text-sm sm:text-base">
-                            <i class="fab fa-linkedin-in"></i>
-                            Follow on LinkedIn
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
+                        <a href="https://linkedin.com/company/safeinea" target="_blank" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
+                            <i class="fab fa-linkedin-in"></i> Follow on LinkedIn
                         </a>
-                        
-                        <a href="#services" 
-                           class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-4 sm:px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg text-sm sm:text-base">
-                            <i class="fas fa-shield-alt"></i>
-                            Explore Our Services
+                        <a href="#services" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
+                            <i class="fas fa-shield-alt"></i> Explore Services
                         </a>
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-500">
-                        <div class="flex items-center justify-center lg:justify-start gap-1">
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 text-sm text-gray-500">
+                        <div class="flex items-center gap-2">
                             <i class="fas fa-check-circle text-green-500"></i>
                             <span>Latest Safety Trends</span>
                         </div>
-                        <div class="flex items-center justify-center lg:justify-start gap-1">
+                        <div class="flex items-center gap-2">
                             <i class="fas fa-check-circle text-green-500"></i>
                             <span>Training Updates</span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- LinkedIn embed on right -->
-                <div class="w-full lg:w-3/5 order-1 lg:order-2 mb-6 lg:mb-0">
-                    <div class="relative">
-                        <div class="flex justify-center">
-                           <iframe width="560" height="315" src="https://www.youtube.com/embed/_7dHFHWYuSE?si=p7wwKBiTk4K6vRbR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            
-                        </div>
+                <div data-aos="fade-left" class="w-full lg:w-3/5 order-1 lg:order-2">
+                    <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-200">
+                        <iframe src="https://www.youtube.com/embed/_7dHFHWYuSE?si=p7wwKBiTk4K6vRbR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <style>
-        /* ===== LINKEDIN IFRAME RESPONSIVE STYLES ===== */
-        .linkedin-iframe {
-            width: 100%;
-            height: 300px;
-        }
-        
-        /* Small screens (mobile) */
-        @media (max-width: 640px) {
-            .linkedin-iframe {
-                height: 320px;
-                max-width: 100%;
-                width: 100% !important;
-            }
-        }
-        
-        /* Medium screens (tablet) */
-        @media (min-width: 641px) and (max-width: 1024px) {
-            .linkedin-iframe {
-                height: 350px;
-                max-width: 450px;
-            }
-        }
-        
-        /* Large screens (desktop) */
-        @media (min-width: 1025px) {
-            .linkedin-iframe {
-                height: 380px;
-                max-width: 500px;
-                min-width: 400px;
-            }
-        }
-        
-        /* Extra large screens */
-        @media (min-width: 1280px) {
-            .linkedin-iframe {
-                height: 400px;
-                max-width: 550px;
-            }
-        }
+    <section id="services" class="py-16 md:py-24 bg-gray-100 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
 
-        /* ===== MOBILE OVERLAP FIX ===== */
-        /* This fixes the LinkedIn background container overlapping the Hero section on mobile */
-        @media (max-width: 640px) {
-            /* Add bottom padding to Hero section */
-            .hero {
-                padding-bottom: 20px;
-                margin-bottom: 0;
-            }
-            
-            /* Ensure the spacer is visible */
-            .block.sm\:hidden.w-full.h-12 {
-                display: block !important;
-                height: 30px !important;
-            }
-            
-            /* Optional: Add a subtle separator line for visual clarity */
-            .hero + .block + section {
-                border-top: 1px solid #e5e7eb;
-            }
-        }
-
-        /* Remove duplicate CSS */
-        @media (max-width: 640px) {
-            .linkedin-iframe {
-                height: 320px;
-                max-width: 100%;
-            }
-        }
-        
-        @media (min-width: 641px) and (max-width: 1024px) {
-            .linkedin-iframe {
-                height: 350px;
-                max-width: 450px;
-            }
-        }
-    </style>
-    <!-- Services Section -->
-    <section id="services" class="py-16 bg-gray-100">
-    <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-4 text-gray-800">Our Services</h2>
-        <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">We offer a comprehensive range of environmental health and safety services tailored to meet your organization's specific needs.</p>
-        
-        <!-- Service 1 -->
-       <div class="mb-12">
-    <div id="service-1" class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
-        <div class="md:flex md:flex-row">
-            <!-- Content (always comes first in DOM) -->
-            <div class="p-6 md:w-1/2">
-                <div class="text-blue-500 mb-4">
-                    <i class="fas fa-user-graduate text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold mb-3 text-gray-800">Customized and Tailored Safety Training</h3>
-                <p class="text-gray-600">Participate in specialized safety training courses that are developed to meet your specific organizational needs, ensuring employees are equipped with necessary safety skills and knowledge.</p>
-            </div>
-            <!-- Image (moved to right on desktop) -->
-            <div class="md:w-1/2 order-first md:order-none">
-                <img src="Customized and Tailored Safety Training.jpg" 
-                     alt="Customized Safety Training" 
-                     class="w-full h-64 md:h-full object-cover">
-            </div>
-        </div>
-    </div>
-</div>
-
-        <!-- Service 2 -->
-        <div class="mb-12">
-            <div  id="service-2" class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
-                <div class="md:flex md:flex-row-reverse">
-                    <!-- Content -->
-                    <div class="p-6 md:w-1/2">
-                        <div class="text-blue-500 mb-4">
-                            <i class="fas fa-file-alt text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Safety and Health Program Development</h3>
-                        <p class="text-gray-600">Develop and implement customized safety and health programs tailored to your organization's needs, ensuring compliance with relevant legislations and promoting a safe workplace.</p>
-                    </div>
-                    <!-- Image (moved to left on desktop) -->
-                    <div class="md:w-1/2">
-                        <img src="Safety and Health Program Development.jpg" 
-                             alt="Safety Program Development" 
-                             class="w-full h-64 md:h-full object-cover">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Service 3 -->
-        <div class="mb-12">
-            <div  id="service-3" class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
-                <div class="md:flex md:flex-row">
-                    <!-- Content -->
-                    <div class="p-6 md:w-1/2">
-                        <div class="text-blue-500 mb-4">
-                            <i class="fas fa-hard-hat text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3 text-gray-800">On-Site Safety Consulting and Training</h3>
-                        <p class="text-gray-600">Receive professional training and consulting on-site to assess and enhance your organization's environmental health and safety standards, aimed at achieving compliance and improved workplace safety.</p>
-                    </div>
-                    <!-- Image -->
-                    <div class="md:w-1/2 order-first md:order-none">
-                        <img src="On-Site Safety Consulting and Training.jpg" 
-                             alt="On-Site Safety Consulting" 
-                             class="w-full h-64 md:h-full object-cover">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Service 4 -->
-     
-<div class="mb-12">
-    <div  id="service-4" class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
-        <div class="md:flex md:flex-row-reverse">
-            <!-- Content Column -->
-            <div class="p-6 md:w-1/2">
-                <div class="text-blue-500 mb-4">
-                    <i class="fas fa-award text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold mb-3 text-gray-800">SAFE Work Manitoba Endorsed Training</h3>
-                <p class="text-gray-600">We deliver on the SAFE Work Manitoba Endorsed Trainings, Workplace Safety and Health Committee/Representative, Supervisor Safety and Health Roles and Responsibilities, Hazard Identification and Risk Control, Workplace Incident Investigation.</p>
-            </div>
-            
-            <!-- Image Column - Positioned near top -->
-            <div class="md:w-1/2 flex items-start justify-center pt-6"> <!-- Changed to items-start and added pt-6 -->
-                <img src="endorsed.png" 
-                     alt="SAFE Work Training" 
-                     class="w-full h-64 md:h-[360px] object-contain">
-            </div>
-        </div>
-    </div>
-</div>
-
-        <!-- Service 5 -->
-        <div class="mb-12">
-            <div  id="service-5" class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
-                <div class="md:flex md:flex-row">
-                    <!-- Content -->
-                    <div class="p-6 md:w-1/2">
-                        <div class="text-blue-500 mb-4">
-                            <i class="fas fa-search text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Inspection and Investigation</h3>
-                        <p class="text-gray-600">Onsite inspection and investigation services that is driven by comprehensive understanding of legislative provision and previous field enforcement experience.</p>
-                    </div>
-                    <!-- Image -->
-                    <div class="md:w-1/2 order-first md:order-none">
-                        <img src="Inspection and Investigation.jpg" 
-                             alt="Inspection Services" 
-                             class="w-full h-64 md:h-full object-cover">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Service 6 -->
-        <div class="mb-12">
-            <div  id="service-6" class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
-                <div class="md:flex md:flex-row-reverse">
-                    <!-- Content -->
-                    <div class="p-6 md:w-1/2">
-                        <div class="text-blue-500 mb-4">
-                            <i class="fas fa-user-plus text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3 text-gray-800">New Workers Orientation</h3>
-                        <p class="text-gray-600">
-                            <span class="short-text">The enthusiasm that new workers bring to work sometimes put them at risk of threading terrains they are not familiar with.
-                            Despite having technical skill and required professional expertise, which influenced why your workplace hired them. It is important to bring them to speed on safe ways of doing what they know how to do. So, we can adapt our new workers safety orientation to your specific workplace need.</span>
-                            
-                        </p>
-                    </div>
-                    <!-- Image -->
-                    <div class="md:w-1/2">
-                        <img src="section6.jpg" 
-                             alt="New Worker Orientation" 
-                             class="w-full h-64 md:h-full object-cover">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Registration CTA -->
-        <div class="text-center mt-12">
-            <h3 class="text-2xl font-semibold mb-6 text-gray-800">Ready to enroll in our training programs?</h3>
-            <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
-                <i class="fas fa-user-graduate mr-2"></i>Register for Training
-            </a>
-        </div>
-    </div>
-</section>
-
-
-            </div>
-
-            <!-- UPDATED SERVICES REGISTRATION CTA -->
-            <!-- <div class="text-center mt-12">
-                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Ready to enroll in our training programs?</h3>
-                <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
-                    <i class="fas fa-user-graduate mr-2"></i>Register for Training
-                </a>
-            </div> -->
-        </div>
-    </section>
-
- 
-
-    <!-- About Us & Contact Section -->
-    <section id="contact" class="py-16 bg-gray-100">
-    <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Contact Information</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Contact Box 1 -->
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-phone-alt text-blue-500 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800">Phone & Location</h3>
-                </div>
-                <div class="space-y-4">
-                     <div>
-                        <p class="text-gray-600 mb-1">Phone Number:</p>
-                        <a href="tel:4315561900" class="text-lg text-blue-600 hover:text-blue-800">(431) 556-1900</a>
-                    </div> 
-                    <div>
-                        <p class="text-gray-600 mb-1">Service Area:</p>
-                        <p class="text-gray-800">Canada-wide services</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-600 mb-1">Headquarters:</p>
-                        <p class="text-gray-800">Winnipeg, Manitoba</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Contact Box 2 -->
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-envelope text-blue-500 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800">Email Addresses</h3>
-                </div>
-                <div class="space-y-3">
-                    <div>
-                        <p class="text-gray-600 mb-1">Primary Email:</p>
-                        <a href="mailto:training@safeinea.ca" class="text-blue-600 hover:text-blue-800 break-words">training@safeinea.ca</a>
-                    </div>
-                    <div>
-                        <p class="text-gray-600 mb-1">Secondary Email:</p>
-                        <a href="mailto:bamideleoni@safeinea.ca" class="text-blue-600 hover:text-blue-800 break-words">bamideleoni@safeinea.ca</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Contact Box 3 -->
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-clock text-blue-500 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800">Business Hours</h3>
-                </div>
-                <ul class="space-y-3">
-                    <li class="flex justify-between items-center pb-2 border-b border-gray-100">
-                        <span class="text-gray-600">Weekdays</span>
-                        <span class="font-medium">9AM - 5PM</span>
-                    </li>
-                    <li class="flex justify-between items-center pb-2 border-b border-gray-100">
-                        <span class="text-gray-600">Saturday</span>
-                        <span class="font-medium">By appointment</span>
-                    </li>
-                    <li class="flex justify-between items-center">
-                        <span class="text-gray-600">Sunday</span>
-                        <span class="font-medium">Closed</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Contact Box 4 -->
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-certificate text-blue-500 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800">Our Training Deliverables</h3>
-                </div>
-                <ul class="space-y-3">
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                        <span class="text-gray-700">Workplace Safety and Health Committee/Representatives</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                        <span class="text-gray-700">Hazard Identification and Risk Control</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                        <span class="text-gray-700">Workplace Incident Investigations</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                        <span class="text-gray-700">Workplace Incident Investigations, and more.</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Testimonials Section -->
+           <div class="text-center mb-16">
+    <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 uppercase tracking-wide">
+        Our Services
+    </h2>
     
+    <div data-aos="fade-up" data-aos-delay="200" class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 mt-12 max-w-5xl mx-auto px-4">
         
-            <!-- UPDATED TESTIMONIALS REGISTRATION CTA -->
-            <div class="bg-blue-50 p-16 rounded-lg text-center mt-0">
-                <h3 class="text-2xl font-semibold mb-4 text-gray-800">Start Your Safety Training Today</h3>
-                <p class="text-gray-600 mb-6 max-w-2xl mx-auto">Join hundreds of professionals who transformed their workplace safety through our certified programs.</p>
-                <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+        <a href="#service-1" class="group block relative overflow-hidden rounded-xl shadow-lg cursor-pointer h-64 md:h-80">
+    <img src="Occupationalservices.jpeg" alt="Occupational Health and Safety" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
+    
+    <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition duration-300"></div>
+    
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+        <h3 class="text-2xl md:text-3xl font-bold text-white tracking-wider text-center drop-shadow-lg">
+            Occupational Health <br/>& Safety
+        </h3>
+    </div>
+</a>
+
+        <a href="Environmental Public Health.html#services" class="group block relative overflow-hidden rounded-xl shadow-lg cursor-pointer h-64 md:h-80">
+            <img src="Environmentalservices.jpeg" alt="Environmental and Public Health" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
+            
+            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition duration-300"></div>
+            
+            <div class="absolute inset-0 flex items-center justify-center p-4">
+                <h3 class="text-2xl md:text-3xl font-bold text-white tracking-wider text-center drop-shadow-lg">
+                    Environmental & <br/>Public Health
+                </h3>
+            </div>
+        </a>
+
+    </div>
+
+    <p data-aos="fade-up" data-aos-delay="100" class="text-gray-500 mt-8 max-w-2xl mx-auto text-lg leading-relaxed">
+        We offer a comprehensive range of environmental health and safety services tailored to meet your organization's specific needs.
+    </p>
+
+</div>
+            
+            <div data-aos="fade-up" class="mb-12">
+                <div id="service-1" class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                            <div class="text-blue-500 mb-4"><i class="fas fa-user-graduate text-4xl"></i></div>
+                            <h3 class="text-2xl font-semibold mb-3 text-gray-800">Customized Safety Training</h3>
+                            <p class="text-gray-600 leading-relaxed">Participate in specialized safety training courses that are developed to meet your specific organizational needs, ensuring employees are equipped with necessary safety skills and knowledge.</p>
+                        </div>
+                        <div class="md:w-1/2 h-64 md:h-auto">
+                            <img src="Customized and Tailored Safety Training.jpg" alt="Customized Safety Training" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" class="mb-12">
+                <div id="service-2" class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="flex flex-col md:flex-row-reverse">
+                        <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                            <div class="text-blue-500 mb-4"><i class="fas fa-file-alt text-4xl"></i></div>
+                            <h3 class="text-2xl font-semibold mb-3 text-gray-800">Safety Program Development</h3>
+                            <p class="text-gray-600 leading-relaxed">Develop and implement customized safety and health programs tailored to your organization's needs, ensuring compliance with relevant legislations and promoting a safe workplace.</p>
+                        </div>
+                        <div class="md:w-1/2 h-64 md:h-auto">
+                            <img src="Safety and Health Program Development.jpg" alt="Safety Program Development" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" class="mb-12">
+                <div id="service-3" class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                            <div class="text-blue-500 mb-4"><i class="fas fa-hard-hat text-4xl"></i></div>
+                            <h3 class="text-2xl font-semibold mb-3 text-gray-800">On-Site Safety Consulting</h3>
+                            <p class="text-gray-600 leading-relaxed">Receive professional training and consulting on-site to assess and enhance your organization's environmental health and safety standards, aimed at achieving compliance and improved workplace safety.</p>
+                        </div>
+                        <div class="md:w-1/2 h-64 md:h-auto">
+                            <img src="On-Site Safety Consulting and Training.jpg" alt="On-Site Safety Consulting" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" class="mb-12">
+                <div id="service-4" class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="flex flex-col md:flex-row-reverse">
+                        <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                            <div class="text-blue-500 mb-4"><i class="fas fa-award text-4xl"></i></div>
+                            <h3 class="text-2xl font-semibold mb-3 text-gray-800">SAFE Work Manitoba Endorsed Training</h3>
+                            <p class="text-gray-600 leading-relaxed">We deliver on the SAFE Work Manitoba Endorsed Trainings, Workplace Safety and Health Committee/Representative, Supervisor Safety and Health Roles and Responsibilities, Hazard Identification and Risk Control, Workplace Incident Investigation.</p>
+                        </div>
+                        <div class="md:w-1/2 flex items-center justify-center p-6 bg-gray-50 h-64 md:h-auto">
+                            <img src="endorsed.png" alt="SAFE Work Training" class="max-w-full max-h-full object-contain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" class="mb-12">
+                <div id="service-5" class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                            <div class="text-blue-500 mb-4"><i class="fas fa-search text-4xl"></i></div>
+                            <h3 class="text-2xl font-semibold mb-3 text-gray-800">Inspection and Investigation</h3>
+                            <p class="text-gray-600 leading-relaxed">Onsite inspection and investigation services that is driven by comprehensive understanding of legislative provision and previous field enforcement experience.</p>
+                        </div>
+                        <div class="md:w-1/2 h-64 md:h-auto">
+                            <img src="Inspection and Investigation.jpg" alt="Inspection Services" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" class="mb-12">
+                <div id="service-6" class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="flex flex-col md:flex-row-reverse">
+                        <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                            <div class="text-blue-500 mb-4"><i class="fas fa-user-plus text-4xl"></i></div>
+                            <h3 class="text-2xl font-semibold mb-3 text-gray-800">New Workers Orientation</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                The enthusiasm that new workers bring to work sometimes put them at risk of threading terrains they are not familiar with. Despite having technical skill and required professional expertise, which influenced why your workplace hired them. It is important to bring them to speed on safe ways of doing what they know how to do. So, we can adapt our new workers safety orientation to your specific workplace need.
+                            </p>
+                        </div>
+                        <div class="md:w-1/2 h-64 md:h-auto">
+                            <img src="section6.jpg" alt="New Worker Orientation" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="zoom-in" class="bg-blue-50 p-8 md:p-16 rounded-xl text-center mt-16 shadow-sm border border-blue-100">
+                <h3 class="text-2xl md:text-3xl font-semibold mb-4 text-gray-800">Start Your Safety Training Today</h3>
+                <p class="text-gray-600 mb-8 max-w-2xl mx-auto text-lg">Join hundreds of professionals who transformed their workplace safety through our certified programs.</p>
+                <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center w-full sm:w-auto">
                     <i class="fas fa-lock-open mr-2"></i>Secure Your Spot
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 md:py-12">
-    <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <!-- Company Info -->
-            <div class="sm:col-span-2 lg:col-span-1 order-1">
-                <div class="flex flex-col">
-                    <div class="flex items-center mb-4">
-                        <img src="Safeinea white Logo.png" alt="SAFEinEA Logo" class="w-12 h-12 md:w-14 md:h-14 object-contain rounded-full"> 
-                        <h3 class="text-xl font-bold ml-2">SAFEinEA Incorporated</h3>
+    <section id="contact" class="py-16 md:py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800">Contact Information</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
+                <div data-aos="fade-up" data-aos-delay="0" class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition duration-300">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-phone-alt text-blue-600 text-xl"></i>
                     </div>
-                    <p class="text-gray-400 mb-4">Your trusted partner in workplace safety and environmental health consulting across Canada.</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Phone & Location</h3>
+                    <div class="space-y-2 text-sm">
+                        <p class="text-gray-600"><span class="font-medium text-gray-800 block">Phone Number:</span> <a href="tel:4315561900" class="text-blue-600 hover:underline">(431) 556-1900</a></p>
+                        <p class="text-gray-600"><span class="font-medium text-gray-800 block">Service Area:</span> Canada-wide services</p>
+                        <p class="text-gray-600"><span class="font-medium text-gray-800 block">Headquarters:</span> Winnipeg, Manitoba</p>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition duration-300">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-envelope text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Email Addresses</h3>
+                    <div class="space-y-2 text-sm">
+                        <p class="text-gray-600"><span class="font-medium text-gray-800 block">Primary Email:</span> <a href="mailto:training@safeinea.ca" class="text-blue-600 hover:underline break-all">training@safeinea.ca</a></p>
+                        <p class="text-gray-600 mt-2"><span class="font-medium text-gray-800 block">Secondary Email:</span> <a href="mailto:bamideleoni@safeinea.ca" class="text-blue-600 hover:underline break-all">bamideleoni@safeinea.ca</a></p>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition duration-300">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-clock text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Business Hours</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between items-center pb-2 border-b border-gray-200">
+                            <span class="text-gray-600">Weekdays</span>
+                            <span class="font-medium text-gray-800">9AM - 5PM</span>
+                        </li>
+                        <li class="flex justify-between items-center pb-2 border-b border-gray-200">
+                            <span class="text-gray-600">Saturday</span>
+                            <span class="font-medium text-gray-800">By appointment</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-600">Sunday</span>
+                            <span class="font-medium text-gray-800">Closed</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition duration-300">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-certificate text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Our Training Deliverables</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1 shrink-0"></i> <span>Workplace Safety and Health Committee/Representatives</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1 shrink-0"></i> <span>Hazard Identification and Risk Control</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1 shrink-0"></i> <span>Workplace Incident Investigations, and more.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6 xl:gap-8">
+                
+                <div class="sm:col-span-2 lg:col-span-1 flex flex-col">
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="Safeinea white Logo.png" alt="SAFEinEA Logo" class="w-12 h-12 object-contain rounded-full"> 
+                        <h3 class="text-xl font-bold">SAFEinEA Inc.</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Your trusted partner in workplace safety and environmental health consulting across Canada.</p>
                     
-                    <!-- CSSE Logo -->
-                    <div class="-mt-16">
-                        <a href="https://csse.org/" target="_blank" rel="noopener noreferrer">
-                            <img src="CSSE Transparent.png" 
-                                alt="CSSE Certification" 
-                                class="max-w-[180px] md:max-w-[240px] h-auto object-contain">
+                    <div class="flex items-center gap-4 flex-wrap mt-auto">
+                        <a href="https://csse.org/" target="_blank" rel="noopener" class="w-40 sm:w-48 lg:w-56 hover:opacity-80 transition">
+                            <img src="CSSE Transparent.png" alt="CSSE" class="w-full h-auto object-contain">
                         </a>  
                     </div>
                 </div>
-            </div>
-            
-            <!-- Quick Links -->
-            <div class="order-2">
-                <h4 class="text-lg font-semibold mb-3 md:mb-4">Quick Links</h4>
-                <ul class="space-y-2">
-                    <li><a href="index.html" class="text-gray-400 hover:text-white transition block py-1">Home</a></li>
-                    <li><a href="about.html" class="text-gray-400 hover:text-white transition block py-1">About Us</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Services</a></li>
-                    <li><a href="testimonials.html" class="text-gray-400 hover:text-white transition block py-1">Testimonials</a></li>
-                    <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition block py-1">Contact</a></li>
-                </ul>
-            </div>
-            
-            <!-- Services -->
-            <div class="order-3">
-                <h4 class="text-lg font-semibold mb-3 md:mb-4">Services</h4>
-                <ul class="space-y-2">
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Customized Training</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Program Development</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">On-Site Consulting</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">SAFE Work Training</a></li>
-                    <li><a href="index.html#services" class="text-gray-400 hover:text-white transition block py-1">Inspections</a></li>
-                </ul>
-            </div>
-            
-            <!-- Contact Info -->
-            <div class="order-4">
-                <h4 class="text-lg font-semibold mb-3 md:mb-4">Contact Info</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <!-- <li class="flex items-start">
-                        <i class="fas fa-phone-alt mt-1 mr-3 text-blue-400 "></i>
-                        <span>(431) 556-1900</span>
-                    </li> -->
-                    <li class="flex items-start">
-                        <i class="fas fa-envelope mt-1 mr-3 text-blue-400 text-sm"></i>
-                        <span class="break-all">safetyadvocatesinea@gmail.com</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
-                        <span>Serving clients across Canada</span>
-                    </li>
-                </ul>
-                <div class="mt-4 flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+                
+                <div class="lg:ml-6">
+                    <h4 class="text-lg font-semibold mb-4 text-white">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="index.html#services" class="hover:text-white transition">Services</a></li>
+                        <li><a href="testimonials.html" class="hover:text-white transition">Testimonials</a></li>
+                        <li><a href="index.html#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sm:col-span-2 lg:col-span-2">
+                    <h4 class="text-lg font-semibold mb-4 text-white">Our Services</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div>
+                            <h5 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Occupational Safety</h5>
+                            <ul class="space-y-2 text-sm text-gray-400 border-l-2 border-blue-500 pl-3">
+                                <li><a href="index.html#service-1" class="hover:text-white transition">Customized Training</a></li>
+                                <li><a href="index.html#service-2" class="hover:text-white transition">Program Development</a></li>
+                                <li><a href="index.html#service-3" class="hover:text-white transition">On-Site Consulting</a></li>
+                                <li><a href="index.html#service-4" class="hover:text-white transition">SAFE Work Training</a></li>
+                                <li><a href="index.html#service-5" class="hover:text-white transition">Inspections</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Environmental Health</h5>
+                            <ul class="space-y-2 text-sm text-gray-400 border-l-2 border-green-500 pl-3">
+                                <li><a href="environmental-health.html#water-quality" class="hover:text-white transition">Water Quality Testing</a></li>
+                                <li><a href="environmental-health.html#air-quality" class="hover:text-white transition">Air Quality Sampling</a></li>
+                                <li><a href="environmental-health.html#community-wellness" class="hover:text-white transition">Community Wellness</a></li>
+                                <li><a href="environmental-health.html#facility-hygiene" class="hover:text-white transition">Facility Hygiene</a></li>
+                                <li><a href="environmental-health.html#food-safety" class="hover:text-white transition">Food Safety</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pb-4">
+                    <h4 class="text-lg font-semibold mb-4 text-white">Reach Out</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-envelope mt-1 text-blue-400"></i>
+                            <span class="break-all">safetyadvocatesinea@gmail.com</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt mt-1 text-blue-400"></i>
+                            <span>Serving clients across Canada</span>
+                        </li>
+                    </ul>
+                    <div class="mt-8 flex gap-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition"><i class="fab fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 hover:bg-blue-400 hover:text-white transition"><i class="fab fa-twitter text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 hover:bg-blue-700 hover:text-white transition"><i class="fab fa-linkedin-in text-sm"></i></a>
+                    </div>
                 </div>
             </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 SAFEinEA Incorporated. All rights reserved.</p>
+            </div>
         </div>
-        
-        <!-- Copyright -->
-        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 order-last">
-            <p>&copy; 2025 SAFEinEA Incorporated. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-
-
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+        // 1. Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            offset: 50,
+            once: true,
+            easing: 'ease-in-out',
         });
 
-        // Mobile services dropdown toggle
-        document.getElementById('services-dropdown-button').addEventListener('click', function() {
+        // 2. Mobile Menu Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const closeButton = document.getElementById('close-menu-button');
             const dropdown = document.getElementById('services-dropdown');
-            dropdown.classList.toggle('hidden');
+            const overlay = document.getElementById('mobile-menu-overlay');
+
+            function openMenu() {
+                if (overlay) overlay.classList.remove('hidden');
+                if (dropdown) dropdown.classList.remove('translate-x-full');
+            }
+
+            function closeMenu() {
+                if (overlay) overlay.classList.add('hidden');
+                if (dropdown) dropdown.classList.add('translate-x-full');
+            }
+
+            if(menuButton) menuButton.addEventListener('click', openMenu);
+            if(closeButton) closeButton.addEventListener('click', closeMenu);
+            if(overlay) overlay.addEventListener('click', closeMenu);
+
+            document.querySelectorAll('#services-dropdown a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            // Mobile Services Accordion
+            const mobileServicesBtn = document.getElementById('mobile-services-btn');
+            const mobileServicesMenu = document.getElementById('mobile-services-menu');
+            const mobileServicesIcon = document.getElementById('mobile-services-icon');
+
+            if (mobileServicesBtn && mobileServicesMenu) {
+                mobileServicesBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    mobileServicesMenu.classList.toggle('hidden');
+                    if(mobileServicesIcon) mobileServicesIcon.classList.toggle('rotate-180');
+                });
+            }
         });
 
-        // Dropdown delay logic for desktop
-const desktopTrigger = document.getElementById('services-desktop-wrapper');
-const desktopDropdown = document.getElementById('services-desktop-dropdown');
+        // 3. Hero Slider Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.slide-dot');
+            let currentSlide = 0;
+            let slideInterval;
 
-let dropdownTimer;
+            function goToSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => {
+                    dot.classList.remove('opacity-100');
+                    dot.classList.add('opacity-40');
+                });
 
-desktopTrigger.addEventListener('mouseenter', () => {
-    clearTimeout(dropdownTimer);
-    desktopDropdown.classList.remove('hidden');
-});
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.remove('opacity-40');
+                dots[currentSlide].classList.add('opacity-100');
+            }
 
-desktopTrigger.addEventListener('mouseleave', () => {
-    dropdownTimer = setTimeout(() => {
-        desktopDropdown.classList.add('hidden');
-    }, 1000); // 1000ms = 1 second delay
-});
+            function nextSlide() {
+                goToSlide(currentSlide + 1);
+            }
 
+            function startSlider() {
+                slideInterval = setInterval(nextSlide, 6000);
+            }
 
-        // Enhanced smooth scrolling that won't break external links
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(slideInterval);
+                    goToSlide(index);
+                    startSlider();
+                });
+            });
+
+            if (slides.length > 0) {
+                startSlider();
+            }
+        });
+
+        // 4. Smooth scroll ignoring external links
         document.querySelectorAll('a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
-                
-                // Only handle # links that exist on current page
-                if (href.startsWith('#') && document.querySelector(href)) {
+                if (href && href.startsWith('#') && document.querySelector(href)) {
                     e.preventDefault();
                     
-                    // Close mobile menu if open
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
+                    const targetElement = document.querySelector(href);
                     
-                    // Scroll to target
+                    // Calculate exact position relative to the entire document
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                    const headerOffset = 100; // Adjusts for your sticky navbar
+                    
                     window.scrollTo({
-                        top: document.querySelector(href).offsetTop - 80,
+                        top: elementPosition - headerOffset,
                         behavior: 'smooth'
                     });
-                }
-                // All other links (like about.html) will work normally
-            });
-        });
-
-        // Update active nav link on scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        window.addEventListener('scroll', function() {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (window.pageYOffset >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
                 }
             });
         });
