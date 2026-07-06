@@ -1,0 +1,5 @@
+node_modules/
+lms-app/node_modules/
+lms-app/dist/
+.DS_Store
+Thumbs.db

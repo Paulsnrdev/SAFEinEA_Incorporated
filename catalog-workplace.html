@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workplace Safety and Health Department | SAFEinEA LMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="Safeinea Black Logo.png" type="image/png">
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; }
+        .lms-nav  { background-color: #152b5e; }
+        .lms-hero { background-color: #0d1d40; }
+        .lms-footer { background-color: #0d1d40; }
+
+        .course-card {
+            background: #fff; border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.09);
+            overflow: hidden; display: flex; flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .course-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.14); }
+
+        .course-img-wrap {
+            position: relative; height: 160px;
+            background: #cbd5e1; overflow: hidden;
+        }
+        .course-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .course-img-wrap::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 3px; background: #f97316;
+        }
+        .lesson-badge {
+            position: absolute; bottom: 12px; left: 12px;
+            width: 30px; height: 30px; border-radius: 50%;
+            background: #d4a017; color: #fff;
+            font-size: 12px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 1;
+        }
+        .course-body { padding: 14px 16px 6px; flex: 1; }
+        .course-title { font-size: 14px; font-weight: 700; color: #111827; line-height: 1.3; margin-bottom: 4px; }
+        .course-type  { font-size: 13px; color: #3b82f6; }
+        .course-footer { padding: 12px 16px 16px; }
+        .price-btn {
+            display: flex; align-items: center; justify-content: space-between;
+            width: 100%; background: #f97316; color: #fff;
+            font-weight: 700; font-size: 14px;
+            border: none; border-radius: 6px; padding: 9px 14px;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .price-btn:hover { background: #ea6c00; }
+
+        .filter-select {
+            border: 1px solid #d1d5db; border-radius: 6px;
+            padding: 7px 30px 7px 12px; font-size: 13px; color: #374151;
+            background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 10px center;
+            -webkit-appearance: none; appearance: none; cursor: pointer;
+        }
+        .filter-select:focus { outline: none; border-color: #f97316; }
+
+        .sidebar-search { display: flex; align-items: center; border: 1px solid #d1d5db; border-radius: 6px; overflow: hidden; }
+        .sidebar-search input { flex: 1; border: none; outline: none; padding: 8px 12px; font-size: 13px; color: #374151; }
+        .sidebar-search button { background: #fff; border: none; border-left: 1px solid #e5e7eb; padding: 8px 12px; cursor: pointer; color: #6b7280; }
+        .sidebar-search button:hover { color: #f97316; }
+
+        #lms-search-bar { display: none; }
+        #lms-search-bar.open { display: block; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+<!-- ========== NAV ========== -->
+<nav class="lms-nav sticky top-0 z-50 shadow-lg">
+    <div class="max-w-full px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+            <a href="lms.html" class="flex items-center gap-3 shrink-0">
+                <img src="SAFEinEA-Logo.jpg" alt="Treasure Base Academy"
+                     class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg object-contain bg-white p-0.5"
+                     onerror="this.src='Safeinea Black Logo.png'">
+            </a>
+            <div class="flex items-center gap-3 sm:gap-4">
+                <button class="text-orange-400 hover:text-orange-300 transition text-xl p-1"
+                        onclick="document.getElementById('lms-search-bar').classList.toggle('open')"
+                        aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="http://localhost:5173/login" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm px-5 py-2 rounded-md transition">Login</a>
+                <button id="lms-menu-btn" class="text-white hover:text-gray-300 transition text-2xl p-1" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <div id="lms-search-bar" class="pb-3">
+            <div class="flex items-center gap-2 bg-white rounded-lg overflow-hidden px-3 py-2">
+                <i class="fas fa-search text-gray-400"></i>
+                <input type="text" placeholder="Search courses…" class="flex-1 outline-none text-sm text-gray-800">
+            </div>
+        </div>
+    </div>
+    <div id="lms-mobile-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+    <div id="lms-mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 overflow-y-auto">
+        <div class="p-6">
+            <button id="lms-close-btn" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-xl"><i class="fas fa-times"></i></button>
+            <div class="mt-10 space-y-3">
+                <a href="lms.html" class="block px-4 py-2 text-gray-800 hover:text-orange-500 hover:bg-orange-50 rounded-lg">Home</a>
+                <a href="catalog.html" class="block px-4 py-2 text-gray-800 hover:text-orange-500 hover:bg-orange-50 rounded-lg">Catalog</a>
+                <a href="lms.html#enrollment-key" class="block px-4 py-2 text-gray-800 hover:text-orange-500 hover:bg-orange-50 rounded-lg">Enrollment Key</a>
+                <a href="index.html" class="block px-4 py-2 text-gray-800 hover:text-orange-500 hover:bg-orange-50 rounded-lg">Main Website</a>
+                <div class="pt-4 border-t border-gray-200">
+                    <a href="http://localhost:5173/login" class="block w-full text-center py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ========== HERO BANNER ========== -->
+<div class="lms-hero py-10 sm:py-14">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 flex items-center gap-5">
+        <!-- Back arrow badge -->
+        <a href="catalog.html"
+           class="flex items-center justify-center w-12 h-12 rounded-lg shrink-0"
+           style="background:#b8860b;"
+           title="Back to Catalog">
+            <i class="fas fa-arrow-left text-white text-lg"></i>
+        </a>
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white uppercase tracking-wide leading-tight">
+            WORKPLACE SAFETY AND HEALTH DEPARTMENT
+        </h1>
+    </div>
+</div>
+
+<!-- ========== MAIN CONTENT ========== -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-sm text-gray-500 mb-6">
+        <a href="catalog.html" class="text-blue-500 hover:underline font-medium">Catalog</a>
+        <i class="fas fa-chevron-right text-xs text-gray-400"></i>
+        <span class="text-gray-700 font-medium truncate">Workplace Safety and Health...</span>
+    </nav>
+
+    <div class="flex flex-col lg:flex-row gap-6">
+
+        <!-- ---- SIDEBAR ---- -->
+        <aside class="w-full lg:w-72 shrink-0">
+            <div class="bg-white rounded-xl shadow-sm p-5">
+                <div class="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider leading-tight">
+                    Search in Workplace Safety and Health Dep...
+                </div>
+                <div class="sidebar-search mb-5">
+                    <input type="text" placeholder="Search by course name...">
+                    <button><i class="fas fa-search text-sm"></i></button>
+                </div>
+
+                <div class="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider">Subcategories</div>
+                <p class="text-sm text-gray-400">0 subcategories</p>
+            </div>
+        </aside>
+
+        <!-- ---- MAIN AREA ---- -->
+        <main class="flex-1 min-w-0">
+
+            <!-- Filter / Sort bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                <div class="flex flex-wrap items-center gap-3">
+                    <span class="text-sm font-semibold text-gray-600">Filter by</span>
+                    <select class="filter-select">
+                        <option>Course type</option>
+                        <option>Curriculum</option>
+                        <option>Course bundle</option>
+                        <option>Online course</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Language</option>
+                        <option>English</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Status</option>
+                        <option>Active</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Tags</option>
+                    </select>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-gray-500 whitespace-nowrap">Sort by</span>
+                        <select class="filter-select">
+                            <option>Alphabetical</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-gray-500 whitespace-nowrap">View as</span>
+                        <select class="filter-select">
+                            <option>Grid</option>
+                            <option>List</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Count -->
+            <p class="text-sm text-gray-600 mb-4">3 courses</p>
+
+            <!-- Course grid — only 3 courses in this department -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+
+                <!-- First Aid -->
+                <div class="course-card">
+                    <div class="course-img-wrap" style="background:#7f1d1d;">
+                        <img src="7.jpg" alt="First Aid" onerror="this.style.display='none'">
+                        <div class="lesson-badge">8</div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-title">First Aid</div>
+                        <div class="course-type">Curriculum</div>
+                    </div>
+                    <div class="course-footer">
+                        <button class="price-btn"><span>$35.00</span><i class="fas fa-shopping-cart text-sm"></i></button>
+                    </div>
+                </div>
+
+                <!-- Safety Communications -->
+                <div class="course-card">
+                    <div class="course-img-wrap">
+                        <img src="4.jpg" alt="Safety Communications" onerror="this.parentElement.style.background='#1c1917'">
+                        <div class="lesson-badge">3</div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-title">Safety Communications</div>
+                        <div class="course-type">Curriculum</div>
+                    </div>
+                    <div class="course-footer">
+                        <button class="price-btn"><span>$35.00</span><i class="fas fa-shopping-cart text-sm"></i></button>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="course-card">
+                    <div class="course-img-wrap">
+                        <img src="facility.jpg" alt="Tools" onerror="this.parentElement.style.background='#292524'">
+                        <div class="lesson-badge">5</div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-title">Tools</div>
+                        <div class="course-type">Curriculum</div>
+                    </div>
+                    <div class="course-footer">
+                        <button class="price-btn"><span>$35.00</span><i class="fas fa-shopping-cart text-sm"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="lms-footer py-4 mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+        <button class="flex items-center gap-2 text-gray-300 hover:text-white transition text-sm">
+            <i class="fas fa-globe text-lg"></i>
+            <span class="font-medium">EN</span>
+        </button>
+        <div class="flex items-center gap-2 opacity-60">
+            <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
+                <span class="text-white text-xs font-black">S</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Wire price/cart buttons to React app
+    const LMS_URL = 'http://localhost:5173';
+    document.querySelectorAll('.price-btn').forEach(btn => {
+        btn.addEventListener('click', () => { window.location.href = LMS_URL + '/login'; });
+    });
+
+    const menuBtn = document.getElementById('lms-menu-btn');
+    const closeBtn = document.getElementById('lms-close-btn');
+    const mobileMenu = document.getElementById('lms-mobile-menu');
+    const overlay = document.getElementById('lms-mobile-overlay');
+    menuBtn.addEventListener('click', () => { overlay.classList.remove('hidden'); mobileMenu.classList.remove('translate-x-full'); });
+    closeBtn.addEventListener('click', () => { overlay.classList.add('hidden'); mobileMenu.classList.add('translate-x-full'); });
+    overlay.addEventListener('click', () => { overlay.classList.add('hidden'); mobileMenu.classList.add('translate-x-full'); });
+</script>
+</body>
+</html>

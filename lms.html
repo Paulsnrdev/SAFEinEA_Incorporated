@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Base Academy | SAFEinEA LMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="Safeinea Black Logo.png" type="image/png">
+
+    <style>
+        :root {
+            --navy: #0d2144;
+            --navy-light: #1a3566;
+            --gold: #b8860b;
+            --gold-light: #d4a017;
+            --orange: #f97316;
+        }
+
+        body { font-family: 'Segoe UI', Arial, sans-serif; }
+
+        /* ---- NAV ---- */
+        .lms-nav { background-color: #152b5e; }
+
+        /* ---- GOLD BAND ---- */
+        .gold-band { background-color: #b8960c; min-height: 64px; }
+
+        /* ---- HERO ---- */
+        .lms-hero { background-color: #0d1d40; }
+        .hero-student-img {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            max-width: 40%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .dots-pattern {
+            background-image: radial-gradient(circle, rgba(255,255,255,0.25) 1px, transparent 1px);
+            background-size: 12px 12px;
+        }
+
+        /* ---- COURSE CARDS ---- */
+        .catalog-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            padding: 12px 4px 20px;
+        }
+        .catalog-track::-webkit-scrollbar { display: none; }
+
+        .course-card {
+            flex: 0 0 220px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .course-card-img-wrap {
+            position: relative;
+            height: 145px;
+            overflow: hidden;
+            background: #dbeafe;
+        }
+        .course-card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .lesson-badge {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #d4a017;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .course-card-body {
+            padding: 12px 14px 0;
+            flex: 1;
+        }
+        .course-card-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+        .course-card-type {
+            font-size: 12px;
+            color: #6b7280;
+        }
+        .course-card-footer {
+            padding: 12px 14px 14px;
+        }
+        .price-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: #f97316;
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            padding: 9px 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .price-btn:hover { background: #ea6c00; }
+
+        /* ---- CAROUSEL ARROWS ---- */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: #f97316;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 15px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: background 0.2s;
+        }
+        .carousel-btn:hover { background: #ea6c00; }
+        .carousel-btn-left { left: -18px; }
+        .carousel-btn-right { right: -18px; }
+
+        /* ---- FEATURE CARDS ---- */
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #f0f4ff;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            padding: 28px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+        }
+        .feature-card-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.18;
+        }
+        .feature-card-content { position: relative; z-index: 1; }
+
+        /* ---- FOOTER ---- */
+        .lms-footer { background-color: #0d1d40; }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero-student-img { max-width: 55%; opacity: 0.35; }
+            .course-card { flex: 0 0 180px; }
+            .course-card-img-wrap { height: 120px; }
+        }
+    </style>
+</head>
+<body class="bg-white overflow-x-hidden">
+
+<!-- ========== NAVIGATION ========== -->
+<nav class="lms-nav sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+
+            <!-- Logo -->
+            <a href="lms.html" class="flex items-center gap-3 shrink-0">
+                <img src="SAFEinEA-Logo.jpg" alt="Treasure Base Academy Logo"
+                     class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg object-contain bg-white p-0.5">
+                <div class="hidden sm:block">
+                    <div class="text-white text-xs font-semibold leading-tight opacity-80">Treasure Base Academy</div>
+                    <div class="text-white text-xs opacity-60">SAFEinEA LMS</div>
+                </div>
+            </a>
+
+            <!-- Right controls -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Search -->
+                <button class="text-orange-400 hover:text-orange-300 transition text-xl p-1"
+                        onclick="document.getElementById('search-bar').classList.toggle('hidden')"
+                        aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+
+                <!-- Login -->
+                <a href="http://localhost:5173/login"
+                   class="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm px-5 py-2 rounded-md transition">
+                    Login
+                </a>
+
+                <!-- Hamburger -->
+                <button id="lms-menu-btn" class="text-white hover:text-gray-300 transition text-2xl p-1" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search bar (hidden by default) -->
+        <div id="search-bar" class="hidden pb-3">
+            <div class="flex items-center gap-2 bg-white rounded-lg overflow-hidden px-3 py-2">
+                <i class="fas fa-search text-gray-400"></i>
+                <input type="text" placeholder="Search courses…"
+                       class="flex-1 outline-none text-sm text-gray-800">
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile slide-out menu -->
+    <div id="lms-mobile-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+    <div id="lms-mobile-menu"
+         class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 overflow-y-auto">
+        <div class="p-6">
+            <button id="lms-close-btn" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="mt-10 space-y-3">
+                <a href="lms.html" class="block px-4 py-2 text-gray-800 hover:text-orange-500 hover:bg-orange-50 rounded-lg">Home</a>
+                <a href="#catalog" class="block px-4 py-2 text-gray-800 hover:text-orange-500 hover:bg-orange-50 rounded-lg">Catalog</a>
+                <a href="#enrollment-key" class="block px-4 py-2 text-gray-800 hover:text-orange-500 hover:bg-orange-50 rounded-lg">Enrollment Key</a>
+                <a href="index.html" class="block px-4 py-2 text-gray-800 hover:text-orange-500 hover:bg-orange-50 rounded-lg">Main Website</a>
+                <div class="pt-4 border-t border-gray-200">
+                    <a href="http://localhost:5173/login"
+                       class="block w-full text-center py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition">
+                        Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ========== GOLD BAND ========== -->
+<div class="gold-band relative flex items-center">
+    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 flex justify-end">
+        <!-- Badge logo on right -->
+        <div class="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white p-1 shadow-lg flex items-center justify-center overflow-hidden border-2 border-yellow-600">
+                <img src="SAFEinEA-Logo.jpg" alt="SAFEinEA" class="w-full h-full object-contain rounded-full">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== HERO SECTION ========== -->
+<section class="lms-hero relative overflow-hidden py-10 sm:py-14 md:py-16">
+    <!-- Background student image (right side) -->
+    <img src="Photo of me1.jpg" alt="" class="hero-student-img select-none pointer-events-none"
+         onerror="this.style.display='none'">
+
+    <!-- Optional secondary left image -->
+    <div class="absolute left-0 top-0 h-full w-28 sm:w-40 opacity-20 overflow-hidden hidden md:block">
+        <img src="Safety Homepage.jpg" alt="" class="h-full w-full object-cover object-right">
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 text-center">
+        <!-- Main heading -->
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8 leading-snug drop-shadow-lg">
+            Welcome To The Treasure Base Academy | SAFEinEA LMS
+        </h1>
+
+        <!-- Branding centre block -->
+        <div class="inline-block relative px-8 py-5">
+            <!-- Dot pattern background -->
+            <div class="dots-pattern absolute inset-0 rounded-xl opacity-40"></div>
+            <div class="relative z-10">
+                <div class="text-white text-2xl sm:text-3xl font-black tracking-wider uppercase leading-tight">
+                    TREASURE BASE<br>ACADEMY
+                </div>
+                <div class="flex items-center justify-center gap-2 mt-2">
+                    <div class="h-px w-6 bg-yellow-400"></div>
+                    <p class="text-yellow-300 text-[10px] sm:text-xs uppercase tracking-widest font-medium">
+                        Where Learning Meets Convenience and Self Paced
+                    </p>
+                    <div class="h-px w-6 bg-yellow-400"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== CATALOG SECTION ========== -->
+<section id="catalog" class="py-10 bg-white">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Catalog</h2>
+
+        <!-- Carousel wrapper -->
+        <div class="relative">
+            <button class="carousel-btn carousel-btn-left hidden sm:flex" id="scrollLeft" aria-label="Scroll left">
+                <i class="fas fa-chevron-left text-sm"></i>
+            </button>
+
+            <div class="catalog-track" id="catalogTrack">
+
+                <!-- Card 1: Mental Health First Aid -->
+                <div class="course-card">
+                    <div class="course-card-img-wrap">
+                        <img src="1.jpg" alt="Mental Health First Aid"
+                             onerror="this.parentElement.style.background='#334155'">
+                        <div class="lesson-badge">1</div>
+                    </div>
+                    <div class="course-card-body">
+                        <div class="course-card-title">Applying Mental Health First Aid (ALGEE Method)</div>
+                        <div class="course-card-type">Curriculum</div>
+                    </div>
+                    <div class="course-card-footer">
+                        <button class="price-btn">
+                            <span>$30.00</span>
+                            <i class="fas fa-shopping-cart text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: First Aid -->
+                <div class="course-card">
+                    <div class="course-card-img-wrap" style="background:#b91c1c;">
+                        <img src="7.jpg" alt="First Aid"
+                             onerror="this.parentElement.querySelector('img').style.display='none'">
+                        <div class="lesson-badge">8</div>
+                    </div>
+                    <div class="course-card-body">
+                        <div class="course-card-title">First Aid</div>
+                        <div class="course-card-type">Curriculum</div>
+                    </div>
+                    <div class="course-card-footer">
+                        <button class="price-btn">
+                            <span>$35.00</span>
+                            <i class="fas fa-shopping-cart text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Food Safety -->
+                <div class="course-card">
+                    <div class="course-card-img-wrap">
+                        <img src="foodsafety1.jpg" alt="Food Safety"
+                             onerror="this.parentElement.style.background='#6b7280'">
+                        <div class="lesson-badge">5</div>
+                    </div>
+                    <div class="course-card-body">
+                        <div class="course-card-title">Food Safety for Food Handlers</div>
+                        <div class="course-card-type">Curriculum</div>
+                    </div>
+                    <div class="course-card-footer">
+                        <button class="price-btn">
+                            <span>$60.00</span>
+                            <i class="fas fa-shopping-cart text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4: Electrical Safety -->
+                <div class="course-card">
+                    <div class="course-card-img-wrap">
+                        <img src="14.jpg" alt="Electrical Safety"
+                             onerror="this.parentElement.style.background='#1d4ed8'">
+                        <div class="lesson-badge">3</div>
+                    </div>
+                    <div class="course-card-body">
+                        <div class="course-card-title">Fundamentals of Electrical Safety</div>
+                        <div class="course-card-type">Course bundle</div>
+                    </div>
+                    <div class="course-card-footer">
+                        <button class="price-btn">
+                            <span>$50.00</span>
+                            <i class="fas fa-shopping-cart text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 5: Hazard -->
+                <div class="course-card">
+                    <div class="course-card-img-wrap" style="background:#374151;">
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-exclamation-triangle text-yellow-400 text-5xl opacity-70"></i>
+                        </div>
+                        <div class="lesson-badge">4</div>
+                    </div>
+                    <div class="course-card-body">
+                        <div class="course-card-title">Hazard</div>
+                        <div class="course-card-type">Curriculum</div>
+                    </div>
+                    <div class="course-card-footer">
+                        <button class="price-btn">
+                            <span>$35.00</span>
+                            <i class="fas fa-shopping-cart text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 6: Advanced Food Safety -->
+                <div class="course-card">
+                    <div class="course-card-img-wrap">
+                        <img src="foodsafety2.jpg" alt="Advanced Food Safety"
+                             onerror="this.parentElement.style.background='#065f46'">
+                        <div class="lesson-badge" style="background:#3b82f6;">
+                            <i class="fas fa-check text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="course-card-body">
+                        <div class="course-card-title">Introduction to Advanced Food Safety</div>
+                        <div class="course-card-type">Online course</div>
+                    </div>
+                    <div class="course-card-footer">
+                        <button class="price-btn">
+                            <span>$30.00</span>
+                            <i class="fas fa-shopping-cart text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 7: Safety Communications -->
+                <div class="course-card">
+                    <div class="course-card-img-wrap">
+                        <img src="4.jpg" alt="Safety Communications"
+                             onerror="this.parentElement.style.background='#1e3a5f'">
+                        <div class="lesson-badge">3</div>
+                    </div>
+                    <div class="course-card-body">
+                        <div class="course-card-title">Safety Communications</div>
+                        <div class="course-card-type">Curriculum</div>
+                    </div>
+                    <div class="course-card-footer">
+                        <button class="price-btn">
+                            <span>$35.00</span>
+                            <i class="fas fa-shopping-cart text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 8: Tools -->
+                <div class="course-card">
+                    <div class="course-card-img-wrap">
+                        <img src="facility.jpg" alt="Tools"
+                             onerror="this.parentElement.style.background='#292524'">
+                        <div class="lesson-badge">5</div>
+                    </div>
+                    <div class="course-card-body">
+                        <div class="course-card-title">Tools</div>
+                        <div class="course-card-type">Curriculum</div>
+                    </div>
+                    <div class="course-card-footer">
+                        <button class="price-btn">
+                            <span>$35.00</span>
+                            <i class="fas fa-shopping-cart text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 9: Workplace Incident Investigations -->
+                <div class="course-card">
+                    <div class="course-card-img-wrap">
+                        <img src="Inspection and Investigation.jpg" alt="Workplace Incident Investigations"
+                             onerror="this.parentElement.style.background='#1e3a5f'">
+                        <div class="lesson-badge" style="background:#3b82f6;">
+                            <i class="fas fa-check text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="course-card-body">
+                        <div class="course-card-title">Workplace Incident Investigations</div>
+                        <div class="course-card-type">Online course</div>
+                    </div>
+                    <div class="course-card-footer">
+                        <button class="price-btn">
+                            <span>$200.00</span>
+                            <i class="fas fa-shopping-cart text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div><!-- /catalog-track -->
+
+            <button class="carousel-btn carousel-btn-right hidden sm:flex" id="scrollRight" aria-label="Scroll right">
+                <i class="fas fa-chevron-right text-sm"></i>
+            </button>
+        </div><!-- /relative -->
+    </div>
+</section>
+
+<!-- ========== FEATURE CARDS SECTION ========== -->
+<section class="py-10 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+
+            <!-- Catalog feature -->
+            <a href="catalog.html" class="feature-card group">
+                <img src="Safeinea storefront.jpg" alt="" class="feature-card-bg"
+                     onerror="this.style.display='none'">
+                <div class="feature-card-content flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 rounded-full bg-amber-50 flex items-center justify-center shadow-md group-hover:scale-110 transition">
+                        <i class="fas fa-book-open text-orange-500 text-3xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-lg font-black text-gray-800 uppercase tracking-wide">Catalog</div>
+                        <div class="text-sm text-gray-400 mt-0.5">SAFEinEA Incorporated</div>
+                        <div class="text-sm text-gray-500 mt-1">See a complete list of available courses</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Enrollment Key feature -->
+            <div class="feature-card group" id="enrollment-key">
+                <img src="Safety Homepage.jpg" alt="" class="feature-card-bg"
+                     onerror="this.style.display='none'">
+                <div class="feature-card-content flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 rounded-full bg-yellow-50 flex items-center justify-center shadow-md group-hover:scale-110 transition">
+                        <i class="fas fa-key text-yellow-500 text-3xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-lg font-black text-gray-800 uppercase tracking-wide">Enrollment Key</div>
+                        <div class="text-sm text-gray-500 mt-1">Enrollment Key</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Need Help? feature -->
+            <a href="index.html#contact" class="feature-card group">
+                <img src="community1.jpg" alt="" class="feature-card-bg"
+                     onerror="this.style.display='none'">
+                <div class="feature-card-content flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center shadow-md group-hover:scale-110 transition">
+                        <i class="fas fa-external-link-alt text-blue-700 text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-lg font-black text-gray-800 uppercase tracking-wide">Need Help?</div>
+                        <div class="text-sm text-gray-500 mt-1">Click to check out this link</div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="lms-footer py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+
+        <!-- Language selector -->
+        <button class="flex items-center gap-2 text-gray-300 hover:text-white transition text-sm">
+            <i class="fas fa-globe text-lg"></i>
+            <span class="font-medium">EN</span>
+        </button>
+
+        <!-- Right branding mark -->
+        <div class="flex items-center gap-2 opacity-60">
+            <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
+                <span class="text-white text-xs font-black">S</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ========== SCRIPTS ========== -->
+<script>
+    // Wire price/cart buttons to React app login
+    const LMS_URL = 'http://localhost:5173';
+    document.querySelectorAll('.price-btn').forEach(btn => {
+        btn.addEventListener('click', () => { window.location.href = LMS_URL + '/login'; });
+    });
+
+    // Mobile menu
+    const lmsMenuBtn = document.getElementById('lms-menu-btn');
+    const lmsCloseBtn = document.getElementById('lms-close-btn');
+    const lmsMobileMenu = document.getElementById('lms-mobile-menu');
+    const lmsMobileOverlay = document.getElementById('lms-mobile-overlay');
+
+    function openLmsMenu() {
+        lmsMobileOverlay.classList.remove('hidden');
+        lmsMobileMenu.classList.remove('translate-x-full');
+    }
+    function closeLmsMenu() {
+        lmsMobileOverlay.classList.add('hidden');
+        lmsMobileMenu.classList.add('translate-x-full');
+    }
+
+    if (lmsMenuBtn) lmsMenuBtn.addEventListener('click', openLmsMenu);
+    if (lmsCloseBtn) lmsCloseBtn.addEventListener('click', closeLmsMenu);
+    if (lmsMobileOverlay) lmsMobileOverlay.addEventListener('click', closeLmsMenu);
+    document.querySelectorAll('#lms-mobile-menu a').forEach(a => a.addEventListener('click', closeLmsMenu));
+
+    // Carousel scroll
+    const track = document.getElementById('catalogTrack');
+    const btnLeft = document.getElementById('scrollLeft');
+    const btnRight = document.getElementById('scrollRight');
+    const SCROLL_AMOUNT = 480;
+
+    if (btnLeft) btnLeft.addEventListener('click', () => track.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' }));
+    if (btnRight) btnRight.addEventListener('click', () => track.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' }));
+
+    // Show/hide arrows based on scroll position
+    function updateArrows() {
+        if (!track || !btnLeft || !btnRight) return;
+        btnLeft.style.opacity = track.scrollLeft > 10 ? '1' : '0.4';
+        btnRight.style.opacity = (track.scrollLeft + track.clientWidth) < (track.scrollWidth - 10) ? '1' : '0.4';
+    }
+    if (track) {
+        track.addEventListener('scroll', updateArrows);
+        updateArrows();
+    }
+</script>
+</body>
+</html>
