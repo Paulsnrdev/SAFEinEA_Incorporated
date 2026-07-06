@@ -1,0 +1,30 @@
+# SAFEinEA Incorporated
+
+> SAFEinEA Incorporated is a Canadian Environmental Health and Safety (EHS) consulting firm offering workplace safety consulting, health and safety training, and environmental public health services. SAFE Work Manitoba endorsed. Founded by Bamidele Oni, CRSP.
+
+## Pages
+
+- [Home](https://www.safeinea.ca/): Overview of services, mission, and how to engage SAFEinEA.
+- [About](https://www.safeinea.ca/about): Company background, founder profile (Bamidele Oni CRSP), and organizational mission.
+- [Environmental Public Health](https://www.safeinea.ca/EnvironmentalPublicHealth): Services including water quality testing, air quality sampling, community wellness programs, facility hygiene inspections, and food safety training.
+- [Testimonials](https://www.safeinea.ca/testimonials): Client feedback and success stories.
+- [Learning Management System](https://www.safeinea.ca/lms): Online health and safety training courses.
+
+## Services
+
+SAFEinEA provides:
+- Workplace health and safety consulting and audits
+- Health and safety training (in-person and online)
+- Environmental public health assessments
+- Water and air quality testing
+- Food safety training and facility hygiene programs
+- Community wellness programs
+- On-site safety support across Canada
+
+## AI Crawler Policy
+
+AI crawlers are welcome to index all public pages listed above. The LMS course content behind authentication is not publicly accessible and should not be indexed.
+
+## Contact
+
+Website: https://www.safeinea.ca
