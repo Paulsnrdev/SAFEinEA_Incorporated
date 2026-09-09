@@ -1,0 +1,150 @@
+---
+layout: layouts/base.njk
+permalink: testimonials.html
+title: Testimonials | SAFEinEA Incorporated
+ogTitle: Client Testimonials | SAFEinEA Incorporated
+twitterTitle: Client Testimonials | SAFEinEA Incorporated
+description: "Read what clients say about SAFEinEA Incorporated's safety consulting and training services. Real reviews from Canadian businesses and organizations."
+twitterDescription: "Read what clients say about SAFEinEA Incorporated's safety consulting and training services."
+canonical: https://www.safeinea.ca/testimonials
+useAos: true
+nav:
+  variant: simple
+  active: testimonials
+  ctaHref: "https://swmb.bluedrop.io/storefront/safeinea"
+  ctaLabel: "Register for Training"
+  ctaBg: "bg-gray-800"
+  ctaHoverBg: "hover:bg-gray-700"
+  linkHoverClass: "hover:text-gray-800"
+  mobileLinkHoverClass: "hover:text-gray-700"
+  underlineColor: "#1f2937"
+pageStyles: |
+  .testimonial-card {
+      transition: all 0.3s ease;
+  }
+  .testimonial-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+---
+<section class="bg-gray-800 text-white py-20 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+        <h1 data-aos="fade-down" class="text-4xl md:text-5xl font-bold mb-6">Client Testimonials</h1>
+        <p data-aos="fade-up" data-aos-delay="200" class="text-xl md:text-2xl max-w-3xl mx-auto">
+            Hear what our clients say about our environmental health and safety services
+        </p>
+    </div>
+</section>
+
+<section class="py-16 bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4">
+        <div data-aos="fade-up" class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">Trusted by Canadian Businesses</h2>
+            <p class="text-gray-600 max-w-3xl mx-auto">
+                We've helped organizations across Canada improve their workplace safety and compliance.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for item in testimonials %}
+            <div data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}" class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-user text-gray-700"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">{{ item.name }}</h4>
+                    </div>
+                </div>
+                <div class="text-yellow-400 mb-3">
+                    {% for i in range(1, 6) %}
+                        {% if i <= item.rating %}<i class="fas fa-star"></i>
+                        {% elif i - 0.5 <= item.rating %}<i class="fas fa-star-half-alt"></i>
+                        {% else %}<i class="far fa-star"></i>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <p class="text-gray-600">{{ item.quote }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="py-12 bg-gray-50 overflow-hidden">
+    <div class="container mx-auto px-4">
+        <h2 data-aos="fade-up" class="text-3xl font-bold text-center mb-8">Our Statistics</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for card in statsCards %}
+            <div data-aos="zoom-in" data-aos-delay="{{ loop.index0 * 150 }}" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <img src="{{ card.image }}" alt="{{ card.alt }}" class="w-full h-auto object-contain max-h-80 mx-auto">
+                <p class="mt-4 text-center text-gray-600 font-medium">{{ card.caption }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-100 opacity-20"></div>
+    <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-blue-50 opacity-30"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <h2 data-aos="fade-right" class="text-3xl font-bold text-center mb-8 relative">
+            <span class="relative inline-block">
+                Featured Safety Videos
+                <span class="absolute bottom-0 left-0 w-full h-1 transform -translate-y-1 scale-x-75"></span>
+            </span>
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100">
+            <div data-aos="fade-up" class="relative group w-50">
+                <div class="w-full h-64 sm:h-80 md:h-96 lg:h-[480px] xl:h-[550px] overflow-hidden rounded-xl shadow-lg transform group-hover:shadow-2xl transition-all duration-300">
+                    <iframe
+                        src="{{ featuredVideo.youtubeEmbedUrl }}"
+                        class="w-full h-full"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="absolute -inset-2 bg-blue-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10"></div>
+            </div>
+
+            <div data-aos="fade-left" data-aos-delay="200" class="space-y-6">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ featuredVideo.heading }}</h3>
+                    <p class="text-lg text-gray-600">
+                        {{ featuredVideo.description }}
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <a href="{{ featuredVideo.channelUrl }}"
+                        class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-300 group"
+                        target="_blank">
+                        <i class="fab fa-youtube mr-3 text-xl group-hover:scale-110 transition-transform"></i>
+                        <span class="font-medium">Subscribe to Our Channel</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white pt-12 pb-24 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4">
+        <div data-aos="zoom-in" class="mt-0 text-center">
+            <h3 class="text-2xl font-semibold mb-6 text-gray-800">Ready to improve your workplace safety?</h3>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
+                    Contact Us Today
+                </a>
+                <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
+                    Register for Training
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,83 @@
+[
+  {
+    "id": "water-quality",
+    "icon": "fas fa-tint",
+    "title": "Water Quality Testing",
+    "quote": null,
+    "bullets": null,
+    "description": "Sampling, microbiological and chemical analysis, source-to-tap risk assessment.",
+    "deliverables": "Lab reports, compliance summaries, corrective action plans.",
+    "reverse": false,
+    "scrollDirection": "left",
+    "idPrefix": null,
+    "images": [
+      { "src": "/Water testing.jpg", "alt": "Water Quality Testing Team" }
+    ]
+  },
+  {
+    "id": "air-quality",
+    "icon": "fas fa-wind",
+    "title": "Air Quality Sampling",
+    "quote": "Real-time and integrated air monitoring for healthier indoor and outdoor environments.",
+    "bullets": ["Ambient and indoor sampling", "PM2.5/PM10, VOCs, NOx, SO2, CO monitoring"],
+    "description": null,
+    "deliverables": "Time-series data, exceedance reports, mitigation roadmaps.",
+    "reverse": true,
+    "scrollDirection": "right",
+    "idPrefix": "aq",
+    "images": [
+      { "src": "/Air quality.jpg", "alt": "Air Quality Sampling Device 1" },
+      { "src": "/airsample1.jpg", "alt": "Air Quality Sampling Device 2" },
+      { "src": "/airsample2.jpg", "alt": "Air Quality Sampling Device 3" }
+    ]
+  },
+  {
+    "id": "community-wellness",
+    "icon": "fas fa-users",
+    "title": "Community Mobilization and Wellness",
+    "quote": "Engaging communities to turn data into action.",
+    "bullets": null,
+    "description": "Stakeholder engagement, workshops, Indigenous and municipal consultation, behaviour-change campaigns.",
+    "deliverables": "Workshop materials, community action plans, evaluation reports, e-learning.",
+    "reverse": false,
+    "scrollDirection": "left",
+    "idPrefix": "cw",
+    "images": [
+      { "src": "/community1.jpg", "alt": "Community Engagement Workshop 1" },
+      { "src": "/community2.jpg", "alt": "Community Engagement Workshop 2" }
+    ]
+  },
+  {
+    "id": "facility-hygiene",
+    "icon": "fas fa-broom",
+    "title": "Housekeeping and Facility Hygiene",
+    "quote": "Operational hygiene that protects staff and visitors.",
+    "bullets": null,
+    "description": "Cleaning audits, SOP development, PPE guidance, infection prevention protocols for facilities.",
+    "deliverables": "Audit checklists, training modules, cleaning schedules.",
+    "reverse": true,
+    "scrollDirection": "right",
+    "idPrefix": "fh",
+    "images": [
+      { "src": "/facility.jpg", "alt": "Professional Facility Cleaning 1" },
+      { "src": "/Cleaning 2.jpg", "alt": "Professional Facility Cleaning 2" },
+      { "src": "/Cleaning 3.jpg", "alt": "Professional Facility Cleaning 3" }
+    ]
+  },
+  {
+    "id": "food-safety",
+    "icon": "fas fa-utensils",
+    "title": "Food Safety Training",
+    "quote": "Practical training that keeps kitchens compliant and customers safe.",
+    "bullets": null,
+    "description": "HACCP/PCP support, food handler courses, allergen management.",
+    "deliverables": "Certificates, training records, preventive control plans.",
+    "reverse": false,
+    "scrollDirection": "left",
+    "idPrefix": "fs",
+    "images": [
+      { "src": "/foodsafety1.jpg", "alt": "Food Safety Kitchen Training 1" },
+      { "src": "/foodsafety2.jpg", "alt": "Food Safety Kitchen Training 2" }
+    ]
+  }
+]

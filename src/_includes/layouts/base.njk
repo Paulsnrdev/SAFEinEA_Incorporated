@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"{% if htmlClass %} class="{{ htmlClass }}"{% endif %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% if useAos %}
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    {% endif %}
+
+    {% if googleSiteVerification %}
+    <meta name="google-site-verification" content="{{ googleSiteVerification }}" />
+    {% endif %}
+    {% if description %}<meta name="description" content="{{ description }}" />{% endif %}
+    {% if robots != false %}<meta name="robots" content="index, follow" />{% endif %}
+    <link rel="canonical" href="{{ canonical }}" />
+
+    <meta property="og:title" content="{{ ogTitle or title }}" />
+    <meta property="og:description" content="{{ ogDescription or description }}" />
+    <meta property="og:image" content="{{ site.ogImage }}" />
+    <meta property="og:url" content="{{ canonical }}" />
+    <meta property="og:type" content="website" />
+
+    {% if twitterCard != false %}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ twitterTitle or title }}" />
+    <meta name="twitter:description" content="{{ twitterDescription or description }}" />
+    <meta name="twitter:image" content="{{ site.ogImage }}" />
+    {% endif %}
+
+    <link rel="icon" href="{{ site.logoBlack }}" type="image/jpeg" />
+    <style>
+        nav {
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: {{ nav.underlineColor }};
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .active::after {
+            width: 100%;
+        }
+        {{ pageStyles | safe }}
+    </style>
+</head>
+<body class="{{ bodyClass or 'font-sans bg-gray-50 overflow-x-hidden' }}">
+
+    {% include "partials/nav.njk" %}
+
+    {{ content | safe }}
+
+    {% include "partials/footer.njk" %}
+
+    {% if useAos %}<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>{% endif %}
+    <script src="/assets/js/nav.js"></script>
+    {% if useAos %}
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: {{ aosOffset or 100 }},
+            once: true,
+            easing: 'ease-in-out',
+        });
+    </script>
+    {% endif %}
+    {{ pageScripts | safe }}
+    {{ jsonLd | safe }}
+</body>
+</html>

@@ -1,0 +1,221 @@
+backend:
+  name: github
+  repo: Paulsnrdev/SAFEinEA_Incorporated
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+# New images uploaded through the editor land here; existing site images
+# stay in place at the repo root and are referenced by their current paths.
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: https://www.safeinea.ca
+display_url: https://www.safeinea.ca
+
+collections:
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - name: "services"
+        label: "Services Tiles (top of Our Services section)"
+        file: "src/_data/services.json"
+        fields:
+          - label: "Tiles"
+            name: "services"
+            widget: "list"
+            summary: "{{titleLines}}"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Alt Text", name: "alt", widget: "string" }
+              - { label: "Title (one line per row)", name: "titleLines", widget: "list", field: { label: "Line", name: "line", widget: "string" } }
+              - { label: "Link", name: "link", widget: "string" }
+
+      - name: "serviceDetails"
+        label: "Service Detail Cards"
+        file: "src/_data/serviceDetails.json"
+        fields:
+          - label: "Services"
+            name: "serviceDetails"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+              - { label: "Anchor ID (technical - leave as-is)", name: "id", widget: "hidden" }
+              - { label: "Icon (technical - leave as-is)", name: "icon", widget: "hidden" }
+              - { label: "Layout (technical - leave as-is)", name: "reverse", widget: "hidden" }
+              - { label: "Layout (technical - leave as-is)", name: "containObject", widget: "hidden" }
+
+      - name: "onlineCourses"
+        label: "Online Course Teasers"
+        file: "src/_data/onlineCourses.json"
+        fields:
+          - label: "Courses"
+            name: "onlineCourses"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Badge Label", name: "badge", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+
+      - name: "contactCards"
+        label: "Contact Information Cards"
+        file: "src/_data/contactCards.json"
+        fields:
+          - label: "Cards"
+            name: "contactCards"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Icon (technical - leave as-is)", name: "icon", widget: "hidden" }
+              - { label: "Card Title", name: "title", widget: "string" }
+              - label: "Rows (label/value pairs, e.g. phone or email cards)"
+                name: "rows"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Link (optional, e.g. tel:... or mailto:...)", name: "link", widget: "string", required: false }
+                  - { label: "Underline value (technical)", name: "breakAll", widget: "hidden", required: false }
+                  - { label: "Extra spacing (technical)", name: "extraGapBefore", widget: "hidden", required: false }
+              - label: "Business Hours (hours card only)"
+                name: "hours"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Day", name: "day", widget: "string" }
+                  - { label: "Time", name: "time", widget: "string" }
+              - label: "Checklist (deliverables card only)"
+                name: "checklist"
+                widget: "list"
+                required: false
+                field: { label: "Item", name: "item", widget: "string" }
+
+  - name: "about_page"
+    label: "About Page"
+    files:
+      - name: "founder"
+        label: "Founder Bio"
+        file: "src/_data/founder.json"
+        fields:
+          - { label: "Photo", name: "photo", widget: "image" }
+          - { label: "Name & Credentials", name: "name", widget: "string" }
+          - { label: "Bio Paragraphs", name: "bio", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+
+      - name: "photos"
+        label: "Photo Slideshow"
+        file: "src/_data/aboutPhotos.json"
+        fields:
+          - label: "Photos"
+            name: "photos"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+
+      - name: "deliverables"
+        label: "Training Deliverables List"
+        file: "src/_data/deliverables.json"
+        fields:
+          - label: "Deliverables"
+            name: "deliverables"
+            widget: "list"
+            summary: "{{text}}"
+            fields:
+              - { label: "Icon (technical - leave as-is)", name: "icon", widget: "hidden" }
+              - { label: "Text", name: "text", widget: "string" }
+
+  - name: "testimonials_page"
+    label: "Testimonials Page"
+    files:
+      - name: "testimonials"
+        label: "Testimonials"
+        file: "src/_data/testimonials.json"
+        fields:
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            summary: "{{name}} ({{rating}} stars)"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Rating (1-5, half-stars allowed)", name: "rating", widget: "number", value_type: "float", min: 1, max: 5, step: 0.5 }
+              - { label: "Quote", name: "quote", widget: "text" }
+
+      - name: "stats"
+        label: "Statistics Images"
+        file: "src/_data/statsCards.json"
+        fields:
+          - label: "Cards"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Caption", name: "caption", widget: "string" }
+
+      - name: "video"
+        label: "Featured Video"
+        file: "src/_data/featuredVideo.json"
+        fields:
+          - { label: "YouTube Embed URL", name: "youtubeEmbedUrl", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Channel URL", name: "channelUrl", widget: "string" }
+
+  - name: "register_training_page"
+    label: "Register for Training Page"
+    files:
+      - name: "options"
+        label: "Registration Options"
+        file: "src/_data/registrationOptions.json"
+        fields:
+          - label: "Options"
+            name: "options"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Link", name: "link", widget: "string" }
+              - { label: "Button Label", name: "buttonLabel", widget: "string" }
+              - { label: "Accent Color (technical - leave as-is)", name: "barColor", widget: "hidden" }
+              - { label: "Button Color (technical - leave as-is)", name: "buttonColor", widget: "hidden" }
+              - { label: "Button Hover Color (technical - leave as-is)", name: "buttonHoverColor", widget: "hidden" }
+
+  - name: "environmental_health_page"
+    label: "Environmental & Public Health Page"
+    files:
+      - name: "services"
+        label: "Service Sections"
+        file: "src/_data/envServices.json"
+        fields:
+          - label: "Sections"
+            name: "envServices"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Quote (optional)", name: "quote", widget: "string", required: false }
+              - { label: "Bullet Points (optional)", name: "bullets", widget: "list", required: false, field: { label: "Bullet", name: "bullet", widget: "string" } }
+              - { label: "Description (optional)", name: "description", widget: "text", required: false }
+              - { label: "Deliverables", name: "deliverables", widget: "string" }
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Anchor ID (technical - leave as-is)", name: "id", widget: "hidden" }
+              - { label: "Icon (technical - leave as-is)", name: "icon", widget: "hidden" }
+              - { label: "Layout (technical - leave as-is)", name: "reverse", widget: "hidden" }
+              - { label: "Scroll direction (technical - leave as-is)", name: "scrollDirection", widget: "hidden" }
+              - { label: "Slider ID prefix (technical - leave as-is)", name: "idPrefix", widget: "hidden", required: false }

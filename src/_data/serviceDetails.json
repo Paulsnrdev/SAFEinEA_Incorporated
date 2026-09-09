@@ -1,0 +1,62 @@
+[
+  {
+    "id": "service-1",
+    "icon": "fas fa-user-graduate",
+    "title": "Customized Safety Training",
+    "description": "Participate in specialized safety training courses that are developed to meet your specific organizational needs, ensuring employees are equipped with necessary safety skills and knowledge.",
+    "image": "/Customized and Tailored Safety Training.jpg",
+    "imageAlt": "Customized Safety Training",
+    "reverse": false,
+    "containObject": false
+  },
+  {
+    "id": "service-2",
+    "icon": "fas fa-file-alt",
+    "title": "Safety Program Development",
+    "description": "Develop and implement customized safety and health programs tailored to your organization's needs, ensuring compliance with relevant legislations and promoting a safe workplace.",
+    "image": "/Safety and Health Program Development.jpg",
+    "imageAlt": "Safety Program Development",
+    "reverse": true,
+    "containObject": false
+  },
+  {
+    "id": "service-3",
+    "icon": "fas fa-hard-hat",
+    "title": "On-Site Safety Consulting",
+    "description": "Receive professional training and consulting on-site to assess and enhance your organization's environmental health and safety standards, aimed at achieving compliance and improved workplace safety.",
+    "image": "/On-Site Safety Consulting and Training.jpg",
+    "imageAlt": "On-Site Safety Consulting",
+    "reverse": false,
+    "containObject": false
+  },
+  {
+    "id": "service-4",
+    "icon": "fas fa-award",
+    "title": "SAFE Work Manitoba Endorsed Training",
+    "description": "We deliver on the SAFE Work Manitoba Endorsed Trainings, Workplace Safety and Health Committee/Representative, Supervisor Safety and Health Roles and Responsibilities, Hazard Identification and Risk Control, Workplace Incident Investigation.",
+    "image": "/endorsed.png",
+    "imageAlt": "SAFE Work Training",
+    "reverse": true,
+    "containObject": true
+  },
+  {
+    "id": "service-5",
+    "icon": "fas fa-search",
+    "title": "Inspection and Investigation",
+    "description": "Onsite inspection and investigation services that is driven by comprehensive understanding of legislative provision and previous field enforcement experience.",
+    "image": "/Inspection and Investigation.jpg",
+    "imageAlt": "Inspection Services",
+    "reverse": false,
+    "containObject": false
+  },
+  {
+    "id": "service-6",
+    "icon": "fas fa-user-plus",
+    "title": "New Workers Orientation",
+    "description": "The enthusiasm that new workers bring to work sometimes put them at risk of threading terrains they are not familiar with. Despite having technical skill and required professional expertise, which influenced why your workplace hired them. It is important to bring them to speed on safe ways of doing what they know how to do. So, we can adapt our new workers safety orientation to your specific workplace need.",
+    "image": "/section6.jpg",
+    "imageAlt": "New Worker Orientation",
+    "reverse": true,
+    "containObject": false
+  }
+]

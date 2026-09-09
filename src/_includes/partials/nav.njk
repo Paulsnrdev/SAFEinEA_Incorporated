@@ -1,0 +1,191 @@
+{# Shared nav partial. Expects a `nav` front-matter object on the page:
+   variant: "mega" | "simple"
+   active: "home" | "about" | "testimonials" | "contact" | "courses"
+   ctaHref, ctaLabel, ctaBg, ctaHoverBg
+   linkHoverClass (e.g. "hover:text-blue-500"), underlineColor (hex)
+   envHealthBase (mega only: "https://www.safeinea.ca/EnvironmentalPublicHealth" or "" for on-page anchors)
+#}
+<nav class="bg-white shadow-lg sticky top-0 p-2 z-50">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+            {% if nav.variant == "mega" %}
+            <div class="flex items-center space-x-4 flex-1">
+                <a href="/" class="flex items-center gap-2">
+                    <img src="{{ site.logoBlack }}" alt="SAFEinEA Logo" width="50px" height="50px" class="rounded-full md:w-[60px] md:h-[60px]">
+                    <span class="font-bold text-xl sm:text-2xl text-gray-800">{{ site.name }}</span>
+                </a>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="/" class="nav-link {% if nav.active == 'home' %}active{% endif %} text-gray-800 {{ nav.linkHoverClass }}">Home</a>
+                <a href="/about" class="nav-link {% if nav.active == 'about' %}active{% endif %} text-gray-800 {{ nav.linkHoverClass }}">About Us</a>
+
+                <div class="relative group" id="services-desktop-wrapper">
+                    <button id="services-desktop-button" class="nav-link {% if nav.active == 'services' %}active {% endif %}text-gray-800 {{ nav.linkHoverClass }} flex items-center pb-4 -mb-4">
+                        Services
+                        <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+                    </button>
+
+                    <div id="services-desktop-dropdown" class="absolute left-0 top-full mt-4 w-72 bg-white shadow-xl rounded-md py-2 z-50
+                        opacity-0 invisible translate-y-4
+                        group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                        transition-all duration-300 ease-out border border-gray-100">
+
+                        <div class="relative group/sub">
+                            <div class="px-4 py-3 font-bold text-gray-900 hover:bg-blue-50 hover:text-blue-600 text-sm uppercase tracking-wider flex justify-between items-center cursor-pointer transition-colors">
+                                <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                Occupational Health &amp; Safety
+                            </div>
+
+                            <div class="absolute right-full top-0 w-72 bg-white shadow-xl rounded-md py-2 z-50
+                                opacity-0 invisible -translate-x-4
+                                group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0
+                                transition-all duration-300 ease-out border border-gray-100">
+
+                                <a href="{{ nav.servicesBase }}#service-1" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Customized Safety Training</a>
+                                <a href="{{ nav.servicesBase }}#service-2" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Program Development</a>
+                                <a href="{{ nav.servicesBase }}#service-3" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">On-Site Consulting</a>
+                                <a href="{{ nav.servicesBase }}#service-4" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">SAFE Work Manitoba</a>
+                                <a href="{{ nav.servicesBase }}#service-5" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Inspection &amp; Investigation</a>
+                                <a href="{{ nav.servicesBase }}#service-6" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">New Workers Orientation</a>
+                            </div>
+                        </div>
+
+                        <div class="relative group/sub border-t border-gray-50">
+                            <div class="px-4 py-3 font-bold text-gray-900 hover:bg-blue-50 hover:text-blue-600 text-sm uppercase tracking-wider flex justify-between items-center cursor-pointer transition-colors">
+                                <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                Environmental &amp; Public Health
+                            </div>
+
+                            <div class="absolute right-full top-0 w-72 bg-white shadow-xl rounded-md py-2 z-50
+                                opacity-0 invisible -translate-x-4
+                                group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0
+                                transition-all duration-300 ease-out border border-gray-100">
+
+                                <a href="{{ nav.envHealthBase }}#water-quality" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Water Quality Testing</a>
+                                <a href="{{ nav.envHealthBase }}#air-quality" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Air Quality Sampling</a>
+                                <a href="{{ nav.envHealthBase }}#community-wellness" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Community Mobilization</a>
+                                <a href="{{ nav.envHealthBase }}#facility-hygiene" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Housekeeping &amp; Hygiene</a>
+                                <a href="{{ nav.envHealthBase }}#food-safety" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 transition-colors">Food Safety Training</a>
+                            </div>
+                        </div>
+
+                        <a href="https://treasurebaseacademy.safeinea.ca/#/public-dashboard" target="_blank" rel="noopener" class="block px-4 py-3 font-bold text-gray-900 hover:bg-blue-50 hover:text-blue-600 text-sm uppercase tracking-wider transition-colors border-t border-gray-50">
+                            Training
+                        </a>
+                    </div>
+                </div>
+
+                {% if nav.coursesHref %}<a href="{{ nav.coursesHref }}" class="nav-link text-gray-800 {{ nav.linkHoverClass }}">Online Courses</a>{% endif %}
+                <a href="/testimonials" class="nav-link {% if nav.active == 'testimonials' %}active{% endif %} text-gray-800 {{ nav.linkHoverClass }}">Testimonials</a>
+                <a href="/#contact" class="nav-link text-gray-800 {{ nav.linkHoverClass }}">Contact</a>
+                <a href="{{ nav.ctaHref }}" class="{{ nav.ctaBg }} {{ nav.ctaHoverBg }} text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                    {{ nav.ctaLabel }}
+                </a>
+            </div>
+
+            <div class="lg:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none p-2">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            {% else %}
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center gap-2">
+                    <img src="{{ site.logoBlack }}" alt="SAFEinEA Logo" width="60px" height="60px" class="rounded-full">
+                    <span class="font-bold text-2xl text-gray-800">{{ site.name }}</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/" class="nav-link text-gray-800 {{ nav.linkHoverClass }}">Home</a>
+                <a href="/about" class="nav-link {% if nav.active == 'about' %}active{% endif %} text-gray-800 {{ nav.linkHoverClass }}">About Us</a>
+                <a href="/testimonials" class="nav-link {% if nav.active == 'testimonials' %}active{% endif %} text-gray-800 {{ nav.linkHoverClass }}">Testimonials</a>
+                <a href="/#contact" class="nav-link text-gray-800 {{ nav.linkHoverClass }}">Contact</a>
+                <a href="{{ nav.ctaHref }}" class="{{ nav.ctaBg }} {{ nav.ctaHoverBg }} text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                    {{ nav.ctaLabel }}
+                </a>
+            </div>
+
+            <div class="flex items-center">
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if nav.variant == "mega" %}
+    <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity"></div>
+    <div id="services-dropdown" data-closed-transform="translate-x-full" class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 overflow-y-auto transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-6">
+            <button id="close-menu-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 focus:outline-none">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <div class="mt-10 space-y-4">
+                <a href="/" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Home</a>
+                <a href="/about" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">About Us</a>
+
+                <div>
+                    <button id="mobile-services-btn" class="w-full flex justify-between items-center px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded focus:outline-none">
+                        Services
+                        <i id="mobile-services-icon" class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+                    </button>
+
+                    <div id="mobile-services-menu" class="hidden pl-6 mt-2 space-y-3 border-l-2 border-gray-100 ml-4 pb-2">
+                        <div class="bg-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider mt-2">Occupational Health &amp; Safety</div>
+                        <div class="space-y-2 pl-2">
+                            <a href="{{ nav.servicesBase }}#service-1" class="block text-sm text-gray-600 hover:text-blue-500">Customized Training</a>
+                            <a href="{{ nav.servicesBase }}#service-2" class="block text-sm text-gray-600 hover:text-blue-500">Program Development</a>
+                            <a href="{{ nav.servicesBase }}#service-3" class="block text-sm text-gray-600 hover:text-blue-500">On-Site Consulting</a>
+                            <a href="{{ nav.servicesBase }}#service-4" class="block text-sm text-gray-600 hover:text-blue-500">SAFE Work Manitoba</a>
+                            <a href="{{ nav.servicesBase }}#service-5" class="block text-sm text-gray-600 hover:text-blue-500">Inspection &amp; Investigation</a>
+                            <a href="{{ nav.servicesBase }}#service-6" class="block text-sm text-gray-600 hover:text-blue-500">New Workers Orientation</a>
+                        </div>
+
+                        <div class="bg-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider mt-4">Environmental &amp; Public Health</div>
+                        <div class="space-y-2 pl-2">
+                            <a href="{{ nav.envHealthBase }}#water-quality" class="block text-sm text-gray-600 hover:text-blue-500">Water Quality Testing</a>
+                            <a href="{{ nav.envHealthBase }}#air-quality" class="block text-sm text-gray-600 hover:text-blue-500">Air Quality Sampling</a>
+                            <a href="{{ nav.envHealthBase }}#community-wellness" class="block text-sm text-gray-600 hover:text-blue-500">Community Mobilization</a>
+                            <a href="{{ nav.envHealthBase }}#facility-hygiene" class="block text-sm text-gray-600 hover:text-blue-500">Housekeeping &amp; Hygiene</a>
+                            <a href="{{ nav.envHealthBase }}#food-safety" class="block text-sm text-gray-600 hover:text-blue-500">Food Safety Training</a>
+                        </div>
+
+                        <a href="https://treasurebaseacademy.safeinea.ca/#/public-dashboard" target="_blank" rel="noopener" class="block bg-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider mt-4 px-2 py-2 rounded hover:text-blue-500 transition-colors">Training</a>
+                    </div>
+                </div>
+
+                {% if nav.coursesHref %}<a href="{{ nav.coursesHref }}" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Online Courses</a>{% endif %}
+                <a href="/testimonials" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Testimonials</a>
+                <a href="/#contact" class="block px-4 py-2 text-lg text-gray-800 hover:text-blue-500 hover:bg-gray-50 rounded">Contact</a>
+                <div class="pt-4 mt-4 border-t border-gray-200">
+                    <a href="{{ nav.ctaHref }}" class="block w-full py-3 {{ nav.ctaBg }} {{ nav.ctaHoverBg }} text-white font-bold rounded-lg text-center transition duration-300">
+                        {{ nav.ctaLabel }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+    <div id="services-dropdown" data-closed-transform="-translate-x-full" data-use-hidden="true" class="hidden fixed top-0 right-0 h-128 w-64 bg-white shadow-lg z-50 overflow-y-auto transform -translate-x-full transition-transform duration-300">
+        <div class="p-4">
+            <button id="close-menu-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="mt-8 space-y-2">
+                <a href="/" class="block px-4 py-3 text-gray-800 {{ nav.mobileLinkHoverClass }} hover:bg-gray-50 rounded">Home</a>
+                <a href="/about" class="block px-4 py-3 text-gray-800 {{ nav.mobileLinkHoverClass }} hover:bg-gray-50 rounded">About Us</a>
+                <a href="/testimonials" class="block px-4 py-3 text-gray-800 {{ nav.mobileLinkHoverClass }} hover:bg-gray-50 rounded">Testimonials</a>
+                <a href="/#contact" class="block px-4 py-3 text-gray-800 {{ nav.mobileLinkHoverClass }} hover:bg-gray-50 rounded">Contact</a>
+                <a href="{{ nav.ctaHref }}" class="block px-4 py-3 {{ nav.ctaBg }} {{ nav.ctaHoverBg }} text-white rounded text-center transition duration-300 mt-4">
+                    {{ nav.ctaLabel }}
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</nav>

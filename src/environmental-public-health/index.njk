@@ -1,0 +1,333 @@
+---
+layout: layouts/base.njk
+permalink: EnvironmentalPublicHealth/index.html
+htmlClass: scroll-smooth
+title: Environmental Health & Public Health | SAFEinEA Incorporated
+ogTitle: SAFEinEA Incorporated
+ogDescription: "Environmental Health and Safety Consulting and Training services."
+robots: false
+twitterCard: false
+canonical: https://www.safeinea.ca/EnvironmentalPublicHealth
+useAos: false
+bodyClass: "font-sans bg-gray-50"
+nav:
+  variant: mega
+  active: services
+  ctaHref: "/register-training"
+  ctaLabel: "Register For Training"
+  ctaBg: "bg-blue-600"
+  ctaHoverBg: "hover:bg-blue-700"
+  linkHoverClass: "hover:text-blue-500"
+  underlineColor: "#3b82f6"
+  servicesBase: "/"
+  envHealthBase: ""
+  coursesHref: ""
+footerVariant: simple
+footerEnvHealthBase: ""
+footerCopyrightYear: 2025
+pageStyles: |
+  body {
+      animation: fadeInPage 0.5s ease-in;
+  }
+
+  @keyframes fadeInPage {
+      from { opacity: 0; }
+      to { opacity: 1; }
+  }
+
+  a.bg-blue-600 {
+      position: relative;
+      overflow: hidden;
+  }
+
+  a.bg-blue-600::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.5s;
+  }
+
+  a.bg-blue-600:hover::before {
+      left: 100%;
+  }
+
+  .hero-env {
+      background-image: linear-gradient(rgba(0, 50, 100, 0.7), rgba(0, 0, 0, 0.6)), url('/environmental hero1.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      padding: 120px 0 80px 0;
+      animation: zoomBg 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes zoomBg {
+      0% { background-size: 100%; }
+      100% { background-size: 110%; }
+  }
+
+  .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* ===== SCROLL ANIMATION STYLES ===== */
+  .scroll-hidden {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .scroll-visible {
+      opacity: 1;
+      transform: translateY(0);
+  }
+
+  .scroll-hidden-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .scroll-hidden-right {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .scroll-visible-left, .scroll-visible-right {
+      opacity: 1;
+      transform: translateX(0);
+  }
+pageScripts: |
+  <script>
+      // Force browser to top on page refresh / Disable scroll memory
+      if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+      }
+
+      window.addEventListener('load', function() {
+          const isRefresh = (window.performance && window.performance.navigation.type === 1) ||
+                            (window.performance && performance.getEntriesByType("navigation")[0]?.type === "reload");
+
+          if (isRefresh) {
+              history.replaceState(null, null, window.location.pathname);
+              window.scrollTo(0, 0);
+          }
+      });
+
+      // JS Logic for Image Slideshows
+      document.addEventListener("DOMContentLoaded", function() {
+          const aqImages = [
+              document.getElementById("aq-img-1"),
+              document.getElementById("aq-img-2"),
+              document.getElementById("aq-img-3")
+          ];
+          let currentAqIndex = 0;
+
+          const fhImages = [
+              document.getElementById("fh-img-1"),
+              document.getElementById("fh-img-2"),
+              document.getElementById("fh-img-3")
+          ];
+          let currentFhIndex = 0;
+
+          const cwImg1 = document.getElementById("cw-img-1");
+          const cwImg2 = document.getElementById("cw-img-2");
+          let showingFirstCWImage = true;
+
+          const fsImg1 = document.getElementById("fs-img-1");
+          const fsImg2 = document.getElementById("fs-img-2");
+          let showingFirstFSImage = true;
+
+          setInterval(() => {
+              if (aqImages[currentAqIndex]) {
+                  aqImages[currentAqIndex].classList.replace("opacity-100", "opacity-0");
+              }
+              currentAqIndex = (currentAqIndex + 1) % aqImages.length;
+              if (aqImages[currentAqIndex]) {
+                  aqImages[currentAqIndex].classList.replace("opacity-0", "opacity-100");
+              }
+
+              if (fhImages[currentFhIndex]) {
+                  fhImages[currentFhIndex].classList.replace("opacity-100", "opacity-0");
+              }
+              currentFhIndex = (currentFhIndex + 1) % fhImages.length;
+              if (fhImages[currentFhIndex]) {
+                  fhImages[currentFhIndex].classList.replace("opacity-0", "opacity-100");
+              }
+
+              if (showingFirstCWImage) {
+                  if (cwImg1 && cwImg2) {
+                      cwImg1.classList.replace("opacity-100", "opacity-0");
+                      cwImg2.classList.replace("opacity-0", "opacity-100");
+                  }
+              } else {
+                  if (cwImg1 && cwImg2) {
+                      cwImg1.classList.replace("opacity-0", "opacity-100");
+                      cwImg2.classList.replace("opacity-100", "opacity-0");
+                  }
+              }
+              showingFirstCWImage = !showingFirstCWImage;
+
+              if (showingFirstFSImage) {
+                  if (fsImg1 && fsImg2) {
+                      fsImg1.classList.replace("opacity-100", "opacity-0");
+                      fsImg2.classList.replace("opacity-0", "opacity-100");
+                  }
+              } else {
+                  if (fsImg1 && fsImg2) {
+                      fsImg1.classList.replace("opacity-0", "opacity-100");
+                      fsImg2.classList.replace("opacity-100", "opacity-0");
+                  }
+              }
+              showingFirstFSImage = !showingFirstFSImage;
+
+          }, 5000);
+      });
+
+      // SCROLL ANIMATION LOGIC (For .scroll-hidden elements)
+      const scrollElements = document.querySelectorAll('.scroll-hidden, .scroll-hidden-left, .scroll-hidden-right');
+
+      const elementInView = (el, offset = 100) => {
+          const elementTop = el.getBoundingClientRect().top;
+          return (elementTop <= (window.innerHeight - offset));
+      };
+
+      const displayScrollElement = (element) => {
+          if (element.classList.contains('scroll-hidden')) {
+              element.classList.add('scroll-visible');
+          } else if (element.classList.contains('scroll-hidden-left')) {
+              element.classList.add('scroll-visible-left');
+          } else if (element.classList.contains('scroll-hidden-right')) {
+              element.classList.add('scroll-visible-right');
+          }
+      };
+
+      const handleScrollAnimation = () => {
+          scrollElements.forEach((el) => {
+              if (elementInView(el, 120)) {
+                  displayScrollElement(el);
+              }
+          });
+      };
+
+      window.addEventListener('scroll', handleScrollAnimation);
+      window.addEventListener('load', () => {
+          handleScrollAnimation();
+          setTimeout(handleScrollAnimation, 500);
+      });
+
+      // STICKY NAVBAR OFFSET FIX (For clicks on the same page)
+      const headerOffset = 110;
+
+      document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+              if (this.pathname === window.location.pathname || this.getAttribute('href').startsWith('#')) {
+                  const hash = this.hash;
+
+                  if (hash && document.querySelector(hash)) {
+                      e.preventDefault();
+
+                      const target = document.querySelector(hash);
+                      const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+
+                      window.scrollTo({
+                          top: elementPosition - headerOffset,
+                          behavior: 'smooth'
+                      });
+
+                      history.pushState(null, null, hash);
+                  }
+              }
+          });
+      });
+  </script>
+---
+<section class="hero-env text-white text-center px-4">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 scroll-hidden">Protecting People, Places and Policy  Canadawide Environmental Health</h1>
+        <p class="text-xl md:text-2xl mb-4 font-light italic scroll-hidden" style="transition-delay: 0.2s;">"Science-led testing. Community-led solutions. Clear Data. Safer Communities."</p>
+        <p class="text-lg font-semibold text-blue-300 mb-8 uppercase tracking-widest scroll-hidden" style="transition-delay: 0.4s;">Local Knowledge. National Standards. Healthier Outcomes.</p>
+    </div>
+</section>
+
+<section class="py-12 bg-gray-200 scroll-hidden">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Why work with us</h2>
+        <p class="text-lg text-gray-600 leading-relaxed mb-4">
+            We combine accredited laboratory testing, field sampling expertise and community health practice to deliver environmental health and risk assessment services across Canada.
+        </p>
+        <div id="services">
+            <p class="text-lg text-gray-600 leading-relaxed">
+                Our teams design monitoring programs and preventive controls that align with federal and provincial frameworks including the Guidelines for Canadian Drinking Water Quality, Canadian Environmental Quality Guidelines, Canadian Ambient Air Quality Standards, the Safe Food for Canadians Regulations, and provincial public health standards, so clients meet both scientific best practice and regulatory expectations.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-4">
+
+        {% for svc in envServices %}
+        <div id="{{ svc.id }}" class="mb-12 scroll-hidden-{{ svc.scrollDirection }} scroll-mt-32">
+            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                <div class="md:flex md:flex-row{% if svc.reverse %}-reverse{% endif %}">
+                    <div class="p-8 md:w-1/2 flex flex-col justify-center{% if svc.reverse %} z-10 bg-white{% endif %}">
+                        <div class="text-blue-500 mb-4"><i class="{{ svc.icon }} text-4xl"></i></div>
+                        <h3 class="text-2xl font-semibold mb-3 text-gray-800">{{ svc.title }}</h3>
+                        {% if svc.quote %}<p class="text-gray-600 italic mb-3">"{{ svc.quote }}"</p>{% endif %}
+                        {% if svc.bullets %}
+                        <ul class="text-gray-600 mb-4 list-disc list-inside">
+                            {% for bullet in svc.bullets %}<li>{{ bullet }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% if svc.description %}<p class="text-gray-600 mb-4">{{ svc.description }}</p>{% endif %}
+                        <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                            <h4 class="font-semibold text-gray-800 mb-2">Deliverables:</h4>
+                            <p class="text-gray-600 text-sm">{{ svc.deliverables }}</p>
+                        </div>
+                    </div>
+
+                    {% if svc.images.length == 1 %}
+                    <div class="md:w-1/2">
+                        <img src="{{ svc.images[0].src }}" alt="{{ svc.images[0].alt }}" class="w-full h-64 md:h-full object-cover">
+                    </div>
+                    {% else %}
+                    <div class="md:w-1/2 relative bg-gray-200">
+                        {% for img in svc.images %}
+                        {% if loop.first %}
+                        <img id="{{ svc.idPrefix }}-img-{{ loop.index }}" src="{{ img.src }}" alt="{{ img.alt }}"
+                             class="w-full h-64 md:h-full object-cover transition-opacity duration-1000 opacity-100{% if svc.reverse %} relative z-0{% endif %}">
+                        {% else %}
+                        <img id="{{ svc.idPrefix }}-img-{{ loop.index }}" src="{{ img.src }}" alt="{{ img.alt }}"
+                             class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0{% if svc.reverse %} z-0{% endif %}">
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="bg-blue-50 p-12 rounded-lg text-center mt-12 shadow-sm border border-blue-100 scroll-hidden">
+            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Secure Your Environment Today</h3>
+            <p class="text-gray-600 mb-6 max-w-2xl mx-auto">Ensure your facilities meet scientific best practices and public health standards. Reach out to our consulting team for specialized assessments.</p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center">
+                    <i class="fas fa-envelope mr-2"></i>Contact Our Experts
+                </a>
+                <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center">
+                    Register for Training
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>

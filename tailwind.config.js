@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     './*.html',
-    './EnvironmentalPublicHealth/**/*.html',
+    './src/**/*.njk',
   ],
   theme: {
     extend: {},

@@ -1,0 +1,407 @@
+---
+layout: layouts/base.njk
+permalink: index.html
+htmlClass: scroll-smooth
+title: SAFEinEA Incorporated | Environmental Health & Safety Consulting
+description: "SAFEinEA Incorporated provides Environmental Health and Safety consulting, training, and on-site services across Canada. SAFE Work Manitoba endorsed. Get in touch today."
+ogDescription: "SAFEinEA Incorporated provides Environmental Health and Safety consulting, training, and on-site services across Canada. SAFE Work Manitoba endorsed."
+twitterDescription: "SAFEinEA Incorporated provides Environmental Health and Safety consulting, training, and on-site services across Canada."
+canonical: https://www.safeinea.ca/
+googleSiteVerification: OLzFLIPzcGDgrGQStC5D1Co7ciBf6y8RjiPXtTZeMsw
+useAos: true
+aosOffset: 50
+nav:
+  variant: mega
+  active: home
+  ctaHref: "/register-training"
+  ctaLabel: "Register For Training"
+  ctaBg: "bg-amber-600"
+  ctaHoverBg: "hover:bg-amber-700"
+  linkHoverClass: "hover:text-blue-500"
+  underlineColor: "#3b82f6"
+  servicesBase: "/"
+  envHealthBase: "https://www.safeinea.ca/EnvironmentalPublicHealth"
+  coursesHref: "#courses"
+pageStyles: |
+  /* ===== HERO SLIDER STYLES ===== */
+  .hero-slide {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1s ease-in-out, visibility 1s;
+  }
+
+  .hero-slide.active {
+      opacity: 1;
+      visibility: visible;
+  }
+
+  .hero-slide img {
+      transform: scale(1.05);
+      transition: transform 6s ease-out;
+  }
+
+  .hero-slide.active img {
+      transform: scale(1);
+  }
+
+  .hero-content {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s;
+  }
+
+  .hero-slide.active .hero-content {
+      opacity: 1;
+      transform: translateY(0);
+  }
+
+  /* ===== GENERAL STYLES ===== */
+  .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* ===== MOBILE OVERLAP FIX ===== */
+  @media (max-width: 640px) {
+      .block.sm\:hidden.w-full.h-12 {
+          display: block !important;
+          height: 30px !important;
+      }
+      #home + .block + section {
+          border-top: 1px solid #e5e7eb;
+      }
+  }
+pageScripts: |
+  <script>
+      // Force browser to top on page refresh / Disable scroll memory
+      if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+      }
+
+      window.addEventListener('load', function() {
+          const isRefresh = (window.performance && window.performance.navigation.type === 1) ||
+                            (window.performance && performance.getEntriesByType("navigation")[0]?.type === "reload");
+
+          if (isRefresh) {
+              history.replaceState(null, null, window.location.pathname);
+              window.scrollTo(0, 0);
+          }
+      });
+
+      // Hero Slider Logic
+      document.addEventListener('DOMContentLoaded', function() {
+          const slides = document.querySelectorAll('.hero-slide');
+          const dots = document.querySelectorAll('.slide-dot');
+          let currentSlide = 0;
+          let slideInterval;
+
+          function goToSlide(n) {
+              slides.forEach(slide => slide.classList.remove('active'));
+              dots.forEach(dot => {
+                  dot.classList.remove('opacity-100');
+                  dot.classList.add('opacity-40');
+              });
+
+              currentSlide = (n + slides.length) % slides.length;
+              slides[currentSlide].classList.add('active');
+              dots[currentSlide].classList.remove('opacity-40');
+              dots[currentSlide].classList.add('opacity-100');
+          }
+
+          function nextSlide() {
+              goToSlide(currentSlide + 1);
+          }
+
+          function startSlider() {
+              slideInterval = setInterval(nextSlide, 6000);
+          }
+
+          dots.forEach((dot, index) => {
+              dot.addEventListener('click', () => {
+                  clearInterval(slideInterval);
+                  goToSlide(index);
+                  startSlider();
+              });
+          });
+
+          if (slides.length > 0) {
+              startSlider();
+          }
+      });
+  </script>
+jsonLd: |
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "SAFEinEA Online Safety Courses",
+    "url": "https://www.safeinea.ca/#courses",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "item": {"@type": "Course", "name": "Applying Mental Health First Aid (ALGEE Method)", "description": "Recognize and respond to mental health crises using the evidence-based ALGEE action plan.", "provider": {"@type": "Organization", "name": "SAFEinEA Incorporated"}, "offers": {"@type": "Offer", "price": "30.00", "priceCurrency": "CAD"}, "url": "https://treasurebaseacademy.safeinea.ca/#/public-dashboard"}},
+      {"@type": "ListItem", "position": 2, "item": {"@type": "Course", "name": "First Aid", "description": "Essential first aid skills for the workplace including CPR, wound care, and emergency response.", "provider": {"@type": "Organization", "name": "SAFEinEA Incorporated"}, "offers": {"@type": "Offer", "price": "35.00", "priceCurrency": "CAD"}, "url": "https://treasurebaseacademy.safeinea.ca/#/public-dashboard"}},
+      {"@type": "ListItem", "position": 3, "item": {"@type": "Course", "name": "Food Safety for Food Handlers", "description": "Comprehensive food safety training for food service workers to prevent contamination and illness.", "provider": {"@type": "Organization", "name": "SAFEinEA Incorporated"}, "offers": {"@type": "Offer", "price": "60.00", "priceCurrency": "CAD"}, "url": "https://treasurebaseacademy.safeinea.ca/#/public-dashboard"}},
+      {"@type": "ListItem", "position": 4, "item": {"@type": "Course", "name": "Fundamentals of Electrical Safety", "description": "Understand electrical hazards, safe work practices, and lockout/tagout procedures.", "provider": {"@type": "Organization", "name": "SAFEinEA Incorporated"}, "offers": {"@type": "Offer", "price": "50.00", "priceCurrency": "CAD"}, "url": "https://treasurebaseacademy.safeinea.ca/#/public-dashboard"}},
+      {"@type": "ListItem", "position": 5, "item": {"@type": "Course", "name": "Hazard Identification & Risk Control", "description": "Identify, assess, and control workplace hazards to prevent injuries and maintain compliance.", "provider": {"@type": "Organization", "name": "SAFEinEA Incorporated"}, "offers": {"@type": "Offer", "price": "35.00", "priceCurrency": "CAD"}, "url": "https://treasurebaseacademy.safeinea.ca/#/public-dashboard"}},
+      {"@type": "ListItem", "position": 6, "item": {"@type": "Course", "name": "Introduction to Advanced Food Safety", "description": "Advanced food safety principles including HACCP, food regulations, and risk management.", "provider": {"@type": "Organization", "name": "SAFEinEA Incorporated"}, "offers": {"@type": "Offer", "price": "30.00", "priceCurrency": "CAD"}, "url": "https://treasurebaseacademy.safeinea.ca/#/public-dashboard"}},
+      {"@type": "ListItem", "position": 7, "item": {"@type": "Course", "name": "Safety Communications", "description": "Effective safety communication strategies for supervisors and safety officers.", "provider": {"@type": "Organization", "name": "SAFEinEA Incorporated"}, "offers": {"@type": "Offer", "price": "35.00", "priceCurrency": "CAD"}, "url": "https://treasurebaseacademy.safeinea.ca/#/public-dashboard"}},
+      {"@type": "ListItem", "position": 8, "item": {"@type": "Course", "name": "Tools Safety", "description": "Safe handling, inspection, and use of hand and power tools to reduce workplace injuries.", "provider": {"@type": "Organization", "name": "SAFEinEA Incorporated"}, "offers": {"@type": "Offer", "price": "35.00", "priceCurrency": "CAD"}, "url": "https://treasurebaseacademy.safeinea.ca/#/public-dashboard"}},
+      {"@type": "ListItem", "position": 9, "item": {"@type": "Course", "name": "Workplace Incident Investigations", "description": "Industry-standard accredited training for conducting thorough workplace incident investigations.", "provider": {"@type": "Organization", "name": "SAFEinEA Incorporated"}, "offers": {"@type": "Offer", "price": "200.00", "priceCurrency": "CAD"}, "url": "https://treasurebaseacademy.safeinea.ca/#/public-dashboard"}}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "SAFEinEA Incorporated",
+    "url": "https://www.safeinea.ca",
+    "logo": "https://www.safeinea.ca/Safeinea Black Logo.png",
+    "image": "https://www.safeinea.ca/Safeinea Black Logo.png",
+    "description": "Environmental Health and Safety consulting, training, and on-site services across Canada. SAFE Work Manitoba endorsed.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "CA"
+    },
+    "areaServed": "CA",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Safety Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Customized Safety Training"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Safety Program Development"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "On-Site Safety Consulting"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SAFE Work Manitoba Endorsed Training"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Inspection and Investigation"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "New Workers Orientation"}}
+      ]
+    },
+    "sameAs": [
+      "https://www.youtube.com/@SafetyAdvocates",
+      "https://csse.org/"
+    ]
+  }
+  </script>
+---
+<section id="home" class="relative h-screen min-h-[600px] overflow-hidden bg-gray-900">
+    <div class="hero-slide active absolute inset-0 w-full h-full z-10">
+        <div class="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
+        <img src="/Safety Homepage.jpg" alt="Safety Consulting" class="absolute inset-0 w-full h-full object-cover z-0">
+
+        <div class="relative z-20 h-full flex items-center justify-center text-center px-6 pt-16">
+            <div class="max-w-5xl hero-content w-full">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 md:mb-10 leading-tight text-white">Your Trusted Partner in Workplace <br class="hidden sm:block">Safety and Health</h1>
+                <p class="text-lg sm:text-xl md:text-2xl mb-12 md:mb-16 text-gray-200 max-w-3xl mx-auto">Providing comprehensive Environmental Health and Safety consulting and training services across Canada</p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 w-full px-4 sm:px-0">
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full sm:w-auto text-center">Get in Touch</a>
+                    <a href="#services" class="bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 border-2 border-white rounded-lg transition duration-300 w-full sm:w-auto text-center">Our Services</a>
+                    <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full sm:w-auto text-center flex items-center justify-center">
+                        <i class="fas fa-calendar-check mr-2"></i>Register for SafeWork Endorsed Training
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-slide absolute inset-0 w-full h-full z-10">
+        <div class="absolute inset-0 bg-[rgba(0,50,100,0.7)] z-10"></div>
+        <img src="/environmental hero1.jpg" alt="Environmental Health" class="absolute inset-0 w-full h-full object-cover z-0">
+
+        <div class="relative z-20 h-full flex items-center justify-center text-center px-6 pt-16">
+            <div class="max-w-4xl hero-content w-full">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-white">Protecting People, Places and Policy <br class="hidden md:block">Canadawide Environmental Health</h2>
+                <p class="text-lg sm:text-xl md:text-2xl mb-4 font-light italic text-gray-200">"Science-led testing. Community-led solutions. Clear Data. Safer Communities."</p>
+                <p class="text-base sm:text-lg font-semibold text-blue-300 mb-12 uppercase tracking-widest">Local Knowledge. National Standards. Healthier Outcomes.</p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 w-full px-4 sm:px-0">
+                    <a href="https://www.safeinea.ca/EnvironmentalPublicHealth" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 w-full sm:w-auto text-center">Explore Environmental Health</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute bottom-8 left-0 right-0 z-30 flex justify-center gap-3">
+        <button class="slide-dot w-3 h-3 rounded-full bg-white opacity-100 transition-opacity cursor-pointer" data-index="0" aria-label="Slide 1"></button>
+        <button class="slide-dot w-3 h-3 rounded-full bg-white opacity-40 hover:opacity-100 transition-opacity cursor-pointer" data-index="1" aria-label="Slide 2"></button>
+    </div>
+</section>
+
+<div class="block sm:hidden w-full h-12"></div>
+
+<section class="py-12 md:py-16 bg-gradient-to-r from-blue-50 to-gray-50 relative z-10 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
+            <div data-aos="fade-right" class="w-full lg:w-2/5 text-center lg:text-left order-2 lg:order-1">
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-6">
+                    <i class="fab fa-linkedin text-3xl md:text-4xl text-blue-600"></i>
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800">Join Our Community</h3>
+                </div>
+
+                <p class="text-gray-600 mb-8 text-base md:text-lg leading-relaxed">
+                    Stay ahead with exclusive safety tips, industry updates, and training opportunities.
+                    Follow us for insights that protect your workplace.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
+                    <a href="https://linkedin.com/company/safeinea" target="_blank" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
+                        <i class="fab fa-linkedin-in"></i> Follow on LinkedIn
+                    </a>
+                    <a href="#services" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
+                        <i class="fas fa-shield-alt"></i> Explore Services
+                    </a>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 text-sm text-gray-500">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        <span>Latest Safety Trends</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        <span>Training Updates</span>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-left" class="w-full lg:w-3/5 order-1 lg:order-2">
+                <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-200">
+                    <iframe src="https://www.youtube.com/embed/_7dHFHWYuSE?si=p7wwKBiTk4K6vRbR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="py-10 md:py-16 lg:py-24 bg-gray-100 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+        <div class="text-center mb-10 md:mb-16">
+            <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 uppercase tracking-wide">
+                Our Services
+            </h2>
+
+            <div data-aos="fade-up" data-aos-delay="200" class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mt-12 max-w-5xl mx-auto px-4">
+                {% for tile in services %}
+                <a href="{{ tile.link }}" class="group block relative overflow-hidden rounded-xl shadow-lg cursor-pointer h-64 md:h-80">
+                    <img src="{{ tile.image }}" alt="{{ tile.alt }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition duration-300"></div>
+                    <div class="absolute inset-0 flex items-center justify-center p-4">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white tracking-wider text-center drop-shadow-lg">
+                            {% for line in tile.titleLines %}{{ line }}{% if not loop.last %}<br/>{% endif %}{% endfor %}
+                        </h3>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+
+            <p data-aos="fade-up" data-aos-delay="100" class="text-gray-500 mt-8 max-w-2xl mx-auto text-lg leading-relaxed">
+                We offer a comprehensive range of environmental health and safety services tailored to meet your organization's specific needs.
+            </p>
+        </div>
+
+        {% for svc in serviceDetails %}
+        <div id="{{ svc.id }}" class="mb-12 scroll-mt-32" data-aos="fade-up">
+            <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                <div class="flex flex-col md:flex-row{% if svc.reverse %}-reverse{% endif %}">
+                    <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                        <div class="text-blue-500 mb-4"><i class="{{ svc.icon }} text-4xl"></i></div>
+                        <h3 class="text-2xl font-semibold mb-3 text-gray-800">{{ svc.title }}</h3>
+                        <p class="text-gray-600 leading-relaxed">{{ svc.description }}</p>
+                    </div>
+                    {% if svc.containObject %}
+                    <div class="md:w-1/2 flex items-center justify-center p-6 bg-gray-50 h-64 md:h-auto">
+                        <img src="{{ svc.image }}" alt="{{ svc.imageAlt }}" class="max-w-full max-h-full object-contain">
+                    </div>
+                    {% else %}
+                    <div class="md:w-1/2 h-64 md:h-auto">
+                        <img src="{{ svc.image }}" alt="{{ svc.imageAlt }}" class="w-full h-full object-cover">
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div data-aos="zoom-in" class="bg-blue-50 p-6 md:p-16 rounded-xl text-center mt-10 md:mt-16 shadow-sm border border-blue-100">
+            <h3 class="text-2xl md:text-3xl font-semibold mb-4 text-gray-800">Start Your Safety Training Today</h3>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto text-lg">Join hundreds of professionals who transformed their workplace safety through our certified programs.</p>
+            <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center w-full sm:w-auto">
+                <i class="fas fa-lock-open mr-2"></i>Secure Your Spot
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="courses" class="py-10 md:py-16 lg:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-8 md:mb-12">
+            <span data-aos="fade-up" class="inline-block bg-orange-100 text-orange-600 text-xs font-bold uppercase tracking-widest px-4 py-1 rounded-full mb-4">Treasure Base Academy</span>
+            <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Learn Online. Stay Safe.</h2>
+            <p data-aos="fade-up" data-aos-delay="100" class="text-gray-500 max-w-2xl mx-auto text-lg">Enroll in our industry-recognized online safety courses with self-paced, affordable, and built for Canadian workplaces.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {% for course in onlineCourses %}
+            <div data-aos="fade-up" data-aos-delay="{{ loop.index0 * 50 }}" class="bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 flex flex-col">
+                <div class="w-full bg-gray-100">
+                    <img src="{{ course.image }}" alt="{{ course.title }}" class="w-full h-auto object-contain">
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                    <h3 class="text-base font-bold text-gray-800 mb-2">{{ course.title }}</h3>
+                    <p class="text-sm text-gray-500 mb-4 flex-1">{{ course.description }}</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-xs text-blue-500 font-semibold uppercase">{{ course.badge }}</span>
+                        <span class="text-orange-500 font-bold">{{ course.price }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div data-aos="zoom-in" class="mt-12 text-center">
+            <p class="text-gray-500 mb-6 text-base">All courses are self-paced and accessible from any device. Certificates issued upon completion.</p>
+            <a href="https://treasurebaseacademy.safeinea.ca/#/public-dashboard" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg text-lg w-full sm:w-auto">
+                <i class="fas fa-graduation-cap"></i> Browse All Courses & Enroll
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-10 md:py-16 lg:py-24 bg-white overflow-hidden scroll-mt-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800">Contact Information</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
+            {% for card in contactCards %}
+            <div data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}" class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition duration-300">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                    <i class="{{ card.icon }} text-blue-600 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">{{ card.title }}</h3>
+                {% if card.rows %}
+                <div class="space-y-2 text-sm">
+                    {% for row in card.rows %}
+                    <p class="text-gray-600{% if row.extraGapBefore %} mt-2{% endif %}"><span class="font-medium text-gray-800 block">{{ row.label }}</span> {% if row.link %}<a href="{{ row.link }}" class="text-blue-600 hover:underline{% if row.breakAll %} break-all{% endif %}">{{ row.value }}</a>{% else %}{{ row.value }}{% endif %}</p>
+                    {% endfor %}
+                </div>
+                {% elif card.hours %}
+                <ul class="space-y-3 text-sm">
+                    {% for h in card.hours %}
+                    <li class="flex justify-between items-center{% if not loop.last %} pb-2 border-b border-gray-200{% endif %}">
+                        <span class="text-gray-600">{{ h.day }}</span>
+                        <span class="font-medium text-gray-800">{{ h.time }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% elif card.checklist %}
+                <ul class="space-y-2 text-sm text-gray-600">
+                    {% for item in card.checklist %}
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1 shrink-0"></i> <span>{{ item }}</span></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

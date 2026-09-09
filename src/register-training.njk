@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+permalink: register-training.html
+htmlClass: scroll-smooth
+title: Register for Training | SAFEinEA Incorporated
+description: "Register for SAFEinEA training — choose between SAFE Work Manitoba endorsed courses or self-paced LMS training through Treasure Base Academy."
+ogDescription: "Choose between SAFE Work Manitoba endorsed courses or self-paced LMS training through Treasure Base Academy."
+twitterDescription: "Choose between SAFE Work Manitoba endorsed courses or self-paced LMS training through Treasure Base Academy."
+canonical: https://www.safeinea.ca/register-training
+useAos: true
+aosOffset: 50
+nav:
+  variant: mega
+  active: ""
+  ctaHref: "/register-training"
+  ctaLabel: "Register For Training"
+  ctaBg: "bg-amber-600"
+  ctaHoverBg: "hover:bg-amber-700"
+  linkHoverClass: "hover:text-blue-500"
+  underlineColor: "#3b82f6"
+  servicesBase: "/"
+  envHealthBase: "https://www.safeinea.ca/EnvironmentalPublicHealth"
+  coursesHref: "/#courses"
+---
+<section class="py-10 md:py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <h1 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Register for Training</h1>
+        <p data-aos="fade-up" data-aos-delay="100" class="text-gray-500 max-w-2xl mx-auto text-lg mb-10 md:mb-12">Choose the training program that's right for you.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {% for option in registrationOptions %}
+            <a data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}" href="{{ option.link }}" target="_blank" rel="noopener" class="group flex flex-col bg-white rounded-2xl shadow-md hover:shadow-2xl transition duration-300 overflow-hidden border border-gray-100">
+                <div class="h-2 {{ option.barColor }} w-full"></div>
+                <div class="h-56 flex items-center justify-center bg-gray-50 p-6">
+                    <img src="{{ option.image }}" alt="{{ option.imageAlt }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-6 text-center flex flex-col flex-1">
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-3 flex items-center justify-center min-h-[3.5rem] md:min-h-[4rem]">{{ option.title }}</h2>
+                    <p class="text-gray-500 text-sm mb-6">{{ option.description }}</p>
+                    <span class="mt-auto inline-flex items-center justify-center gap-2 {{ option.buttonColor }} {{ option.buttonHoverColor }} text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full">{{ option.buttonLabel }} <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>

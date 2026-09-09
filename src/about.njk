@@ -1,0 +1,178 @@
+---
+layout: layouts/base.njk
+permalink: about.html
+title: About Us | SAFEinEA Incorporated
+description: "Learn about SAFEinEA Incorporated — our mission, founder Bamidele Oni CRSP, and our commitment to workplace safety and environmental health across Canada."
+twitterDescription: "Learn about SAFEinEA Incorporated — our mission, founder, and commitment to safety across Canada."
+canonical: https://www.safeinea.ca/about
+useAos: true
+nav:
+  variant: simple
+  active: about
+  ctaHref: "https://swmb.bluedrop.io/storefront/safeinea"
+  ctaLabel: "Register for Training"
+  ctaBg: "bg-blue-600"
+  ctaHoverBg: "hover:bg-blue-700"
+  linkHoverClass: "hover:text-blue-500"
+  mobileLinkHoverClass: "hover:text-blue-500"
+  underlineColor: "#3b82f6"
+pageScripts: |
+  <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('[id^="slide"]');
+      const totalSlides = slides.length;
+
+      function showSlide(index) {
+          slides.forEach(slide => {
+              slide.classList.remove('opacity-100');
+              slide.classList.add('opacity-0');
+          });
+
+          if(slides[index]) {
+              slides[index].classList.remove('opacity-0');
+              slides[index].classList.add('opacity-100');
+          }
+          currentSlide = index;
+      }
+
+      function nextSlide() {
+          if(totalSlides > 0) {
+              currentSlide = (currentSlide + 1) % totalSlides;
+              showSlide(currentSlide);
+          }
+      }
+
+      if(totalSlides > 0) {
+          setInterval(nextSlide, 10000);
+          showSlide(0);
+      }
+  </script>
+jsonLd: |
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "url": "https://www.safeinea.ca/about",
+    "name": "About SAFEinEA Incorporated",
+    "description": "Learn about SAFEinEA Incorporated, our mission, and our founder Bamidele Oni CRSP.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "SAFEinEA Incorporated",
+      "url": "https://www.safeinea.ca",
+      "logo": "https://www.safeinea.ca/Safeinea Black Logo.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Bamidele Oni",
+        "jobTitle": "Founder & Principal Safety Consultant"
+      },
+      "areaServed": "CA",
+      "sameAs": ["https://www.youtube.com/@SafetyAdvocates", "https://csse.org/"]
+    }
+  }
+  </script>
+---
+<section class="py-16 bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-12">
+
+            <div class="lg:w-2/3">
+                <h1 data-aos="fade-down" class="text-4xl font-bold mb-8 text-gray-800">About SAFEinEA Incorporated</h1>
+
+                <div data-aos="zoom-in" data-aos-delay="100" class="mb-12 relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-lg shadow-md">
+                    {% for photo in aboutPhotos %}
+                    <img src="{{ photo.image }}" alt="{{ photo.alt }}" class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 {% if loop.first %}opacity-100{% else %}opacity-0{% endif %}" id="slide{{ loop.index }}">
+                    {% endfor %}
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" class="mb-8">
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        SAFEinEA Incorporated is a leading Environmental Health and Safety Consulting and Training Firm dedicated to helping Canadian businesses create safer and healthier workplaces. Founded by Bamidele Oni, a seasoned safety and health professional with extensive combination of qualifications and experience, in the field of Environmental Health, Public Health, Occupational Health and Safety and Environmental Management.
+                    </p>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        Added to this, he is an educationist, and proficient in curriculum development. As a lecturer, he has facilitated several trainings and also coached students from basis to professionalism in colleges and professional institutions. We bring expertise and passion to every project.
+                    </p>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        His experience as an enforcement officer, who worked as a provincial safety and health officer, positioned him to understand what your workplace needs to comply with legislative requirements in various industries.
+                    </p>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        SAFEinEA Incorporated provides Environmental Health and Safety consulting and training services. Our offerings/services include SAFE Work Manitoba endorsed trainings, customized on-site programs, advisory services, and the development of safety programs. We also partner with training institutions to deliver basic academic lectures as electives or main course to equip students with safety and health orientation regardless of their field of learning.
+                    </p>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        SAFEinEA is an accredited training provider in Manitoba and assists businesses in meeting legislative requirements and maintaining safe work environments.
+                    </p>
+                </div>
+
+                <div data-aos="fade-right" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-gray-800">Our Mission</h2>
+                    <p class="text-gray-600 mb-6">
+                        To empower organizations with the knowledge, tools, and strategies needed to protect their most valuable asset - their people, while ensuring regulatory compliance and smooth operation without disruptions.
+                    </p>
+                </div>
+
+                <div data-aos="fade-right" data-aos-delay="100" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-gray-800">Our Approach</h2>
+                    <p class="text-gray-600 mb-6">
+                        We believe in practical, scalable solutions that integrate seamlessly with your operations. Our services and training uphold general principles of occupational health and safety but customizable to your workplace size, and specific challenges, ensuring a work environment that is both safe and healthy.
+                    </p>
+                </div>
+
+                <div data-aos="fade-up" class="bg-gray-50 p-8 rounded-lg shadow-sm">
+                    <h2 class="text-2xl font-semibold mb-6 text-gray-800">Our Founder</h2>
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div data-aos="zoom-in" data-aos-delay="200" class="md:w-1/4">
+                            <div class="w-40 h-40 rounded-full overflow-hidden mx-auto border-4 border-blue-100">
+                                <img src="{{ founder.photo }}" alt="Bamidele Oni, Founder of SAFEinEA" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">{{ founder.name }}</h3>
+                            {% for paragraph in founder.bio %}
+                            <p class="text-gray-600{% if not loop.last %} mb-4{% endif %}">
+                                {{ paragraph }}
+                            </p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:w-1/3">
+                <div data-aos="fade-left" data-aos-delay="200" class="bg-gray-50 p-6 rounded-lg shadow-md sticky top-24">
+                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Our Training Deliverables</h2>
+                    <ul class="space-y-3">
+                        {% for item in deliverables %}
+                        <li class="flex items-start">
+                            <i class="{{ item.icon }} text-blue-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600">{{ item.text }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="mt-8">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Quick Links</h2>
+                        <div class="space-y-4">
+                            <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full block text-center flex items-center justify-center">
+                                <i class="fas fa-user-graduate mr-2"></i> Register for Training
+                            </a>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]"></div>
+                            <a href="/#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 w-full block text-center flex items-center justify-center ">
+                                <i class="fas fa-envelope mr-1.5 "></i> Contact Us
+                            </a>
+                            <a href="https://www.youtube.com/@SafetyAdvocates" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 w-full block text-center flex items-center justify-center ">
+                                <i class="fab fa-youtube mr-1.5 "></i> Safety Advocate Channel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-aos="flip-up" class="bg-amber-50 p-6 rounded-lg border-l-4 border-amber-600 mt-8 shadow-sm">
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">Upcoming Training Sessions</h3>
+            <p class="text-gray-600 mb-4">Join our next Safety and Health Training cohort:</p>
+            <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-6 rounded-lg inline-block transition duration-300">
+                <i class="fas fa-clipboard-list mr-2"></i>View Schedule & Register
+            </a>
+        </div>
+    </div>
+</section>
