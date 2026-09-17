@@ -1,0 +1,43 @@
+{
+  "heroSlide1": {
+    "image": "/Safety Homepage.jpg",
+    "heading": "Your Trusted Partner in Workplace Safety and Health",
+    "subtext": "Providing comprehensive Environmental Health and Safety consulting and training services across Canada",
+    "cta1Label": "Get in Touch",
+    "cta2Label": "Our Services",
+    "cta3Label": "Register for SafeWork Endorsed Training"
+  },
+  "heroSlide2": {
+    "image": "/environmental hero1.jpg",
+    "heading": "Protecting People, Places and Policy Canadawide Environmental Health",
+    "quote": "Science-led testing. Community-led solutions. Clear Data. Safer Communities.",
+    "tagline": "Local Knowledge. National Standards. Healthier Outcomes.",
+    "ctaLabel": "Explore Environmental Health"
+  },
+  "community": {
+    "heading": "Join Our Community",
+    "text": "Stay ahead with exclusive safety tips, industry updates, and training opportunities. Follow us for insights that protect your workplace.",
+    "linkedinLabel": "Follow on LinkedIn",
+    "servicesLabel": "Explore Services",
+    "videoUrl": "https://www.youtube.com/embed/_7dHFHWYuSE?si=p7wwKBiTk4K6vRbR"
+  },
+  "servicesSection": {
+    "heading": "Our Services",
+    "intro": "We offer a comprehensive range of environmental health and safety services tailored to meet your organization's specific needs."
+  },
+  "servicesCta": {
+    "heading": "Start Your Safety Training Today",
+    "text": "Join hundreds of professionals who transformed their workplace safety through our certified programs.",
+    "buttonLabel": "Secure Your Spot"
+  },
+  "coursesSection": {
+    "badge": "Treasure Base Academy",
+    "heading": "Learn Online. Stay Safe.",
+    "subtext": "Enroll in our industry-recognized online safety courses with self-paced, affordable, and built for Canadian workplaces.",
+    "footerText": "All courses are self-paced and accessible from any device. Certificates issued upon completion.",
+    "buttonLabel": "Browse All Courses & Enroll"
+  },
+  "contactSection": {
+    "heading": "Contact Information"
+  }
+}

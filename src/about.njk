@@ -76,7 +76,7 @@ jsonLd: |
         <div class="flex flex-col lg:flex-row gap-12">
 
             <div class="lg:w-2/3">
-                <h1 data-aos="fade-down" class="text-4xl font-bold mb-8 text-gray-800">About SAFEinEA Incorporated</h1>
+                <h1 data-aos="fade-down" class="text-4xl font-bold mb-8 text-gray-800">{{ aboutContent.heading }}</h1>
 
                 <div data-aos="zoom-in" data-aos-delay="100" class="mb-12 relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-lg shadow-md">
                     {% for photo in aboutPhotos.photos %}
@@ -85,39 +85,29 @@ jsonLd: |
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="200" class="mb-8">
+                    {% for paragraph in aboutContent.introParagraphs %}
                     <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                        SAFEinEA Incorporated is a leading Environmental Health and Safety Consulting and Training Firm dedicated to helping Canadian businesses create safer and healthier workplaces. Founded by Bamidele Oni, a seasoned safety and health professional with extensive combination of qualifications and experience, in the field of Environmental Health, Public Health, Occupational Health and Safety and Environmental Management.
+                        {{ paragraph }}
                     </p>
-                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                        Added to this, he is an educationist, and proficient in curriculum development. As a lecturer, he has facilitated several trainings and also coached students from basis to professionalism in colleges and professional institutions. We bring expertise and passion to every project.
-                    </p>
-                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                        His experience as an enforcement officer, who worked as a provincial safety and health officer, positioned him to understand what your workplace needs to comply with legislative requirements in various industries.
-                    </p>
-                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                        SAFEinEA Incorporated provides Environmental Health and Safety consulting and training services. Our offerings/services include SAFE Work Manitoba endorsed trainings, customized on-site programs, advisory services, and the development of safety programs. We also partner with training institutions to deliver basic academic lectures as electives or main course to equip students with safety and health orientation regardless of their field of learning.
-                    </p>
-                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                        SAFEinEA is an accredited training provider in Manitoba and assists businesses in meeting legislative requirements and maintaining safe work environments.
-                    </p>
+                    {% endfor %}
                 </div>
 
                 <div data-aos="fade-right" class="mb-8">
-                    <h2 class="text-2xl font-semibold mb-4 text-gray-800">Our Mission</h2>
+                    <h2 class="text-2xl font-semibold mb-4 text-gray-800">{{ aboutContent.mission.heading }}</h2>
                     <p class="text-gray-600 mb-6">
-                        To empower organizations with the knowledge, tools, and strategies needed to protect their most valuable asset - their people, while ensuring regulatory compliance and smooth operation without disruptions.
+                        {{ aboutContent.mission.text }}
                     </p>
                 </div>
 
                 <div data-aos="fade-right" data-aos-delay="100" class="mb-8">
-                    <h2 class="text-2xl font-semibold mb-4 text-gray-800">Our Approach</h2>
+                    <h2 class="text-2xl font-semibold mb-4 text-gray-800">{{ aboutContent.approach.heading }}</h2>
                     <p class="text-gray-600 mb-6">
-                        We believe in practical, scalable solutions that integrate seamlessly with your operations. Our services and training uphold general principles of occupational health and safety but customizable to your workplace size, and specific challenges, ensuring a work environment that is both safe and healthy.
+                        {{ aboutContent.approach.text }}
                     </p>
                 </div>
 
                 <div data-aos="fade-up" class="bg-gray-50 p-8 rounded-lg shadow-sm">
-                    <h2 class="text-2xl font-semibold mb-6 text-gray-800">Our Founder</h2>
+                    <h2 class="text-2xl font-semibold mb-6 text-gray-800">{{ aboutContent.founderSectionHeading }}</h2>
                     <div class="flex flex-col md:flex-row gap-8 items-start">
                         <div data-aos="zoom-in" data-aos-delay="200" class="md:w-1/4">
                             <div class="w-40 h-40 rounded-full overflow-hidden mx-auto border-4 border-blue-100">
@@ -168,10 +158,10 @@ jsonLd: |
         </div>
 
         <div data-aos="flip-up" class="bg-amber-50 p-6 rounded-lg border-l-4 border-amber-600 mt-8 shadow-sm">
-            <h3 class="text-xl font-semibold mb-4 text-gray-800">Upcoming Training Sessions</h3>
-            <p class="text-gray-600 mb-4">Join our next Safety and Health Training cohort:</p>
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">{{ aboutContent.trainingCta.heading }}</h3>
+            <p class="text-gray-600 mb-4">{{ aboutContent.trainingCta.text }}</p>
             <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-6 rounded-lg inline-block transition duration-300">
-                <i class="fas fa-clipboard-list mr-2"></i>View Schedule & Register
+                <i class="fas fa-clipboard-list mr-2"></i>{{ aboutContent.trainingCta.buttonLabel }}
             </a>
         </div>
     </div>

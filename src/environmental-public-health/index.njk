@@ -249,21 +249,21 @@ pageScripts: |
 ---
 <section class="hero-env text-white text-center px-4">
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6 scroll-hidden">Protecting People, Places and Policy  Canadawide Environmental Health</h1>
-        <p class="text-xl md:text-2xl mb-4 font-light italic scroll-hidden" style="transition-delay: 0.2s;">"Science-led testing. Community-led solutions. Clear Data. Safer Communities."</p>
-        <p class="text-lg font-semibold text-blue-300 mb-8 uppercase tracking-widest scroll-hidden" style="transition-delay: 0.4s;">Local Knowledge. National Standards. Healthier Outcomes.</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 scroll-hidden">{{ envHealthContent.hero.heading }}</h1>
+        <p class="text-xl md:text-2xl mb-4 font-light italic scroll-hidden" style="transition-delay: 0.2s;">"{{ envHealthContent.hero.quote }}"</p>
+        <p class="text-lg font-semibold text-blue-300 mb-8 uppercase tracking-widest scroll-hidden" style="transition-delay: 0.4s;">{{ envHealthContent.hero.tagline }}</p>
     </div>
 </section>
 
 <section class="py-12 bg-gray-200 scroll-hidden">
     <div class="max-w-5xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold text-gray-800 mb-6">Why work with us</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">{{ envHealthContent.whyUs.heading }}</h2>
         <p class="text-lg text-gray-600 leading-relaxed mb-4">
-            We combine accredited laboratory testing, field sampling expertise and community health practice to deliver environmental health and risk assessment services across Canada.
+            {{ envHealthContent.whyUs.text1 }}
         </p>
         <div id="services">
             <p class="text-lg text-gray-600 leading-relaxed">
-                Our teams design monitoring programs and preventive controls that align with federal and provincial frameworks including the Guidelines for Canadian Drinking Water Quality, Canadian Environmental Quality Guidelines, Canadian Ambient Air Quality Standards, the Safe Food for Canadians Regulations, and provincial public health standards, so clients meet both scientific best practice and regulatory expectations.
+                {{ envHealthContent.whyUs.text2 }}
             </p>
         </div>
     </div>
@@ -316,15 +316,15 @@ pageScripts: |
         {% endfor %}
 
         <div class="bg-blue-50 p-12 rounded-lg text-center mt-12 shadow-sm border border-blue-100 scroll-hidden">
-            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Secure Your Environment Today</h3>
-            <p class="text-gray-600 mb-6 max-w-2xl mx-auto">Ensure your facilities meet scientific best practices and public health standards. Reach out to our consulting team for specialized assessments.</p>
+            <h3 class="text-2xl font-semibold mb-4 text-gray-800">{{ envHealthContent.finalCta.heading }}</h3>
+            <p class="text-gray-600 mb-6 max-w-2xl mx-auto">{{ envHealthContent.finalCta.text }}</p>
 
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="/#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center">
-                    <i class="fas fa-envelope mr-2"></i>Contact Our Experts
+                    <i class="fas fa-envelope mr-2"></i>{{ envHealthContent.finalCta.contactLabel }}
                 </a>
                 <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center">
-                    Register for Training
+                    {{ envHealthContent.finalCta.registerLabel }}
                 </a>
             </div>
         </div>

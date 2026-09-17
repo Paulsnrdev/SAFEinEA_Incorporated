@@ -29,9 +29,9 @@ pageStyles: |
 ---
 <section class="bg-gray-800 text-white py-20 overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 text-center">
-        <h1 data-aos="fade-down" class="text-4xl md:text-5xl font-bold mb-6">Client Testimonials</h1>
+        <h1 data-aos="fade-down" class="text-4xl md:text-5xl font-bold mb-6">{{ testimonialsContent.hero.heading }}</h1>
         <p data-aos="fade-up" data-aos-delay="200" class="text-xl md:text-2xl max-w-3xl mx-auto">
-            Hear what our clients say about our environmental health and safety services
+            {{ testimonialsContent.hero.subtext }}
         </p>
     </div>
 </section>
@@ -39,9 +39,9 @@ pageStyles: |
 <section class="py-16 bg-white overflow-hidden">
     <div class="max-w-6xl mx-auto px-4">
         <div data-aos="fade-up" class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-4 text-gray-800">Trusted by Canadian Businesses</h2>
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">{{ testimonialsContent.trustedSection.heading }}</h2>
             <p class="text-gray-600 max-w-3xl mx-auto">
-                We've helped organizations across Canada improve their workplace safety and compliance.
+                {{ testimonialsContent.trustedSection.subtext }}
             </p>
         </div>
 
@@ -73,7 +73,7 @@ pageStyles: |
 
 <section class="py-12 bg-gray-50 overflow-hidden">
     <div class="container mx-auto px-4">
-        <h2 data-aos="fade-up" class="text-3xl font-bold text-center mb-8">Our Statistics</h2>
+        <h2 data-aos="fade-up" class="text-3xl font-bold text-center mb-8">{{ testimonialsContent.statsHeading }}</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {% for card in statsCards.stats %}
@@ -93,7 +93,7 @@ pageStyles: |
     <div class="container mx-auto px-4 relative z-10">
         <h2 data-aos="fade-right" class="text-3xl font-bold text-center mb-8 relative">
             <span class="relative inline-block">
-                Featured Safety Videos
+                {{ testimonialsContent.videoSection.heading }}
                 <span class="absolute bottom-0 left-0 w-full h-1 transform -translate-y-1 scale-x-75"></span>
             </span>
         </h2>
@@ -125,7 +125,7 @@ pageStyles: |
                         class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-300 group"
                         target="_blank">
                         <i class="fab fa-youtube mr-3 text-xl group-hover:scale-110 transition-transform"></i>
-                        <span class="font-medium">Subscribe to Our Channel</span>
+                        <span class="font-medium">{{ testimonialsContent.videoSection.subscribeLabel }}</span>
                     </a>
                 </div>
             </div>
@@ -136,13 +136,13 @@ pageStyles: |
 <section class="bg-white pt-12 pb-24 overflow-hidden">
     <div class="max-w-6xl mx-auto px-4">
         <div data-aos="zoom-in" class="mt-0 text-center">
-            <h3 class="text-2xl font-semibold mb-6 text-gray-800">Ready to improve your workplace safety?</h3>
+            <h3 class="text-2xl font-semibold mb-6 text-gray-800">{{ testimonialsContent.finalCta.heading }}</h3>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="/#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
-                    Contact Us Today
+                    {{ testimonialsContent.finalCta.contactLabel }}
                 </a>
                 <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
-                    Register for Training
+                    {{ testimonialsContent.finalCta.registerLabel }}
                 </a>
             </div>
         </div>

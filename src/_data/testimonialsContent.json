@@ -1,0 +1,20 @@
+{
+  "hero": {
+    "heading": "Client Testimonials",
+    "subtext": "Hear what our clients say about our environmental health and safety services"
+  },
+  "trustedSection": {
+    "heading": "Trusted by Canadian Businesses",
+    "subtext": "We've helped organizations across Canada improve their workplace safety and compliance."
+  },
+  "statsHeading": "Our Statistics",
+  "videoSection": {
+    "heading": "Featured Safety Videos",
+    "subscribeLabel": "Subscribe to Our Channel"
+  },
+  "finalCta": {
+    "heading": "Ready to improve your workplace safety?",
+    "contactLabel": "Contact Us Today",
+    "registerLabel": "Register for Training"
+  }
+}

@@ -17,6 +17,66 @@ collections:
   - name: "homepage"
     label: "Homepage"
     files:
+      - name: "content"
+        label: "Page Text (hero, headings, CTAs)"
+        file: "src/_data/homeContent.json"
+        fields:
+          - label: "Hero Slide 1 (Safety & Health)"
+            name: "heroSlide1"
+            widget: "object"
+            fields:
+              - { label: "Background Image", name: "image", widget: "image" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+              - { label: "Button 1 Label (Get in Touch)", name: "cta1Label", widget: "string" }
+              - { label: "Button 2 Label (Our Services)", name: "cta2Label", widget: "string" }
+              - { label: "Button 3 Label (Register)", name: "cta3Label", widget: "string" }
+          - label: "Hero Slide 2 (Environmental Health)"
+            name: "heroSlide2"
+            widget: "object"
+            fields:
+              - { label: "Background Image", name: "image", widget: "image" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Quote", name: "quote", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Button Label", name: "ctaLabel", widget: "string" }
+          - label: "Join Our Community Section"
+            name: "community"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "LinkedIn Button Label", name: "linkedinLabel", widget: "string" }
+              - { label: "Services Button Label", name: "servicesLabel", widget: "string" }
+              - { label: "YouTube Embed URL", name: "videoUrl", widget: "string" }
+          - label: "Services Section Intro"
+            name: "servicesSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro Text", name: "intro", widget: "text" }
+          - label: "Services CTA Box"
+            name: "servicesCta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Button Label", name: "buttonLabel", widget: "string" }
+          - label: "Online Courses Section"
+            name: "coursesSection"
+            widget: "object"
+            fields:
+              - { label: "Badge Text", name: "badge", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+              - { label: "Footer Text", name: "footerText", widget: "text" }
+              - { label: "Button Label", name: "buttonLabel", widget: "string" }
+          - label: "Contact Section"
+            name: "contactSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+
       - name: "services"
         label: "Services Tiles (top of Our Services section)"
         file: "src/_data/services.json"
@@ -101,6 +161,33 @@ collections:
   - name: "about_page"
     label: "About Page"
     files:
+      - name: "content"
+        label: "Page Text (heading, intro, mission, approach, CTA)"
+        file: "src/_data/aboutContent.json"
+        fields:
+          - { label: "Page Heading", name: "heading", widget: "string" }
+          - { label: "Intro Paragraphs", name: "introParagraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+          - label: "Our Mission"
+            name: "mission"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - label: "Our Approach"
+            name: "approach"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - { label: "Founder Section Heading", name: "founderSectionHeading", widget: "string" }
+          - label: "Upcoming Training CTA Box"
+            name: "trainingCta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Button Label", name: "buttonLabel", widget: "string" }
+
       - name: "founder"
         label: "Founder Bio"
         file: "src/_data/founder.json"
@@ -135,6 +222,37 @@ collections:
   - name: "testimonials_page"
     label: "Testimonials Page"
     files:
+      - name: "content"
+        label: "Page Text (hero, headings, CTA)"
+        file: "src/_data/testimonialsContent.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+          - label: "Trusted By Section"
+            name: "trustedSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+          - { label: "Statistics Section Heading", name: "statsHeading", widget: "string" }
+          - label: "Video Section"
+            name: "videoSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subscribe Button Label", name: "subscribeLabel", widget: "string" }
+          - label: "Final CTA"
+            name: "finalCta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Contact Button Label", name: "contactLabel", widget: "string" }
+              - { label: "Register Button Label", name: "registerLabel", widget: "string" }
+
       - name: "testimonials"
         label: "Testimonials"
         file: "src/_data/testimonials.json"
@@ -176,6 +294,8 @@ collections:
         label: "Registration Options"
         file: "src/_data/registrationOptions.json"
         fields:
+          - { label: "Page Heading", name: "heading", widget: "string" }
+          - { label: "Page Subtext", name: "subtext", widget: "string" }
           - label: "Options"
             name: "options"
             widget: "list"
@@ -194,6 +314,33 @@ collections:
   - name: "environmental_health_page"
     label: "Environmental & Public Health Page"
     files:
+      - name: "content"
+        label: "Page Text (hero, intro, CTA)"
+        file: "src/_data/envHealthContent.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Quote", name: "quote", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+          - label: "Why Work With Us Section"
+            name: "whyUs"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Paragraph 1", name: "text1", widget: "text" }
+              - { label: "Paragraph 2", name: "text2", widget: "text" }
+          - label: "Final CTA"
+            name: "finalCta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Contact Button Label", name: "contactLabel", widget: "string" }
+              - { label: "Register Button Label", name: "registerLabel", widget: "string" }
+
       - name: "services"
         label: "Service Sections"
         file: "src/_data/envServices.json"

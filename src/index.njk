@@ -185,18 +185,18 @@ jsonLd: |
 <section id="home" class="relative h-screen min-h-[600px] overflow-hidden bg-gray-900">
     <div class="hero-slide active absolute inset-0 w-full h-full z-10">
         <div class="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
-        <img src="/Safety Homepage.jpg" alt="Safety Consulting" class="absolute inset-0 w-full h-full object-cover z-0">
+        <img src="{{ homeContent.heroSlide1.image }}" alt="Safety Consulting" class="absolute inset-0 w-full h-full object-cover z-0">
 
         <div class="relative z-20 h-full flex items-center justify-center text-center px-6 pt-16">
             <div class="max-w-5xl hero-content w-full">
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 md:mb-10 leading-tight text-white">Your Trusted Partner in Workplace <br class="hidden sm:block">Safety and Health</h1>
-                <p class="text-lg sm:text-xl md:text-2xl mb-12 md:mb-16 text-gray-200 max-w-3xl mx-auto">Providing comprehensive Environmental Health and Safety consulting and training services across Canada</p>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 md:mb-10 leading-tight text-white">{{ homeContent.heroSlide1.heading }}</h1>
+                <p class="text-lg sm:text-xl md:text-2xl mb-12 md:mb-16 text-gray-200 max-w-3xl mx-auto">{{ homeContent.heroSlide1.subtext }}</p>
 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 w-full px-4 sm:px-0">
-                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full sm:w-auto text-center">Get in Touch</a>
-                    <a href="#services" class="bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 border-2 border-white rounded-lg transition duration-300 w-full sm:w-auto text-center">Our Services</a>
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full sm:w-auto text-center">{{ homeContent.heroSlide1.cta1Label }}</a>
+                    <a href="#services" class="bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 border-2 border-white rounded-lg transition duration-300 w-full sm:w-auto text-center">{{ homeContent.heroSlide1.cta2Label }}</a>
                     <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full sm:w-auto text-center flex items-center justify-center">
-                        <i class="fas fa-calendar-check mr-2"></i>Register for SafeWork Endorsed Training
+                        <i class="fas fa-calendar-check mr-2"></i>{{ homeContent.heroSlide1.cta3Label }}
                     </a>
                 </div>
             </div>
@@ -205,16 +205,16 @@ jsonLd: |
 
     <div class="hero-slide absolute inset-0 w-full h-full z-10">
         <div class="absolute inset-0 bg-[rgba(0,50,100,0.7)] z-10"></div>
-        <img src="/environmental hero1.jpg" alt="Environmental Health" class="absolute inset-0 w-full h-full object-cover z-0">
+        <img src="{{ homeContent.heroSlide2.image }}" alt="Environmental Health" class="absolute inset-0 w-full h-full object-cover z-0">
 
         <div class="relative z-20 h-full flex items-center justify-center text-center px-6 pt-16">
             <div class="max-w-4xl hero-content w-full">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-white">Protecting People, Places and Policy <br class="hidden md:block">Canadawide Environmental Health</h2>
-                <p class="text-lg sm:text-xl md:text-2xl mb-4 font-light italic text-gray-200">"Science-led testing. Community-led solutions. Clear Data. Safer Communities."</p>
-                <p class="text-base sm:text-lg font-semibold text-blue-300 mb-12 uppercase tracking-widest">Local Knowledge. National Standards. Healthier Outcomes.</p>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-white">{{ homeContent.heroSlide2.heading }}</h2>
+                <p class="text-lg sm:text-xl md:text-2xl mb-4 font-light italic text-gray-200">"{{ homeContent.heroSlide2.quote }}"</p>
+                <p class="text-base sm:text-lg font-semibold text-blue-300 mb-12 uppercase tracking-widest">{{ homeContent.heroSlide2.tagline }}</p>
 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 w-full px-4 sm:px-0">
-                    <a href="https://www.safeinea.ca/EnvironmentalPublicHealth" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 w-full sm:w-auto text-center">Explore Environmental Health</a>
+                    <a href="https://www.safeinea.ca/EnvironmentalPublicHealth" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 w-full sm:w-auto text-center">{{ homeContent.heroSlide2.ctaLabel }}</a>
                 </div>
             </div>
         </div>
@@ -234,20 +234,19 @@ jsonLd: |
             <div data-aos="fade-right" class="w-full lg:w-2/5 text-center lg:text-left order-2 lg:order-1">
                 <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-6">
                     <i class="fab fa-linkedin text-3xl md:text-4xl text-blue-600"></i>
-                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800">Join Our Community</h3>
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800">{{ homeContent.community.heading }}</h3>
                 </div>
 
                 <p class="text-gray-600 mb-8 text-base md:text-lg leading-relaxed">
-                    Stay ahead with exclusive safety tips, industry updates, and training opportunities.
-                    Follow us for insights that protect your workplace.
+                    {{ homeContent.community.text }}
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
                     <a href="https://linkedin.com/company/safeinea" target="_blank" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
-                        <i class="fab fa-linkedin-in"></i> Follow on LinkedIn
+                        <i class="fab fa-linkedin-in"></i> {{ homeContent.community.linkedinLabel }}
                     </a>
                     <a href="#services" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
-                        <i class="fas fa-shield-alt"></i> Explore Services
+                        <i class="fas fa-shield-alt"></i> {{ homeContent.community.servicesLabel }}
                     </a>
                 </div>
 
@@ -265,7 +264,7 @@ jsonLd: |
 
             <div data-aos="fade-left" class="w-full lg:w-3/5 order-1 lg:order-2">
                 <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-200">
-                    <iframe src="https://www.youtube.com/embed/_7dHFHWYuSE?si=p7wwKBiTk4K6vRbR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+                    <iframe src="{{ homeContent.community.videoUrl }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
                 </div>
             </div>
         </div>
@@ -277,7 +276,7 @@ jsonLd: |
 
         <div class="text-center mb-10 md:mb-16">
             <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 uppercase tracking-wide">
-                Our Services
+                {{ homeContent.servicesSection.heading }}
             </h2>
 
             <div data-aos="fade-up" data-aos-delay="200" class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mt-12 max-w-5xl mx-auto px-4">
@@ -295,7 +294,7 @@ jsonLd: |
             </div>
 
             <p data-aos="fade-up" data-aos-delay="100" class="text-gray-500 mt-8 max-w-2xl mx-auto text-lg leading-relaxed">
-                We offer a comprehensive range of environmental health and safety services tailored to meet your organization's specific needs.
+                {{ homeContent.servicesSection.intro }}
             </p>
         </div>
 
@@ -323,10 +322,10 @@ jsonLd: |
         {% endfor %}
 
         <div data-aos="zoom-in" class="bg-blue-50 p-6 md:p-16 rounded-xl text-center mt-10 md:mt-16 shadow-sm border border-blue-100">
-            <h3 class="text-2xl md:text-3xl font-semibold mb-4 text-gray-800">Start Your Safety Training Today</h3>
-            <p class="text-gray-600 mb-8 max-w-2xl mx-auto text-lg">Join hundreds of professionals who transformed their workplace safety through our certified programs.</p>
+            <h3 class="text-2xl md:text-3xl font-semibold mb-4 text-gray-800">{{ homeContent.servicesCta.heading }}</h3>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto text-lg">{{ homeContent.servicesCta.text }}</p>
             <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center w-full sm:w-auto">
-                <i class="fas fa-lock-open mr-2"></i>Secure Your Spot
+                <i class="fas fa-lock-open mr-2"></i>{{ homeContent.servicesCta.buttonLabel }}
             </a>
         </div>
     </div>
@@ -335,9 +334,9 @@ jsonLd: |
 <section id="courses" class="py-10 md:py-16 lg:py-24 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-8 md:mb-12">
-            <span data-aos="fade-up" class="inline-block bg-orange-100 text-orange-600 text-xs font-bold uppercase tracking-widest px-4 py-1 rounded-full mb-4">Treasure Base Academy</span>
-            <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Learn Online. Stay Safe.</h2>
-            <p data-aos="fade-up" data-aos-delay="100" class="text-gray-500 max-w-2xl mx-auto text-lg">Enroll in our industry-recognized online safety courses with self-paced, affordable, and built for Canadian workplaces.</p>
+            <span data-aos="fade-up" class="inline-block bg-orange-100 text-orange-600 text-xs font-bold uppercase tracking-widest px-4 py-1 rounded-full mb-4">{{ homeContent.coursesSection.badge }}</span>
+            <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ homeContent.coursesSection.heading }}</h2>
+            <p data-aos="fade-up" data-aos-delay="100" class="text-gray-500 max-w-2xl mx-auto text-lg">{{ homeContent.coursesSection.subtext }}</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -359,9 +358,9 @@ jsonLd: |
         </div>
 
         <div data-aos="zoom-in" class="mt-12 text-center">
-            <p class="text-gray-500 mb-6 text-base">All courses are self-paced and accessible from any device. Certificates issued upon completion.</p>
+            <p class="text-gray-500 mb-6 text-base">{{ homeContent.coursesSection.footerText }}</p>
             <a href="https://treasurebaseacademy.safeinea.ca/#/public-dashboard" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg text-lg w-full sm:w-auto">
-                <i class="fas fa-graduation-cap"></i> Browse All Courses & Enroll
+                <i class="fas fa-graduation-cap"></i> {{ homeContent.coursesSection.buttonLabel }}
             </a>
         </div>
     </div>
@@ -369,7 +368,7 @@ jsonLd: |
 
 <section id="contact" class="py-10 md:py-16 lg:py-24 bg-white overflow-hidden scroll-mt-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800">Contact Information</h2>
+        <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800">{{ homeContent.contactSection.heading }}</h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
             {% for card in contactCards.contactCards %}
