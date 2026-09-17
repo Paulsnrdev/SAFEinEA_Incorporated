@@ -79,7 +79,7 @@ jsonLd: |
                 <h1 data-aos="fade-down" class="text-4xl font-bold mb-8 text-gray-800">About SAFEinEA Incorporated</h1>
 
                 <div data-aos="zoom-in" data-aos-delay="100" class="mb-12 relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-lg shadow-md">
-                    {% for photo in aboutPhotos %}
+                    {% for photo in aboutPhotos.photos %}
                     <img src="{{ photo.image }}" alt="{{ photo.alt }}" class="w-full h-full object-contain sm:object-cover absolute inset-0 transition-opacity duration-1000 {% if loop.first %}opacity-100{% else %}opacity-0{% endif %}" id="slide{{ loop.index }}">
                     {% endfor %}
                 </div>
@@ -140,7 +140,7 @@ jsonLd: |
                 <div data-aos="fade-left" data-aos-delay="200" class="bg-gray-50 p-6 rounded-lg shadow-md sticky top-24">
                     <h2 class="text-xl font-semibold mb-4 text-gray-800">Our Training Deliverables</h2>
                     <ul class="space-y-3">
-                        {% for item in deliverables %}
+                        {% for item in deliverables.deliverables %}
                         <li class="flex items-start">
                             <i class="{{ item.icon }} text-blue-500 mt-1 mr-2"></i>
                             <span class="text-gray-600">{{ item.text }}</span>

@@ -1,23 +1,25 @@
-[
-  {
-    "image": "/Fundamentals of Electrical Safety.png",
-    "title": "Fundamentals of Electrical Safety",
-    "description": "Understand electrical hazards, safe work practices, and lockout/tagout procedures in the workplace.",
-    "badge": "Course Bundle",
-    "price": "$50.00"
-  },
-  {
-    "image": "/Introduction to Advanced Food Safety.png",
-    "title": "Introduction to Advanced Food Safety",
-    "description": "Advanced food safety principles including HACCP, food regulations, and risk management strategies.",
-    "badge": "Online Course",
-    "price": "$30.00"
-  },
-  {
-    "image": "/LMS Training.jpeg",
-    "title": "Workplace Incident Investigations",
-    "description": "Industry-standard accredited training for conducting thorough and effective workplace incident investigations.",
-    "badge": "Online Course",
-    "price": "$200.00"
-  }
-]
+{
+  "onlineCourses": [
+    {
+      "image": "/Fundamentals of Electrical Safety.png",
+      "title": "Fundamentals of Electrical Safety",
+      "description": "Understand electrical hazards, safe work practices, and lockout/tagout procedures in the workplace.",
+      "badge": "Course Bundle",
+      "price": "$50.00"
+    },
+    {
+      "image": "/Introduction to Advanced Food Safety.png",
+      "title": "Introduction to Advanced Food Safety",
+      "description": "Advanced food safety principles including HACCP, food regulations, and risk management strategies.",
+      "badge": "Online Course",
+      "price": "$30.00"
+    },
+    {
+      "image": "/LMS Training.jpeg",
+      "title": "Workplace Incident Investigations",
+      "description": "Industry-standard accredited training for conducting thorough and effective workplace incident investigations.",
+      "badge": "Online Course",
+      "price": "$200.00"
+    }
+  ]
+}

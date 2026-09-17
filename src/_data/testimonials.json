@@ -1,7 +1,29 @@
-[
-  { "name": "James Paulson", "rating": 5, "quote": "I enjoyed the Training. thank you." },
-  { "name": "Paras", "rating": 5, "quote": "The instructor was good. He had a pretty good knowledge of safety and health. I will highly recommend to everybody if they want to do training for safety and health, go with this one" },
-  { "name": "Singh", "rating": 4.5, "quote": "The instructor explained everything well. It was interesting." },
-  { "name": "Skraikot", "rating": 5, "quote": "It was amazing and knowledgeable." },
-  { "name": "Bakuska", "rating": 4, "quote": "Everything was good overall. Knowing that we needed to access some materials for some questions would have been helpful. But overall, very good" }
-]
+{
+  "testimonials": [
+    {
+      "name": "James Paulson",
+      "rating": 5,
+      "quote": "I enjoyed the Training. thank you."
+    },
+    {
+      "name": "Paras",
+      "rating": 5,
+      "quote": "The instructor was good. He had a pretty good knowledge of safety and health. I will highly recommend to everybody if they want to do training for safety and health, go with this one"
+    },
+    {
+      "name": "Singh",
+      "rating": 4.5,
+      "quote": "The instructor explained everything well. It was interesting."
+    },
+    {
+      "name": "Skraikot",
+      "rating": 5,
+      "quote": "It was amazing and knowledgeable."
+    },
+    {
+      "name": "Bakuska",
+      "rating": 4,
+      "quote": "Everything was good overall. Knowing that we needed to access some materials for some questions would have been helpful. But overall, very good"
+    }
+  ]
+}

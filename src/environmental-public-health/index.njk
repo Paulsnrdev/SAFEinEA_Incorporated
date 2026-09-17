@@ -272,7 +272,7 @@ pageScripts: |
 <section class="py-16 bg-gray-100">
     <div class="max-w-6xl mx-auto px-4">
 
-        {% for svc in envServices %}
+        {% for svc in envServices.envServices %}
         <div id="{{ svc.id }}" class="mb-12 scroll-hidden-{{ svc.scrollDirection }} scroll-mt-32">
             <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
                 <div class="md:flex md:flex-row{% if svc.reverse %}-reverse{% endif %}">

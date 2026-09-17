@@ -1,24 +1,26 @@
-[
-  {
-    "link": "https://swmb.bluedrop.io/storefront/safeinea",
-    "barColor": "bg-blue-600",
-    "buttonColor": "bg-blue-600",
-    "buttonHoverColor": "group-hover:bg-blue-700",
-    "image": "/Safework endorsed.jpg",
-    "imageAlt": "Safework Manitoba Endorsed Training",
-    "title": "Safework Manitoba Endorsed Training",
-    "description": "Register for our SAFE Work Manitoba endorsed courses through the official storefront.",
-    "buttonLabel": "Register Now"
-  },
-  {
-    "link": "https://treasurebaseacademy.safeinea.ca/#/public-dashboard",
-    "barColor": "bg-orange-500",
-    "buttonColor": "bg-orange-500",
-    "buttonHoverColor": "group-hover:bg-orange-600",
-    "image": "/LMS Training.jpeg",
-    "imageAlt": "LMS Training",
-    "title": "Treasurebased Academy Safeinea LMS",
-    "description": "Browse and enroll in our self-paced online courses through Treasure Base Academy.",
-    "buttonLabel": "Enroll Now"
-  }
-]
+{
+  "options": [
+    {
+      "link": "https://swmb.bluedrop.io/storefront/safeinea",
+      "barColor": "bg-blue-600",
+      "buttonColor": "bg-blue-600",
+      "buttonHoverColor": "group-hover:bg-blue-700",
+      "image": "/Safework endorsed.jpg",
+      "imageAlt": "Safework Manitoba Endorsed Training",
+      "title": "Safework Manitoba Endorsed Training",
+      "description": "Register for our SAFE Work Manitoba endorsed courses through the official storefront.",
+      "buttonLabel": "Register Now"
+    },
+    {
+      "link": "https://treasurebaseacademy.safeinea.ca/#/public-dashboard",
+      "barColor": "bg-orange-500",
+      "buttonColor": "bg-orange-500",
+      "buttonHoverColor": "group-hover:bg-orange-600",
+      "image": "/LMS Training.jpeg",
+      "imageAlt": "LMS Training",
+      "title": "Treasurebased Academy Safeinea LMS",
+      "description": "Browse and enroll in our self-paced online courses through Treasure Base Academy.",
+      "buttonLabel": "Enroll Now"
+    }
+  ]
+}

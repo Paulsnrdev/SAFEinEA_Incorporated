@@ -1,37 +1,69 @@
-[
-  {
-    "icon": "fas fa-phone-alt",
-    "title": "Phone & Location",
-    "rows": [
-      { "label": "Phone Number:", "value": "(431) 556-1900", "link": "tel:4315561900" },
-      { "label": "Service Area:", "value": "Canada-wide services" },
-      { "label": "Headquarters:", "value": "Winnipeg, Manitoba" }
-    ]
-  },
-  {
-    "icon": "fas fa-envelope",
-    "title": "Email Addresses",
-    "rows": [
-      { "label": "Primary Email:", "value": "training@safeinea.ca", "link": "mailto:training@safeinea.ca", "breakAll": true },
-      { "label": "Secondary Email:", "value": "bamideleoni@safeinea.ca", "link": "mailto:bamideleoni@safeinea.ca", "breakAll": true, "extraGapBefore": true }
-    ]
-  },
-  {
-    "icon": "fas fa-clock",
-    "title": "Business Hours",
-    "hours": [
-      { "day": "Weekdays", "time": "9AM - 5PM" },
-      { "day": "Saturday", "time": "By appointment" },
-      { "day": "Sunday", "time": "Closed" }
-    ]
-  },
-  {
-    "icon": "fas fa-certificate",
-    "title": "Our Training Deliverables",
-    "checklist": [
-      "Workplace Safety and Health Committee/Representatives",
-      "Hazard Identification and Risk Control",
-      "Workplace Incident Investigations, and more."
-    ]
-  }
-]
+{
+  "contactCards": [
+    {
+      "icon": "fas fa-phone-alt",
+      "title": "Phone & Location",
+      "rows": [
+        {
+          "label": "Phone Number:",
+          "value": "(431) 556-1900",
+          "link": "tel:4315561900"
+        },
+        {
+          "label": "Service Area:",
+          "value": "Canada-wide services"
+        },
+        {
+          "label": "Headquarters:",
+          "value": "Winnipeg, Manitoba"
+        }
+      ]
+    },
+    {
+      "icon": "fas fa-envelope",
+      "title": "Email Addresses",
+      "rows": [
+        {
+          "label": "Primary Email:",
+          "value": "training@safeinea.ca",
+          "link": "mailto:training@safeinea.ca",
+          "breakAll": true
+        },
+        {
+          "label": "Secondary Email:",
+          "value": "bamideleoni@safeinea.ca",
+          "link": "mailto:bamideleoni@safeinea.ca",
+          "breakAll": true,
+          "extraGapBefore": true
+        }
+      ]
+    },
+    {
+      "icon": "fas fa-clock",
+      "title": "Business Hours",
+      "hours": [
+        {
+          "day": "Weekdays",
+          "time": "9AM - 5PM"
+        },
+        {
+          "day": "Saturday",
+          "time": "By appointment"
+        },
+        {
+          "day": "Sunday",
+          "time": "Closed"
+        }
+      ]
+    },
+    {
+      "icon": "fas fa-certificate",
+      "title": "Our Training Deliverables",
+      "checklist": [
+        "Workplace Safety and Health Committee/Representatives",
+        "Hazard Identification and Risk Control",
+        "Workplace Incident Investigations, and more."
+      ]
+    }
+  ]
+}

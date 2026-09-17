@@ -1,6 +1,20 @@
-[
-  { "icon": "fas fa-certificate", "text": "Workplace Safety and Health Committee/Representatives" },
-  { "icon": "fas fa-certificate", "text": "Hazard Identification and Risk Control" },
-  { "icon": "fas fa-certificate", "text": "Workplace Incident Investigations" },
-  { "icon": "fas fa-certificate", "text": "Workplace Incident Investigations, and more." }
-]
+{
+  "deliverables": [
+    {
+      "icon": "fas fa-certificate",
+      "text": "Workplace Safety and Health Committee/Representatives"
+    },
+    {
+      "icon": "fas fa-certificate",
+      "text": "Hazard Identification and Risk Control"
+    },
+    {
+      "icon": "fas fa-certificate",
+      "text": "Workplace Incident Investigations"
+    },
+    {
+      "icon": "fas fa-certificate",
+      "text": "Workplace Incident Investigations, and more."
+    }
+  ]
+}

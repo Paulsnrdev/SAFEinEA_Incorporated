@@ -1,20 +1,30 @@
-[
-  {
-    "image": "/Occupationalservices.jpeg",
-    "alt": "Occupational Health and Safety",
-    "titleLines": ["Occupational Health", "& Safety"],
-    "link": "#service-1"
-  },
-  {
-    "image": "/Environmentalservices.jpeg",
-    "alt": "Environmental and Public Health",
-    "titleLines": ["Environmental &", "Public Health"],
-    "link": "https://www.safeinea.ca/EnvironmentalPublicHealth#services"
-  },
-  {
-    "image": "/LMS Training.jpeg",
-    "alt": "Training",
-    "titleLines": ["Training"],
-    "link": "/register-training"
-  }
-]
+{
+  "services": [
+    {
+      "image": "/Occupationalservices.jpeg",
+      "alt": "Occupational Health and Safety",
+      "titleLines": [
+        "Occupational Health",
+        "& Safety"
+      ],
+      "link": "#service-1"
+    },
+    {
+      "image": "/Environmentalservices.jpeg",
+      "alt": "Environmental and Public Health",
+      "titleLines": [
+        "Environmental &",
+        "Public Health"
+      ],
+      "link": "https://www.safeinea.ca/EnvironmentalPublicHealth#services"
+    },
+    {
+      "image": "/LMS Training.jpeg",
+      "alt": "Training",
+      "titleLines": [
+        "Training"
+      ],
+      "link": "/register-training"
+    }
+  ]
+}

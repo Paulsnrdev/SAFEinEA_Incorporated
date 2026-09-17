@@ -46,7 +46,7 @@ pageStyles: |
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {% for item in testimonials %}
+            {% for item in testimonials.testimonials %}
             <div data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}" class="testimonial-card bg-gray-50 rounded-lg shadow-md p-6">
                 <div class="flex items-center mb-4">
                     <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">
@@ -76,7 +76,7 @@ pageStyles: |
         <h2 data-aos="fade-up" class="text-3xl font-bold text-center mb-8">Our Statistics</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {% for card in statsCards %}
+            {% for card in statsCards.stats %}
             <div data-aos="zoom-in" data-aos-delay="{{ loop.index0 * 150 }}" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                 <img src="{{ card.image }}" alt="{{ card.alt }}" class="w-full h-auto object-contain max-h-80 mx-auto">
                 <p class="mt-4 text-center text-gray-600 font-medium">{{ card.caption }}</p>

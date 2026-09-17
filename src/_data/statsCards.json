@@ -1,5 +1,19 @@
-[
-  { "image": "/stats1.jpg", "alt": "Statistical Chart 1", "caption": "Participant Engagement Metrics" },
-  { "image": "/stats2.jpg", "alt": "Statistical Chart 2", "caption": "Knowledge Proficiency Metrics" },
-  { "image": "/stats3.jpg", "alt": "Statistical Chart 3", "caption": "Participant Feedback Scores" }
-]
+{
+  "stats": [
+    {
+      "image": "/stats1.jpg",
+      "alt": "Statistical Chart 1",
+      "caption": "Participant Engagement Metrics"
+    },
+    {
+      "image": "/stats2.jpg",
+      "alt": "Statistical Chart 2",
+      "caption": "Knowledge Proficiency Metrics"
+    },
+    {
+      "image": "/stats3.jpg",
+      "alt": "Statistical Chart 3",
+      "caption": "Participant Feedback Scores"
+    }
+  ]
+}
