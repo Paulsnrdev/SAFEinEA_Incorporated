@@ -2,8 +2,8 @@ backend:
   name: github
   repo: Paulsnrdev/SAFEinEA_Incorporated
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
+  base_url: https://www.safeinea.ca
+  auth_endpoint: api/auth
 
 # New images uploaded through the editor land here; existing site images
 # stay in place at the repo root and are referenced by their current paths.
