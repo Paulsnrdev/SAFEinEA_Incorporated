@@ -193,9 +193,9 @@ jsonLd: |
                 <p class="text-lg sm:text-xl md:text-2xl mb-12 md:mb-16 text-gray-200 max-w-3xl mx-auto">{{ homeContent.heroSlide1.subtext }}</p>
 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 w-full px-4 sm:px-0">
-                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full sm:w-auto text-center">{{ homeContent.heroSlide1.cta1Label }}</a>
-                    <a href="#services" class="bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 border-2 border-white rounded-lg transition duration-300 w-full sm:w-auto text-center">{{ homeContent.heroSlide1.cta2Label }}</a>
-                    <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full sm:w-auto text-center flex items-center justify-center">
+                    <a href="{{ homeContent.heroSlide1.cta1Href }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full sm:w-auto text-center">{{ homeContent.heroSlide1.cta1Label }}</a>
+                    <a href="{{ homeContent.heroSlide1.cta2Href }}" class="bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 border-2 border-white rounded-lg transition duration-300 w-full sm:w-auto text-center">{{ homeContent.heroSlide1.cta2Label }}</a>
+                    <a href="{{ homeContent.heroSlide1.cta3Href }}" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full sm:w-auto text-center flex items-center justify-center">
                         <i class="fas fa-calendar-check mr-2"></i>{{ homeContent.heroSlide1.cta3Label }}
                     </a>
                 </div>
@@ -214,7 +214,7 @@ jsonLd: |
                 <p class="text-base sm:text-lg font-semibold text-blue-300 mb-12 uppercase tracking-widest">{{ homeContent.heroSlide2.tagline }}</p>
 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 w-full px-4 sm:px-0">
-                    <a href="https://www.safeinea.ca/EnvironmentalPublicHealth" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 w-full sm:w-auto text-center">{{ homeContent.heroSlide2.ctaLabel }}</a>
+                    <a href="{{ homeContent.heroSlide2.ctaHref }}" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 w-full sm:w-auto text-center">{{ homeContent.heroSlide2.ctaLabel }}</a>
                 </div>
             </div>
         </div>
@@ -242,10 +242,10 @@ jsonLd: |
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
-                    <a href="https://linkedin.com/company/safeinea" target="_blank" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
+                    <a href="{{ homeContent.community.linkedinUrl }}" target="_blank" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
                         <i class="fab fa-linkedin-in"></i> {{ homeContent.community.linkedinLabel }}
                     </a>
-                    <a href="#services" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
+                    <a href="{{ homeContent.community.servicesUrl }}" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
                         <i class="fas fa-shield-alt"></i> {{ homeContent.community.servicesLabel }}
                     </a>
                 </div>
@@ -324,7 +324,7 @@ jsonLd: |
         <div data-aos="zoom-in" class="bg-blue-50 p-6 md:p-16 rounded-xl text-center mt-10 md:mt-16 shadow-sm border border-blue-100">
             <h3 class="text-2xl md:text-3xl font-semibold mb-4 text-gray-800">{{ homeContent.servicesCta.heading }}</h3>
             <p class="text-gray-600 mb-8 max-w-2xl mx-auto text-lg">{{ homeContent.servicesCta.text }}</p>
-            <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center w-full sm:w-auto">
+            <a href="{{ homeContent.servicesCta.buttonHref }}" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center w-full sm:w-auto">
                 <i class="fas fa-lock-open mr-2"></i>{{ homeContent.servicesCta.buttonLabel }}
             </a>
         </div>
@@ -359,7 +359,7 @@ jsonLd: |
 
         <div data-aos="zoom-in" class="mt-12 text-center">
             <p class="text-gray-500 mb-6 text-base">{{ homeContent.coursesSection.footerText }}</p>
-            <a href="https://treasurebaseacademy.safeinea.ca/#/public-dashboard" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg text-lg w-full sm:w-auto">
+            <a href="{{ homeContent.coursesSection.buttonHref }}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg text-lg w-full sm:w-auto">
                 <i class="fas fa-graduation-cap"></i> {{ homeContent.coursesSection.buttonLabel }}
             </a>
         </div>

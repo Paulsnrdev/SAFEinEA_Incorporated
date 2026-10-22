@@ -320,10 +320,10 @@ pageScripts: |
             <p class="text-gray-600 mb-6 max-w-2xl mx-auto">{{ envHealthContent.finalCta.text }}</p>
 
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="/#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center">
+                <a href="{{ envHealthContent.finalCta.contactHref }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center">
                     <i class="fas fa-envelope mr-2"></i>{{ envHealthContent.finalCta.contactLabel }}
                 </a>
-                <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center">
+                <a href="{{ envHealthContent.finalCta.registerHref }}" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center justify-center">
                     {{ envHealthContent.finalCta.registerLabel }}
                 </a>
             </div>

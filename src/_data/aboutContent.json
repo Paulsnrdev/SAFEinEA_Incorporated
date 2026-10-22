@@ -5,7 +5,7 @@
     "Added to this, he is an educationist, and proficient in curriculum development. As a lecturer, he has facilitated several trainings and also coached students from basis to professionalism in colleges and professional institutions. We bring expertise and passion to every project.",
     "His experience as an enforcement officer, who worked as a provincial safety and health officer, positioned him to understand what your workplace needs to comply with legislative requirements in various industries.",
     "SAFEinEA Incorporated provides Environmental Health and Safety consulting and training services. Our offerings/services include SAFE Work Manitoba endorsed trainings, customized on-site programs, advisory services, and the development of safety programs. We also partner with training institutions to deliver basic academic lectures as electives or main course to equip students with safety and health orientation regardless of their field of learning.",
-    "SAFEinEA is an accredited training provider in Manitoba and assists businesses in meeting legislative requirements and maintaining safe work environments.\n\nOur new baby is our Learning Management System, which hosts courses, including refresher and certification courses. We also help your company digitalize its internal training and onboarding process. By transforming existing training content into e-learning-ready digital courses — fully structured and interactive."
+    "SAFEinEA is an accredited training provider in Manitoba and assists businesses in meeting legislative requirements and maintaining safe work environments."
   ],
   "mission": {
     "heading": "Our Mission",
@@ -19,6 +19,12 @@
   "trainingCta": {
     "heading": "Upcoming Training Sessions",
     "text": "Join our next Safety and Health Training cohort:",
-    "buttonLabel": "View Schedule & Register"
-  }
+    "buttonLabel": "View Schedule & Register",
+    "buttonHref": "https://swmb.bluedrop.io/storefront/safeinea"
+  },
+  "quickLinks": [
+    { "label": "Register for Training", "href": "https://swmb.bluedrop.io/storefront/safeinea" },
+    { "label": "Contact Us", "href": "/#contact" },
+    { "label": "Safety Advocate Channel", "href": "https://www.youtube.com/@SafetyAdvocates" }
+  ]
 }

@@ -138,10 +138,10 @@ pageStyles: |
         <div data-aos="zoom-in" class="mt-0 text-center">
             <h3 class="text-2xl font-semibold mb-6 text-gray-800">{{ testimonialsContent.finalCta.heading }}</h3>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="/#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
+                <a href="{{ testimonialsContent.finalCta.contactHref }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
                     {{ testimonialsContent.finalCta.contactLabel }}
                 </a>
-                <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
+                <a href="{{ testimonialsContent.finalCta.registerHref }}" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition duration-300">
                     {{ testimonialsContent.finalCta.registerLabel }}
                 </a>
             </div>

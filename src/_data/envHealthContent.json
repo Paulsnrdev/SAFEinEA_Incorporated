@@ -13,6 +13,8 @@
     "heading": "Secure Your Environment Today",
     "text": "Ensure your facilities meet scientific best practices and public health standards. Reach out to our consulting team for specialized assessments.",
     "contactLabel": "Contact Our Experts",
-    "registerLabel": "Register for Training"
+    "contactHref": "/#contact",
+    "registerLabel": "Register for Training",
+    "registerHref": "https://swmb.bluedrop.io/storefront/safeinea"
   }
 }

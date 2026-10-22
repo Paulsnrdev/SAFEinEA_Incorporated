@@ -141,16 +141,11 @@ jsonLd: |
                     <div class="mt-8">
                         <h2 class="text-xl font-semibold mb-4 text-gray-800">Quick Links</h2>
                         <div class="space-y-4">
-                            <a href="https://swmb.bluedrop.io/storefront/safeinea" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full block text-center flex items-center justify-center">
-                                <i class="fas fa-user-graduate mr-2"></i> Register for Training
+                            {% for link in aboutContent.quickLinks %}
+                            <a href="{{ link.href }}" class="{% if loop.first %}bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6{% else %}bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4{% endif %} rounded-lg transition duration-300 w-full block text-center flex items-center justify-center">
+                                {% if loop.first %}<i class="fas fa-user-graduate mr-2"></i>{% elif loop.index == 2 %}<i class="fas fa-envelope mr-1.5"></i>{% else %}<i class="fab fa-youtube mr-1.5"></i>{% endif %} {{ link.label }}
                             </a>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]"></div>
-                            <a href="/#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 w-full block text-center flex items-center justify-center ">
-                                <i class="fas fa-envelope mr-1.5 "></i> Contact Us
-                            </a>
-                            <a href="https://www.youtube.com/@SafetyAdvocates" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 w-full block text-center flex items-center justify-center ">
-                                <i class="fab fa-youtube mr-1.5 "></i> Safety Advocate Channel
-                            </a>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -160,7 +155,7 @@ jsonLd: |
         <div data-aos="flip-up" class="bg-amber-50 p-6 rounded-lg border-l-4 border-amber-600 mt-8 shadow-sm">
             <h3 class="text-xl font-semibold mb-4 text-gray-800">{{ aboutContent.trainingCta.heading }}</h3>
             <p class="text-gray-600 mb-4">{{ aboutContent.trainingCta.text }}</p>
-            <a href="https://swmb.bluedrop.io/storefront/safeinea" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-6 rounded-lg inline-block transition duration-300">
+            <a href="{{ aboutContent.trainingCta.buttonHref }}" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-6 rounded-lg inline-block transition duration-300">
                 <i class="fas fa-clipboard-list mr-2"></i>{{ aboutContent.trainingCta.buttonLabel }}
             </a>
         </div>

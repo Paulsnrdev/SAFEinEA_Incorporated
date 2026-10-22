@@ -29,8 +29,11 @@ collections:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Subtext", name: "subtext", widget: "text" }
               - { label: "Button 1 Label (Get in Touch)", name: "cta1Label", widget: "string" }
+              - { label: "Button 1 Link", name: "cta1Href", widget: "string" }
               - { label: "Button 2 Label (Our Services)", name: "cta2Label", widget: "string" }
+              - { label: "Button 2 Link", name: "cta2Href", widget: "string" }
               - { label: "Button 3 Label (Register)", name: "cta3Label", widget: "string" }
+              - { label: "Button 3 Link", name: "cta3Href", widget: "string" }
           - label: "Hero Slide 2 (Environmental Health)"
             name: "heroSlide2"
             widget: "object"
@@ -40,6 +43,7 @@ collections:
               - { label: "Quote", name: "quote", widget: "string" }
               - { label: "Tagline", name: "tagline", widget: "string" }
               - { label: "Button Label", name: "ctaLabel", widget: "string" }
+              - { label: "Button Link", name: "ctaHref", widget: "string" }
           - label: "Join Our Community Section"
             name: "community"
             widget: "object"
@@ -47,7 +51,9 @@ collections:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Text", name: "text", widget: "text" }
               - { label: "LinkedIn Button Label", name: "linkedinLabel", widget: "string" }
+              - { label: "LinkedIn Button Link", name: "linkedinUrl", widget: "string" }
               - { label: "Services Button Label", name: "servicesLabel", widget: "string" }
+              - { label: "Services Button Link", name: "servicesUrl", widget: "string" }
               - { label: "YouTube Embed URL", name: "videoUrl", widget: "string" }
           - label: "Services Section Intro"
             name: "servicesSection"
@@ -62,6 +68,7 @@ collections:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Text", name: "text", widget: "text" }
               - { label: "Button Label", name: "buttonLabel", widget: "string" }
+              - { label: "Button Link", name: "buttonHref", widget: "string" }
           - label: "Online Courses Section"
             name: "coursesSection"
             widget: "object"
@@ -71,6 +78,7 @@ collections:
               - { label: "Subtext", name: "subtext", widget: "text" }
               - { label: "Footer Text", name: "footerText", widget: "text" }
               - { label: "Button Label", name: "buttonLabel", widget: "string" }
+              - { label: "Button Link", name: "buttonHref", widget: "string" }
           - label: "Contact Section"
             name: "contactSection"
             widget: "object"
@@ -187,6 +195,14 @@ collections:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Text", name: "text", widget: "string" }
               - { label: "Button Label", name: "buttonLabel", widget: "string" }
+              - { label: "Button Link", name: "buttonHref", widget: "string" }
+          - label: "Sidebar Quick Links"
+            name: "quickLinks"
+            widget: "list"
+            summary: "{{label}}"
+            fields:
+              - { label: "Link Label", name: "label", widget: "string" }
+              - { label: "Link URL", name: "href", widget: "string" }
 
       - name: "founder"
         label: "Founder Bio"
@@ -251,7 +267,9 @@ collections:
             fields:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Contact Button Label", name: "contactLabel", widget: "string" }
+              - { label: "Contact Button Link", name: "contactHref", widget: "string" }
               - { label: "Register Button Label", name: "registerLabel", widget: "string" }
+              - { label: "Register Button Link", name: "registerHref", widget: "string" }
 
       - name: "testimonials"
         label: "Testimonials"
@@ -340,6 +358,8 @@ collections:
               - { label: "Text", name: "text", widget: "text" }
               - { label: "Contact Button Label", name: "contactLabel", widget: "string" }
               - { label: "Register Button Label", name: "registerLabel", widget: "string" }
+              - { label: "Contact Button Link", name: "contactHref", widget: "string" }
+              - { label: "Register Button Link", name: "registerHref", widget: "string" }
 
       - name: "services"
         label: "Service Sections"
