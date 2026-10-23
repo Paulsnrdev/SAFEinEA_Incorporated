@@ -23,8 +23,17 @@
     "buttonHref": "https://swmb.bluedrop.io/storefront/safeinea"
   },
   "quickLinks": [
-    { "label": "Register for Training", "href": "https://swmb.bluedrop.io/storefront/safeinea" },
-    { "label": "Contact Us", "href": "/#contact" },
-    { "label": "Safety Advocate Channel", "href": "https://www.youtube.com/@SafetyAdvocates" }
+    {
+      "label": "Register for Training",
+      "href": "https://www.safeinea.ca/register-training"
+    },
+    {
+      "label": "Contact Us",
+      "href": "/#contact"
+    },
+    {
+      "label": "Safety Advocate Channel",
+      "href": "https://www.youtube.com/@SafetyAdvocates"
+    }
   ]
 }
