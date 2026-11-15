@@ -1,0 +1,388 @@
+backend:
+  name: github
+  repo: Paulsnrdev/SAFEinEA_Incorporated
+  branch: main
+  base_url: https://www.safeinea.ca
+  auth_endpoint: api/auth
+
+# New images uploaded through the editor land here; existing site images
+# stay in place at the repo root and are referenced by their current paths.
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: https://www.safeinea.ca
+display_url: https://www.safeinea.ca
+
+collections:
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - name: "content"
+        label: "Page Text (hero, headings, CTAs)"
+        file: "src/_data/homeContent.json"
+        fields:
+          - label: "Hero Slide 1 (Safety & Health)"
+            name: "heroSlide1"
+            widget: "object"
+            fields:
+              - { label: "Background Image", name: "image", widget: "image" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+              - { label: "Button 1 Label (Get in Touch)", name: "cta1Label", widget: "string" }
+              - { label: "Button 1 Link", name: "cta1Href", widget: "string" }
+              - { label: "Button 2 Label (Our Services)", name: "cta2Label", widget: "string" }
+              - { label: "Button 2 Link", name: "cta2Href", widget: "string" }
+              - { label: "Button 3 Label (Register)", name: "cta3Label", widget: "string" }
+              - { label: "Button 3 Link", name: "cta3Href", widget: "string" }
+          - label: "Hero Slide 2 (Environmental Health)"
+            name: "heroSlide2"
+            widget: "object"
+            fields:
+              - { label: "Background Image", name: "image", widget: "image" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Quote", name: "quote", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Button Label", name: "ctaLabel", widget: "string" }
+              - { label: "Button Link", name: "ctaHref", widget: "string" }
+          - label: "Join Our Community Section"
+            name: "community"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "LinkedIn Button Label", name: "linkedinLabel", widget: "string" }
+              - { label: "LinkedIn Button Link", name: "linkedinUrl", widget: "string" }
+              - { label: "Services Button Label", name: "servicesLabel", widget: "string" }
+              - { label: "Services Button Link", name: "servicesUrl", widget: "string" }
+              - { label: "YouTube Embed URL", name: "videoUrl", widget: "string" }
+          - label: "Services Section Intro"
+            name: "servicesSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro Text", name: "intro", widget: "text" }
+          - label: "Services CTA Box"
+            name: "servicesCta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Button Label", name: "buttonLabel", widget: "string" }
+              - { label: "Button Link", name: "buttonHref", widget: "string" }
+          - label: "Online Courses Section"
+            name: "coursesSection"
+            widget: "object"
+            fields:
+              - { label: "Badge Text", name: "badge", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+              - { label: "Footer Text", name: "footerText", widget: "text" }
+              - { label: "Button Label", name: "buttonLabel", widget: "string" }
+              - { label: "Button Link", name: "buttonHref", widget: "string" }
+          - label: "Contact Section"
+            name: "contactSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+
+      - name: "services"
+        label: "Services Tiles (top of Our Services section)"
+        file: "src/_data/services.json"
+        fields:
+          - label: "Tiles"
+            name: "services"
+            widget: "list"
+            summary: "{{titleLines}}"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Alt Text", name: "alt", widget: "string" }
+              - { label: "Title (one line per row)", name: "titleLines", widget: "list", field: { label: "Line", name: "line", widget: "string" } }
+              - { label: "Link", name: "link", widget: "string" }
+
+      - name: "serviceDetails"
+        label: "Service Detail Cards"
+        file: "src/_data/serviceDetails.json"
+        fields:
+          - label: "Services"
+            name: "serviceDetails"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+              - { label: "Anchor ID (technical - leave as-is)", name: "id", widget: "hidden" }
+              - { label: "Icon (technical - leave as-is)", name: "icon", widget: "hidden" }
+              - { label: "Layout (technical - leave as-is)", name: "reverse", widget: "hidden" }
+              - { label: "Layout (technical - leave as-is)", name: "containObject", widget: "hidden" }
+
+      - name: "onlineCourses"
+        label: "Online Course Teasers"
+        file: "src/_data/onlineCourses.json"
+        fields:
+          - label: "Courses"
+            name: "onlineCourses"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Badge Label", name: "badge", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+
+      - name: "contactCards"
+        label: "Contact Information Cards"
+        file: "src/_data/contactCards.json"
+        fields:
+          - label: "Cards"
+            name: "contactCards"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Icon (technical - leave as-is)", name: "icon", widget: "hidden" }
+              - { label: "Card Title", name: "title", widget: "string" }
+              - label: "Rows (label/value pairs, e.g. phone or email cards)"
+                name: "rows"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Link (optional, e.g. tel:... or mailto:...)", name: "link", widget: "string", required: false }
+                  - { label: "Underline value (technical)", name: "breakAll", widget: "hidden", required: false }
+                  - { label: "Extra spacing (technical)", name: "extraGapBefore", widget: "hidden", required: false }
+              - label: "Business Hours (hours card only)"
+                name: "hours"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Day", name: "day", widget: "string" }
+                  - { label: "Time", name: "time", widget: "string" }
+              - label: "Checklist (deliverables card only)"
+                name: "checklist"
+                widget: "list"
+                required: false
+                field: { label: "Item", name: "item", widget: "string" }
+
+  - name: "about_page"
+    label: "About Page"
+    files:
+      - name: "content"
+        label: "Page Text (heading, intro, mission, approach, CTA)"
+        file: "src/_data/aboutContent.json"
+        fields:
+          - { label: "Page Heading", name: "heading", widget: "string" }
+          - { label: "Intro Paragraphs", name: "introParagraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+          - label: "Our Mission"
+            name: "mission"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - label: "Our Approach"
+            name: "approach"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - { label: "Founder Section Heading", name: "founderSectionHeading", widget: "string" }
+          - label: "Upcoming Training CTA Box"
+            name: "trainingCta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Button Label", name: "buttonLabel", widget: "string" }
+              - { label: "Button Link", name: "buttonHref", widget: "string" }
+          - label: "Sidebar Quick Links"
+            name: "quickLinks"
+            widget: "list"
+            summary: "{{label}}"
+            fields:
+              - { label: "Link Label", name: "label", widget: "string" }
+              - { label: "Link URL", name: "href", widget: "string" }
+
+      - name: "founder"
+        label: "Founder Bio"
+        file: "src/_data/founder.json"
+        fields:
+          - { label: "Photo", name: "photo", widget: "image" }
+          - { label: "Name & Credentials", name: "name", widget: "string" }
+          - { label: "Bio Paragraphs", name: "bio", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+
+      - name: "photos"
+        label: "Photo Slideshow"
+        file: "src/_data/aboutPhotos.json"
+        fields:
+          - label: "Photos"
+            name: "photos"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+
+      - name: "deliverables"
+        label: "Training Deliverables List"
+        file: "src/_data/deliverables.json"
+        fields:
+          - label: "Deliverables"
+            name: "deliverables"
+            widget: "list"
+            summary: "{{text}}"
+            fields:
+              - { label: "Icon (technical - leave as-is)", name: "icon", widget: "hidden" }
+              - { label: "Text", name: "text", widget: "string" }
+
+  - name: "testimonials_page"
+    label: "Testimonials Page"
+    files:
+      - name: "content"
+        label: "Page Text (hero, headings, CTA)"
+        file: "src/_data/testimonialsContent.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+          - label: "Trusted By Section"
+            name: "trustedSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+          - { label: "Statistics Section Heading", name: "statsHeading", widget: "string" }
+          - label: "Video Section"
+            name: "videoSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subscribe Button Label", name: "subscribeLabel", widget: "string" }
+          - label: "Final CTA"
+            name: "finalCta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Contact Button Label", name: "contactLabel", widget: "string" }
+              - { label: "Contact Button Link", name: "contactHref", widget: "string" }
+              - { label: "Register Button Label", name: "registerLabel", widget: "string" }
+              - { label: "Register Button Link", name: "registerHref", widget: "string" }
+
+      - name: "testimonials"
+        label: "Testimonials"
+        file: "src/_data/testimonials.json"
+        fields:
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            summary: "{{name}} ({{rating}} stars)"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Rating (1-5, half-stars allowed)", name: "rating", widget: "number", value_type: "float", min: 1, max: 5, step: 0.5 }
+              - { label: "Quote", name: "quote", widget: "text" }
+
+      - name: "stats"
+        label: "Statistics Images"
+        file: "src/_data/statsCards.json"
+        fields:
+          - label: "Cards"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Caption", name: "caption", widget: "string" }
+
+      - name: "video"
+        label: "Featured Video"
+        file: "src/_data/featuredVideo.json"
+        fields:
+          - { label: "YouTube Embed URL", name: "youtubeEmbedUrl", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Channel URL", name: "channelUrl", widget: "string" }
+
+  - name: "register_training_page"
+    label: "Register for Training Page"
+    files:
+      - name: "options"
+        label: "Registration Options"
+        file: "src/_data/registrationOptions.json"
+        fields:
+          - { label: "Page Heading", name: "heading", widget: "string" }
+          - { label: "Page Subtext", name: "subtext", widget: "string" }
+          - label: "Options"
+            name: "options"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Link", name: "link", widget: "string" }
+              - { label: "Button Label", name: "buttonLabel", widget: "string" }
+              - { label: "Accent Color (technical - leave as-is)", name: "barColor", widget: "hidden" }
+              - { label: "Button Color (technical - leave as-is)", name: "buttonColor", widget: "hidden" }
+              - { label: "Button Hover Color (technical - leave as-is)", name: "buttonHoverColor", widget: "hidden" }
+
+  - name: "environmental_health_page"
+    label: "Environmental & Public Health Page"
+    files:
+      - name: "content"
+        label: "Page Text (hero, intro, CTA)"
+        file: "src/_data/envHealthContent.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Quote", name: "quote", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+          - label: "Why Work With Us Section"
+            name: "whyUs"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Paragraph 1", name: "text1", widget: "text" }
+              - { label: "Paragraph 2", name: "text2", widget: "text" }
+          - label: "Final CTA"
+            name: "finalCta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Contact Button Label", name: "contactLabel", widget: "string" }
+              - { label: "Register Button Label", name: "registerLabel", widget: "string" }
+              - { label: "Contact Button Link", name: "contactHref", widget: "string" }
+              - { label: "Register Button Link", name: "registerHref", widget: "string" }
+
+      - name: "services"
+        label: "Service Sections"
+        file: "src/_data/envServices.json"
+        fields:
+          - label: "Sections"
+            name: "envServices"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Quote (optional)", name: "quote", widget: "string", required: false }
+              - { label: "Bullet Points (optional)", name: "bullets", widget: "list", required: false, field: { label: "Bullet", name: "bullet", widget: "string" } }
+              - { label: "Description (optional)", name: "description", widget: "text", required: false }
+              - { label: "Deliverables", name: "deliverables", widget: "string" }
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Anchor ID (technical - leave as-is)", name: "id", widget: "hidden" }
+              - { label: "Icon (technical - leave as-is)", name: "icon", widget: "hidden" }
+              - { label: "Layout (technical - leave as-is)", name: "reverse", widget: "hidden" }
+              - { label: "Scroll direction (technical - leave as-is)", name: "scrollDirection", widget: "hidden" }
+              - { label: "Slider ID prefix (technical - leave as-is)", name: "idPrefix", widget: "hidden", required: false }
