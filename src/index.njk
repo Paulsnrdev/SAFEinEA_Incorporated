@@ -241,14 +241,14 @@ jsonLd: |
                     {{ homeContent.community.text }}
                 </p>
 
-                <div class="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
-                    <a href="{{ homeContent.community.linkedinUrl }}" target="_blank" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
+                <div class="flex flex-wrap gap-3 mb-8 justify-center lg:justify-start">
+                    <a href="{{ homeContent.community.linkedinUrl }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold py-2.5 px-5 rounded-full transition duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 bg-blue-600 hover:bg-blue-700 text-white">
                         <i class="fab fa-linkedin-in"></i> {{ homeContent.community.linkedinLabel }}
                     </a>
-                    <a href="{{ homeContent.community.companyLinkedInUrl }}" target="_blank" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
+                    <a href="{{ homeContent.community.companyLinkedInUrl }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold py-2.5 px-5 rounded-full transition duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 bg-white border border-blue-600 text-blue-600 hover:bg-blue-50">
                         <i class="fab fa-linkedin-in"></i> {{ homeContent.community.companyLinkedInLabel }}
                     </a>
-                    <a href="{{ homeContent.community.servicesUrl }}" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg w-full sm:w-auto">
+                    <a href="{{ homeContent.community.servicesUrl }}" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold py-2.5 px-5 rounded-full transition duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 bg-amber-500 hover:bg-amber-600 text-white">
                         <i class="fas fa-shield-alt"></i> {{ homeContent.community.servicesLabel }}
                     </a>
                 </div>
